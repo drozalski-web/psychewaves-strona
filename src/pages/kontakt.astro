@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+// TODO: potwierdzić docelowy adres e-mail
+const email = 'kontakt@psychewaves.pl';
+---
+<Base tytul="Kontakt" opis="Kontakt z Psyche Waves: propozycje tematów, współpraca, uwagi do artykułów.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Kontakt</p>
+      <h1>Napisz do mnie</h1>
+      <p class="standfirst">Propozycje tematów, współpraca, uwagi do artykułów. Odpisuję zwykle w ciągu kilku dni.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">E-mail</p>
+        <div class="mailbox">
+          <a class="mail" id="mail" href={`mailto:${email}`}>{email}</a>
+          <button class="btn copy-btn" id="copy-mail" type="button">Kopiuj adres</button>
+          <span class="copied" id="copied" aria-live="polite"></span>
+        </div>
+        <p class="eyebrow" style="margin-top:28px">Instagram</p>
+        <p style="margin-top:8px"><a class="ig" href="https://www.instagram.com/psychewaves.pl/" target="_blank" rel="noopener">@psychewaves.pl</a></p>
+      </div>
+      <div>
+        <p class="eyebrow">Zanim napiszesz</p>
+        <p style="margin-top:8px">Nie odpowiadam na prośby o diagnozę ani poradę terapeutyczną. Nie mam do tego kwalifikacji i nie chcę Cię wprowadzić w błąd. Jeśli potrzebujesz pomocy teraz, skorzystaj z numerów poniżej.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    const btn = document.getElementById('copy-mail')!;
+    const out = document.getElementById('copied')!;
+    btn.addEventListener('click', async () => {
+      const text = document.getElementById('mail')!.textContent ?? '';
+      try { await navigator.clipboard.writeText(text); out.textContent = 'Skopiowano.'; }
+      catch { out.textContent = 'Zaznacz adres i skopiuj go ręcznie.'; }
+    });
+  </script>
+</Base>

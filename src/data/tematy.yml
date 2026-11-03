@@ -1,0 +1,37 @@
+# KOLEJKA TEMATÓW „W PRZYGOTOWANIU”
+# Kolejność = priorytet. Na stronie widać 3 pierwsze tematy, które nie mają jeszcze
+# opublikowanego artykułu. Po publikacji artykułu (pole `temat` = id poniżej)
+# temat znika z listy i automatycznie wskakuje następny.
+# Przy każdej publikacji dopisz nowy temat na końcu.
+
+- id: chemseks
+  tytul: "Chemseks: rozmowa bez oceniania"
+  kategoria: "Uzależnienia · redukcja szkód"
+
+- id: eeg-biofeedback
+  tytul: "Co mierzy EEG, a czego nie powie biofeedback"
+  kategoria: "EEG i biofeedback"
+
+- id: urojenia-przesladowcze
+  tytul: "„Ktoś mnie śledzi”: kiedy lęk zamienia się w przekonanie"
+  kategoria: "Zaburzenia psychiczne · psychoza i urojenia"
+
+- id: paranoja-po-substancjach
+  tytul: "Paranoja po substancjach: amfetamina, kokaina, THC, alkohol"
+  kategoria: "Uzależnienia · psychoza"
+
+- id: psychoza-ptsd-depresja
+  tytul: "Gdy trauma i depresja widzą zagrożenie: objawy psychotyczne w PTSD i depresji"
+  kategoria: "Zaburzenia psychiczne · psychoza"
+
+- id: borderline
+  tytul: "Osoba z borderline: emocje, które przychodzą falą"
+  kategoria: "Zaburzenia psychiczne"
+
+- id: nawrot
+  tytul: "Nawrót to nie porażka: jak działa w uzależnieniu"
+  kategoria: "Uzależnienia"
+
+- id: granice
+  tytul: "Granice w relacji bez poczucia winy"
+  kategoria: "Relacje"

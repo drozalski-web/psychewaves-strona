@@ -1,0 +1,9 @@
+---
+// Fala EEG: z chaosu w spokój, zakończona kroplą (geometria z systemu marki).
+interface Props { grubosc?: number; klasa?: string; opis?: string }
+const { grubosc = 14, klasa = '', opis } = Astro.props;
+---
+<svg class={klasa} viewBox="130 400 850 280" role={opis ? 'img' : undefined} aria-label={opis} aria-hidden={opis ? undefined : 'true'}>
+  <path d="M160 540 L205 520 L240 572 L275 436 L312 646 L346 468 L378 604 L408 502 L438 566 L462 528 C502 470 550 470 590 540 C634 618 684 618 728 540 C748 505 774 505 798 540" fill="none" stroke="#4FB3BF" stroke-width={grubosc} stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="drop" d="M890 452 C890 452 836 520 836 576 A54 54 0 0 0 944 576 C944 520 890 452 890 452 Z" fill="#4FB3BF"/>
+</svg>

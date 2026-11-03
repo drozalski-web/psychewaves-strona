@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+interface Props { tytul?: string; opis?: string }
+const { tytul, opis = 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.' } = Astro.props;
+const pelnyTytul = tytul ? `${tytul} · Psyche Waves` : 'Psyche Waves · psychoedukacja bez wstydu';
+const sciezka = Astro.url.pathname;
+const menu = [
+  { href: '/', nazwa: 'Start' },
+  { href: '/artykuly/', nazwa: 'Artykuły' },
+  { href: '/o-mnie/', nazwa: 'O mnie' },
+  { href: '/kontakt/', nazwa: 'Kontakt' },
+];
+const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.startsWith(href));
+---
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{pelnyTytul}</title>
+  <meta name="description" content={opis}>
+  <meta property="og:title" content={pelnyTytul}>
+  <meta property="og:description" content={opis}>
+  <meta property="og:locale" content="pl_PL">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600;700&family=Lora:ital,wght@0,500;1,500&display=swap">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="pwMark" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#24456E"/><stop offset="1" stop-color="#16304F"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Psyche Waves, strona główna">
+        <svg viewBox="0 0 1080 1080" aria-hidden="true">
+          <circle cx="540" cy="540" r="540" fill="url(#pwMark)"/>
+          <g transform="translate(540 540) scale(1.1) translate(-552 -540)">
+            <path d="M160 540 L205 520 L240 572 L275 436 L312 646 L346 468 L378 604 L408 502 L438 566 L462 528 C502 470 550 470 590 540 C634 618 684 618 728 540 C748 505 774 505 798 540" fill="none" stroke="#4FB3BF" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M890 452 C890 452 836 520 836 576 A54 54 0 0 0 944 576 C944 520 890 452 890 452 Z" fill="#4FB3BF"/>
+          </g>
+        </svg>
+        <span>
+          <span class="brand-name">Psyche <em>Waves</em></span>
+          <span class="brand-sub">PSYCHOEDUKACJA</span>
+        </span>
+      </a>
+      <nav class="main" aria-label="Menu główne">
+        <ul>
+          {menu.map((m) => <li><a href={m.href} aria-current={aktywny(m.href) ? 'page' : undefined}>{m.nazwa}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main><slot /></main>
+
+  <aside class="help" aria-labelledby="help-title">
+    <div class="wrap">
+      <h2 id="help-title">Potrzebujesz pomocy teraz?</h2>
+      <p>Te numery są bezpłatne. Nie musisz mieć „wystarczająco poważnego” powodu, żeby zadzwonić.</p>
+      <ul class="lines">
+        <li><span class="num">116 123</span><span class="who">Telefon zaufania dla dorosłych w kryzysie emocjonalnym</span></li>
+        <li><span class="num">116 111</span><span class="who">Telefon zaufania dla dzieci i młodzieży</span></li>
+        <li><span class="num">800 120 002</span><span class="who">Niebieska Linia: przemoc w rodzinie</span></li>
+        <li><span class="num">800 199 990</span><span class="who">Telefon w sprawie uzależnień</span></li>
+        <li><span class="num">112</span><span class="who">Numer alarmowy, gdy życie jest zagrożone</span></li>
+      </ul>
+    </div>
+  </aside>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="row">
+        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl</span>
+        <span class="hash">#PSYCHEWAVES</span>
+      </div>
+      <p>Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Fala from '../components/Fala.astro';
+// Zdjęcie: wrzuć plik do public/daniel.jpg i ustaw zdjecie = '/daniel.jpg'
+const zdjecie: string | null = null;
+---
+<Base tytul="O mnie" opis="Daniel, student psychologii z Krakowa. Psychoedukacja bez wstydu.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">O mnie</p>
+      <h1>Cześć, jestem Daniel.</h1>
+    </div>
+  </section>
+  <section>
+    <div class="wrap about">
+      {zdjecie
+        ? <img class="portrait photo" src={zdjecie} alt="Daniel, autor Psyche Waves" width="260" height="260">
+        : <div class="portrait"><Fala grubosc={30} /></div>}
+      <div class="about-text">
+        <p class="big">Studiuję psychologię w Krakowie i piszę o psychice bez wstydu. Interesuje mnie, co dzieje się w głowie i w ciele, gdy pojawia się uzależnienie, ADHD albo kryzys psychiczny.</p>
+        <p>Psyche Waves zaczęło się na Instagramie jako miejsce na krótką psychoedukację. Ta strona jest na dłuższe teksty: z mechanizmami, poziomem pewności i pełną listą źródeł.</p>
+        <p>Coraz bardziej wciąga mnie też EEG i biofeedback, czyli to, co da się zmierzyć w aktywności mózgu, i to, czego zmierzyć się nie da.</p>
+        <dl class="facts">
+          <dt>Kim jestem</dt><dd>Studentem psychologii. Nie jestem psychoterapeutą ani lekarzem.</dd>
+          <dt>Czego nie robię</dt><dd>Nie stawiam diagnoz i nie prowadzę terapii, także w wiadomościach prywatnych.</dd>
+          <dt>Co robię</dt><dd>Tłumaczę wiedzę z badań na zrozumiały język i podaję, skąd ją biorę.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</Base>
