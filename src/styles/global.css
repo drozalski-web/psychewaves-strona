@@ -6,7 +6,8 @@
   --deep:#16304F;
   --deep-top:#24456E;
   --wave:#4FB3BF;
-  --accent:#2F8F9D;
+  --accent:#23727E; /* turkus do tekstu: 5,6:1 na bieli, 4,9:1 na mgle (WCAG AA) */
+  --logo-accent:#2F8F9D; /* „Waves” w logo zgodnie z systemem marki */
   --muted:#5B6F86;
   --line:#D3E5EB;
   --logo-text:#1F3A5F;
@@ -25,7 +26,7 @@
   :root:not([data-theme="light"]){
     --bg:#11263D; --mist:#16304F; --ink:#E9F3F6; --deep:#0D1F33; --deep-top:#24456E;
     --wave:#4FB3BF; --accent:#6CC6D1; --muted:#9FB3C8; --line:#24456E;
-    --logo-text:#FFFFFF; --logo-sub:#9FB3C8;
+    --logo-text:#FFFFFF; --logo-sub:#9FB3C8; --logo-accent:#6CC6D1;
     --band-bg:#0D1F33; --band-fg:#E9F3F6; --band-muted:#9FB3C8;
     --draft-bg:#3A3317; --draft-fg:#F2DE9C;
     color-scheme:dark;
@@ -34,7 +35,7 @@
 :root[data-theme="dark"]{
   --bg:#11263D; --mist:#16304F; --ink:#E9F3F6; --deep:#0D1F33; --deep-top:#24456E;
   --wave:#4FB3BF; --accent:#6CC6D1; --muted:#9FB3C8; --line:#24456E;
-  --logo-text:#FFFFFF; --logo-sub:#9FB3C8;
+  --logo-text:#FFFFFF; --logo-sub:#9FB3C8; --logo-accent:#6CC6D1;
   --band-bg:#0D1F33; --band-fg:#E9F3F6; --band-muted:#9FB3C8;
   --draft-bg:#3A3317; --draft-fg:#F2DE9C;
   color-scheme:dark;
@@ -55,7 +56,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:b
 p{margin:0}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .narrow{max-width:calc(var(--measure) + 32px)}
-.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.eyebrow{font-size:.875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .muted{color:var(--muted)}
 
 /* Pasek wersji roboczej */
@@ -69,8 +70,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--logo-text)}
 .brand svg{width:44px;height:44px;flex:none}
 .brand-name{font-family:var(--logo);font-weight:500;font-size:1.3rem;line-height:1;display:block}
-.brand-name em{color:var(--accent);font-style:italic}
-.brand-sub{display:block;font-size:.58rem;font-weight:700;letter-spacing:.34em;color:var(--logo-sub);margin-top:5px}
+.brand-name em{color:var(--logo-accent);font-style:italic}
+.brand-sub{display:block;font-size:.62rem;font-weight:700;letter-spacing:.34em;color:var(--logo-sub);margin-top:5px}
 nav.main ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;flex-wrap:wrap}
 nav.main a{display:block;padding:8px 12px;border-radius:999px;color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:600}
 nav.main a:hover{background:var(--mist)}
@@ -113,15 +114,27 @@ section{padding-block:56px}
 .post h3{font-size:clamp(1.3rem,2.4vw,1.65rem);min-width:0}
 .post p{grid-column:1/-1;color:var(--muted);max-width:var(--measure)}
 .post .info{font-size:.85rem;color:var(--muted);white-space:nowrap;align-self:center}
-.chip{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--mist);color:var(--accent)}
-.post .stub h3{color:var(--muted)}
+.chip{display:inline-block;font-size:.82rem;font-weight:600;padding:3px 11px;border-radius:999px;background:var(--mist);color:var(--accent)}
+.post .info{display:flex;align-items:center;gap:6px}
+/* Telefon: plakietka nad tytułem, tytuł na pełną szerokość */
+@media (max-width:600px){
+  .post a{grid-template-columns:1fr;gap:6px}
+  .post .info{order:-1;align-self:start}
+}
+/* Tematy w przygotowaniu: osobna, skromna lista */
+.soon{margin-top:36px}
+.soon h3{font-family:var(--body);font-size:.875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.soon ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.soon li{position:relative;padding-left:20px;color:var(--ink);font-size:1rem}
+.soon li::before{content:"";position:absolute;left:2px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--wave)}
+.soon li .cat{color:var(--muted);font-size:.9rem}
 
 /* Zasady pisania */
 .principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px;margin-top:28px}
 .principles h3{font-size:1.3rem;margin-bottom:6px}
 .principles p{color:var(--muted);font-size:.97rem}
 .levels{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.lvl{font-size:.78rem;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
+.lvl{font-size:.82rem;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--ink)}
 .lvl.k{border-color:var(--accent);color:var(--accent)}
 
 /* Pas pomocy */
@@ -143,7 +156,7 @@ section{padding-block:56px}
 .prose > * + *{margin-top:1.1em}
 .prose h2{font-size:clamp(1.5rem,3vw,1.9rem);margin-top:2em}
 /* ### w markdownie = etykieta części (Impuls, Nauka, Wodnik, Wniosek) */
-.prose h3{font-family:var(--body);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:2.6em}
+.prose h3{font-family:var(--body);font-size:.875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-top:2.6em}
 .prose h3 + h2{margin-top:.25em}
 .prose blockquote{margin:0;border-left:3px solid var(--wave);padding:14px 18px;background:var(--mist);border-radius:0 10px 10px 0;font-family:var(--display);font-size:1.3rem;line-height:1.35}
 .prose blockquote p{margin:0}
@@ -151,7 +164,7 @@ section{padding-block:56px}
 .prose ul{padding-left:0;list-style:none;display:grid;gap:.6em}
 .prose ul li{position:relative;padding-left:24px}
 .prose ul li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--wave)}
-.claim{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);margin-right:6px;vertical-align:2px}
+.claim{display:inline-block;font-size:.8rem;font-weight:600;line-height:1.4;padding:1px 8px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);margin-right:6px;vertical-align:2px}
 .claim.h{border-color:var(--muted);color:var(--muted)}
 .say{border-left:3px solid var(--wave);padding:14px 18px;background:var(--mist);border-radius:0 10px 10px 0;font-family:var(--display);font-size:1.3rem;line-height:1.35}
 .refs{border-top:1px solid var(--line);padding-top:20px;margin-top:2.4em;font-size:.88rem;color:var(--muted)}

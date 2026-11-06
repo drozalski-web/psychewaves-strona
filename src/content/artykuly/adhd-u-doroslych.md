@@ -40,7 +40,7 @@ Szacunki częstości ADHD u dorosłych różnią się w zależności od metody b
 
 Zdanie, z którym możesz przyjść na wizytę:
 
-> „Od dawna zauważam u siebie trudności z koncentracją i organizacją. Chciał(a)bym sprawdzić, czy to może być ADHD.”
+> „Od dawna zauważam u siebie trudności z koncentracją i organizacją. Chcę sprawdzić, czy to może być ADHD.”
 
 ### Wniosek
 
