@@ -22,24 +22,8 @@
   --logo:"Lora", Georgia, serif;
   --measure:68ch;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#11263D; --mist:#16304F; --ink:#E9F3F6; --deep:#0D1F33; --deep-top:#24456E;
-    --wave:#4FB3BF; --accent:#6CC6D1; --muted:#9FB3C8; --line:#24456E;
-    --logo-text:#FFFFFF; --logo-sub:#9FB3C8; --logo-accent:#6CC6D1;
-    --band-bg:#0D1F33; --band-fg:#E9F3F6; --band-muted:#9FB3C8;
-    --draft-bg:#3A3317; --draft-fg:#F2DE9C;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#11263D; --mist:#16304F; --ink:#E9F3F6; --deep:#0D1F33; --deep-top:#24456E;
-  --wave:#4FB3BF; --accent:#6CC6D1; --muted:#9FB3C8; --line:#24456E;
-  --logo-text:#FFFFFF; --logo-sub:#9FB3C8; --logo-accent:#6CC6D1;
-  --band-bg:#0D1F33; --band-fg:#E9F3F6; --band-muted:#9FB3C8;
-  --draft-bg:#3A3317; --draft-fg:#F2DE9C;
-  color-scheme:dark;
-}
+/* Strona jest zawsze jasna (system marki: białe lub mgliste tło), także przy trybie ciemnym w telefonie. */
+:root{color-scheme:light}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}

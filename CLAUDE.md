@@ -18,6 +18,7 @@ Marka: skill `psycho-waves-brand` (paleta, czcionki, logo, głos, bezpieczeństw
 - **Najpierw sprawdzaj wszystko sam, dopiero potem angażuj Daniela.** Jeśli repozytorium nie ma w sesji albo push zwraca 403, wywołaj `add_repo` z dostępem `push`. Status wdrożeń sprawdzaj przez narzędzia Netlify, a ustawienia sesji przez `read_documentation`. Proś Daniela tylko o krok, którego naprawdę nie da się zrobić bez niego (np. zgoda w okienku, ustawienia konta), i podawaj wtedy jeden konkretny krok.
 - Domena psychewaves.pl zwykle jest poza siecią sesji. Żeby obejrzeć stronę, zbuduj ją lokalnie (`npm ci && npm run build && npx astro preview`) i zrób zrzuty Playwrightem: komputer, telefon i tryb ciemny.
 - Kolory w kodzie: turkus do tekstu to `#23727E` (kontrast WCAG AA), `#2F8F9D` tylko w logo, a `#4FB3BF` tylko w grafice (fala, kropla, punkty).
+- Strona jest zawsze jasna, także przy trybie ciemnym w telefonie. Nie dodawaj trybu ciemnego, bo marka wymaga białego lub mglistego tła.
 
 ## Struktura
 
