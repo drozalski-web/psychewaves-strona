@@ -33,7 +33,7 @@ const tematy = [
       <h2 class="h-sec">Pięć tematów, do których wracam</h2>
       <div class="topics">
         {tematy.map(([t, o]) => (
-          <div class="topic"><span class="tag" aria-hidden="true">~</span><h3>{t}</h3><p>{o}</p></div>
+          <div class="topic"><svg class="tag" viewBox="0 0 30 12" aria-hidden="true"><path d="M2 6 C6 1 10 1 14 6 S22 11 28 6" fill="none" stroke="#4FB3BF" stroke-width="3" stroke-linecap="round"/></svg><h3>{t}</h3><p>{o}</p></div>
         ))}
       </div>
     </div>

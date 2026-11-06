@@ -86,7 +86,7 @@ section{padding-block:56px}
 .hero .lead{font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:52ch;color:var(--ink)}
 .hero .meta{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.92rem;color:var(--muted)}
 .hero .meta span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--wave);margin-right:8px;vertical-align:middle}
-.hero-wave{width:100%;height:auto;display:block;margin-top:8px}
+.hero-wave{width:100%;max-width:640px;height:auto;display:block;margin-top:8px}
 .hero-wave .drop{transform-origin:890px 560px;animation:bob 5s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -99,11 +99,14 @@ section{padding-block:56px}
 .sep{display:block;width:min(240px,60%);height:auto;margin:0 0 20px}
 
 /* Tematy */
-.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 40px;margin-top:28px}
-.topic{padding:20px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:baseline}
-.topic .tag{grid-row:span 2;font-family:var(--display);font-size:1.6rem;color:var(--wave);line-height:1}
+.topics{display:grid;grid-template-columns:minmax(0,1fr);gap:0 40px;margin-top:28px}
+/* Tablet: 2 kolumny, ostatni temat na pełną szerokość. Komputer: 3 + 2 bez pustej kratki. */
+@media (min-width:640px){.topics{grid-template-columns:repeat(2,minmax(0,1fr))}.topic:last-child{grid-column:1/-1}}
+@media (min-width:960px){.topics{grid-template-columns:repeat(6,minmax(0,1fr))}.topic{grid-column:span 2}.topic:nth-child(n+4){grid-column:span 3}}
+.topic{padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:center}
+.topic .tag{width:30px;height:auto;display:block}
 .topic h3{font-size:1.35rem}
-.topic p{color:var(--muted);font-size:.97rem;min-width:0}
+.topic p{grid-column:2;color:var(--muted);font-size:1rem;min-width:0;max-width:46ch}
 
 /* Lista artykułów */
 .posts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0}
@@ -142,7 +145,7 @@ section{padding-block:56px}
 .help .wrap{padding-block:40px;display:grid;gap:20px}
 .help h2{color:var(--band-fg);font-size:clamp(1.5rem,3vw,2rem)}
 .help p{color:var(--band-muted);max-width:60ch}
-.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px 28px;margin:0;padding:0;list-style:none}
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px 28px;margin:0;padding:0;list-style:none}
 .lines li{border-top:1px solid rgba(159,179,200,.3);padding-top:12px}
 .lines .num{font-family:var(--display);font-size:1.7rem;color:var(--band-fg);font-variant-numeric:tabular-nums;display:block;line-height:1.2}
 .lines .who{font-size:.9rem;color:var(--band-muted)}
