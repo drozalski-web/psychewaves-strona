@@ -5,8 +5,7 @@ kategoria: "Uzależnienia · redukcja szkód"
 data: 2026-11-07
 czasCzytania: 22
 temat: chemseks
-szkic: true
-zrodlaDoWeryfikacji: true
+szkic: false
 zrodla:
   - "Brodzikowska, M., Jezierski, G. (2025). Filozofia redukcji szkód w profilaktyce i psychoterapii osób zaangażowanych w chemseks. <em>Serwis Informacyjny UZALEŻNIENIA</em>, 4(112), 38–42."
   - "Dyr, W., Lalak, D. (2024). Chemsex w doświadczeniach biograficznych MSM. <em>Resocjalizacja Polska</em>, 27, 171–196. <a href=\"https://repozytorium.uwb.edu.pl/jspui/bitstream/11320/19356/1/RP_27_2024_W_Dyr_D_Lalak_Chemsex_w_doswiadczeniach_biograficznych_MSM.pdf\" target=\"_blank\" rel=\"noopener\">PDF</a>"
