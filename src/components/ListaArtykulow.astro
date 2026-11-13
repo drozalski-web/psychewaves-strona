@@ -9,7 +9,7 @@ const tematy = await tematyWPrzygotowaniu();
   <ul class="posts">
     {posty.map((a) => (
       <li class="post">
-        <a href={`/artykuly/${a.id}/`}>
+        <a href={`/publikacje/${a.id}/`}>
           <h3>{a.data.tytul}</h3>
           <span class="info">
             {a.data.szkic ? <span class="chip">Szkic</span> : <span class="chip">{a.data.kategoria}</span>}

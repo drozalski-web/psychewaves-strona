@@ -4,3 +4,14 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Stare adresy /artykuly/ przekierowują na /publikacje/ (linki z Instagrama dalej działają)
+[[redirects]]
+  from = "/artykuly"
+  to = "/publikacje/"
+  status = 301
+
+[[redirects]]
+  from = "/artykuly/*"
+  to = "/publikacje/:splat"
+  status = 301
