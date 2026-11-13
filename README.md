@@ -17,7 +17,7 @@ Plik `src/data/tematy.yml` to kolejka tematów. Strona pokazuje 3 pierwsze, któ
 
 ## Format artykułu
 
-Plik `src/content/artykuly/nazwa-artykulu.md`. Nazwa pliku = adres strony (`/artykuly/nazwa-artykulu/`).
+Plik `src/content/artykuly/nazwa-artykulu.md`. Nazwa pliku = adres strony (`/publikacje/nazwa-artykulu/`).
 
 ```markdown
 ---

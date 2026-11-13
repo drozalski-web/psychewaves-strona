@@ -14,12 +14,12 @@ const dataPl = d.data.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long
 ---
 <Base tytul={d.tytul} opis={d.zajawka}>
   {d.szkic && (
-    <div class="draft" role="note"><div class="wrap"><strong>Szkic.</strong> Ten artykuł nie jest widoczny na żywej stronie, dopóki go nie zaakceptujesz.</div></div>
+    <div class="draft" role="note"><div class="wrap"><strong>Szkic.</strong> Ta publikacja nie jest widoczna na żywej stronie, dopóki go nie zaakceptujesz.</div></div>
   )}
   <article>
     <header class="article-head">
       <div class="wrap narrow">
-        <a href="/artykuly/" class="back">← Wszystkie artykuły</a>
+        <a href="/publikacje/" class="back">← Wszystkie publikacje</a>
         <p class="eyebrow" style="margin-top:20px">{d.kategoria}</p>
         <h1>{d.tytul}</h1>
         <p class="standfirst">{d.zajawka}</p>
