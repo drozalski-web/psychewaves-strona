@@ -232,3 +232,37 @@ section.tight{padding-top:8px}
 
 /* Telefon: tekst 16 px */
 @media (max-width:600px){body{font-size:16px}}
+
+/* Placebo: maskotka, sklep, współpraca */
+.pl-hero{display:grid;gap:28px;align-items:center}
+@media (min-width:820px){.pl-hero{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}}
+.pl-hero-text{display:grid;gap:22px;min-width:0}
+.pl-hero-img{width:min(100%,340px);height:auto;justify-self:center}
+.pl-faces{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:28px 24px}
+.pl-faces li{background:var(--mist);border-radius:16px;padding:18px 18px 20px;display:grid;gap:6px;align-content:start}
+.pl-faces img{width:min(100%,190px);height:auto;justify-self:center;margin-bottom:6px}
+.pl-faces h3{font-size:1.2rem}
+.pl-faces p{color:var(--muted);font-size:.95rem}
+.pl-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;margin-top:24px}
+.pl-cols h3{font-size:1.3rem;margin-bottom:8px}
+ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:.6em}
+ul.plain li{position:relative;padding-left:22px;color:var(--ink)}
+ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--wave)}
+.shop{list-style:none;margin:0;padding:0}
+.shop .item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 28px;align-items:center;padding:26px 0;border-top:1px solid var(--line)}
+.shop .item:last-child{border-bottom:1px solid var(--line)}
+.shop h2{font-size:clamp(1.3rem,2.4vw,1.7rem);margin:4px 0 6px}
+.shop .item p{color:var(--muted);max-width:60ch}
+.shop .shop-type{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+@media (max-width:600px){.shop .item{grid-template-columns:1fr}}
+.waitlist{display:grid;gap:12px;margin-top:20px;max-width:460px}
+.waitlist label{font-weight:600;font-size:.95rem}
+.waitlist input[type=email]{font:inherit;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+.waitlist input[type=email]:focus-visible{outline:2px solid var(--wave);outline-offset:2px;border-color:var(--accent)}
+.waitlist .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--muted)}
+.waitlist .check input{margin-top:4px;flex:none}
+.waitlist button{justify-self:start}
+.teaser{display:grid;gap:24px;align-items:center;background:var(--mist);border-radius:20px;padding:28px}
+@media (min-width:720px){.teaser{grid-template-columns:200px minmax(0,1fr);padding:32px 40px}}
+.teaser img{width:min(100%,180px);height:auto;justify-self:center}
+.teaser .btns{margin-top:16px}

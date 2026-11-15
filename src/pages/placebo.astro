@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import Fala from '../components/Fala.astro';
+import Separator from '../components/Separator.astro';
+const miny = [
+  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 230],
+  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 232],
+  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 303, 230],
+  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 230],
+  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 313, 235],
+  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 230],
+];
+const zasady = [
+  ['Pyta o źródła', 'Jego hasło to „Skąd to wiemy?”. Pojawia się przy ocenie pewności: wiemy, badania sugerują czy hipoteza.'],
+  ['Żartuje z błędów myślenia', 'Z mitów, skrótów i zbyt pewnych nagłówków. Nigdy z osób, ich objawów ani ich kryzysów.'],
+  ['Ucisza się, gdy robi się ciężko', 'Przy tematach kryzysu, przemocy i uzależnień pojawia się tylko w poważnej, życzliwej wersji albo wcale.'],
+];
+---
+<Base tytul="Placebo" opis="Poznaj Placebo: szczur w czapce EEG, który przy każdej psychoedukacji pyta „skąd to wiemy?”. Maskotka Psyche Waves.">
+  <section class="hero">
+    <div class="wrap pl-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Maskotka Psyche Waves</p>
+        <h1>Poznaj Placebo</h1>
+        <p class="lead">Biały szczur laboratoryjny w czapce EEG. Mówi mało, patrzy sceptycznie i jest życzliwy. Przy każdej tezie pyta: <strong>„Skąd to wiemy?”</strong></p>
+        <div class="btns">
+          <a class="btn primary" href="/sklep/">Linia Placebo</a>
+          <a class="btn" href="/publikacje/">Czytaj publikacje</a>
+        </div>
+      </div>
+      <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, stoi na tylnych łapach i unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <Separator />
+      <p class="eyebrow">Skąd imię</p>
+      <h2 class="h-sec">Placebo, czyli efekt oczekiwania</h2>
+      <div class="about-text" style="margin-top:16px">
+        <p>Efekt placebo to jedno z najlepiej znanych zjawisk w badaniach: samo oczekiwanie poprawy potrafi zmienić to, jak się czujemy. Dlatego dobre badania mają grupę kontrolną. Placebo przypomina, że „zadziałało u mnie” to jeszcze nie dowód.</p>
+        <p>Czapka EEG to ukłon w stronę tematu, który Daniel lubi najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Zasady Placebo</p>
+      <h2 class="h-sec">Jak się zachowuje</h2>
+      <div class="principles">
+        {zasady.map(([t, o]) => <div><h3>{t}</h3><p>{o}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Miny</p>
+      <h2 class="h-sec">Sześć wyrazów twarzy</h2>
+      <ul class="pl-faces">
+        {miny.map(([f, n, o, w, h]) => (
+          <li>
+            <img src={`/placebo/${f}.webp`} width={w} height={h} alt={`Placebo: ${String(n).toLowerCase()}`} loading="lazy">
+            <h3>{n}</h3><p>{o}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <Fala klasa="hero-wave" opis="Fala EEG, która przechodzi z chaosu w spokój i kończy się kroplą wody" />
+      <p class="note" style="margin-top:18px">Placebo jest postacią z ilustracji. Nie udziela porad ani diagnoz. Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+    </div>
+  </section>
+</Base>

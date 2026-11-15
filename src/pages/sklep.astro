@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Separator from '../components/Separator.astro';
+// Status: 'dostepne' (darmowe, do pobrania) albo 'wkrotce' (lista oczekujących). Cen nie podajemy, dopóki produkt nie jest gotowy.
+const produkty = [
+  { id: 'karta-fale', nazwa: 'Fale w mojej głowie', typ: 'Karta pracy dla dzieci (6–10 lat) · PDF', opis: 'Termometr fal: dziecko rysuje, jak „faluje” w ciele i głowie, i wybiera jeden spokojny krok z Placebo. Do wydruku, razem z dorosłym.', status: 'dostepne', href: '/karty-pracy/placebo-fale-w-mojej-glowie.pdf' },
+  { id: 'pakiet-kart', nazwa: 'Pakiet kart pracy z Placebo', typ: 'Zestaw 10 kart · PDF', opis: 'Emocje w ciele, oddech z kroplą, „skąd to wiem?” dla małych detektywów, plan na trudny dzień. Z krótkim przewodnikiem dla rodzica lub nauczyciela.', status: 'wkrotce' },
+  { id: 'plakat', nazwa: 'Plakat „Skąd to wiemy?”', typ: 'Plakat do wydruku · PDF', opis: 'Trzy pytania sprawdzające każdą tezę z internetu. Do klasy, gabinetu, pokoju studenta.', status: 'wkrotce' },
+  { id: 'naklejki', nazwa: 'Naklejki Placebo', typ: 'Fizyczne · sklep w przygotowaniu', opis: 'Sześć min Placebo w arkuszu naklejek. Najpierw sprawdzam jakość druku i koszty wysyłki.', status: 'wkrotce' },
+  { id: 'notes', nazwa: 'Notes „Fale się uspokajają”', typ: 'Fizyczny · sklep w przygotowaniu', opis: 'Dziennik nastroju z falą EEG i Placebo na marginesach. Bez obietnic terapii: to narzędzie do obserwacji.', status: 'wkrotce' },
+];
+---
+<Base tytul="Linia Placebo" opis="Linia Placebo od Psyche Waves: karty pracy dla dzieci, plakaty i drobiazgi z maskotką. Pierwsza karta pracy jest darmowa.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Sklep</p>
+      <h1>Linia Placebo</h1>
+      <p class="standfirst">Karty pracy, plakaty i drobiazgi z maskotką Psyche Waves. Zaczynamy od materiałów cyfrowych, bo da się je sprawdzić i poprawić, zanim cokolwiek trafi do druku.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <ul class="shop">
+        {produkty.map((p) => (
+          <li class="item" id={p.id}>
+            <div>
+              <p class="shop-type">{p.typ}</p>
+              <h2>{p.nazwa}</h2>
+              <p>{p.opis}</p>
+            </div>
+            <div class="shop-cta">
+              {p.status === 'dostepne'
+                ? <a class="btn primary" href={p.href} download>Pobierz za darmo</a>
+                : <span class="lvl">W przygotowaniu</span>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap narrow">
+      <Separator />
+      <p class="eyebrow">Lista oczekujących</p>
+      <h2 class="h-sec">Daj znać, gdy pojawi się coś nowego</h2>
+      <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowa karta pracy albo produkt. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+      <form class="waitlist" name="lista-placebo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
+        <input type="hidden" name="form-name" value="lista-placebo">
+        <p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p>
+        <label for="wl-email">Adres e-mail</label>
+        <input id="wl-email" type="email" name="email" required autocomplete="email" inputmode="email">
+        <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach Psyche Waves.</label>
+        <button class="btn primary" type="submit">Zapisz mnie</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap narrow">
+      <p class="note">Karty pracy są materiałem edukacyjnym dla dorosłych pracujących z dziećmi i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą. Telefon Zaufania dla Dzieci i Młodzieży: 116 111.</p>
+    </div>
+  </section>
+</Base>
