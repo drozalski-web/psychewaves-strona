@@ -10,22 +10,29 @@ const miny = [
   ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 313, 235],
   ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 230],
 ];
+const role = [
+  ['EEG i biofeedback', 'Pełna rola', 'Jego dom. Sprawdza obietnice cudów i pokazuje, co pomiar mózgu mówi, a czego nie mówi.'],
+  ['ADHD', 'Lekko', 'Weryfikuje mity i nagłówki typu „każdy ma ADHD”. Nie żartuje z objawów.'],
+  ['Relacje', 'Lekko', 'Sprawdza pop-psychologię: quizy stylów przywiązania, etykietowanie ex.'],
+  ['Uzależnienia i chemseks', 'Poważnie', 'Tylko mity i fakty o badaniach. Przy redukcji szkód nie ma humoru.'],
+  ['Borderline, zaburzenia afektywne, psychoza', 'Raczej wcale', 'Najwyżej poważny znaczek przy poziomie pewności.'],
+];
 const zasady = [
   ['Pyta o źródła', 'Jego hasło to „Skąd to wiemy?”. Pojawia się przy ocenie pewności: wiemy, badania sugerują czy hipoteza.'],
   ['Żartuje z błędów myślenia', 'Z mitów, skrótów i zbyt pewnych nagłówków. Nigdy z osób, ich objawów ani ich kryzysów.'],
   ['Ucisza się, gdy robi się ciężko', 'Przy tematach kryzysu, przemocy i uzależnień pojawia się tylko w poważnej, życzliwej wersji albo wcale.'],
 ];
 ---
-<Base tytul="Placebo" opis="Poznaj Placebo: szczur w czapce EEG, który przy każdej psychoedukacji pyta „skąd to wiemy?”. Maskotka Psyche Waves.">
+<Base tytul="Placebo" opis="Placebo: szczur w czapce EEG, który przy każdej tezie z psychologii pyta „skąd to wiemy?”. Przewodnik po dowodach w Psyche Waves.">
   <section class="hero">
     <div class="wrap pl-hero">
       <div class="pl-hero-text">
-        <p class="eyebrow">Maskotka Psyche Waves</p>
+        <p class="eyebrow">Przewodnik po dowodach</p>
         <h1>Poznaj Placebo</h1>
-        <p class="lead">Biały szczur laboratoryjny w czapce EEG. Mówi mało, patrzy sceptycznie i jest życzliwy. Przy każdej tezie pyta: <strong>„Skąd to wiemy?”</strong></p>
+        <p class="lead">Biały szczur laboratoryjny w czapce EEG. Mówi mało, patrzy sceptycznie i jest życzliwy. Przy każdej tezie, mitycie i nagłówku pyta: <strong>„Skąd to wiemy?”</strong></p>
         <div class="btns">
-          <a class="btn primary" href="/sklep/">Linia Placebo</a>
-          <a class="btn" href="/publikacje/">Czytaj publikacje</a>
+          <a class="btn primary" href="/publikacje/">Czytaj publikacje</a>
+          <a class="btn" href="/sklep/">Linia Placebo</a>
         </div>
       </div>
       <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, stoi na tylnych łapach i unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
@@ -35,11 +42,27 @@ const zasady = [
   <section>
     <div class="wrap">
       <Separator />
-      <p class="eyebrow">Skąd imię</p>
-      <h2 class="h-sec">Placebo, czyli efekt oczekiwania</h2>
+      <p class="eyebrow">Po co on tu jest</p>
+      <h2 class="h-sec">Kontrola jakości dla psychoedukacji</h2>
       <div class="about-text" style="margin-top:16px">
         <p>Efekt placebo to jedno z najlepiej znanych zjawisk w badaniach: samo oczekiwanie poprawy potrafi zmienić to, jak się czujemy. Dlatego dobre badania mają grupę kontrolną. Placebo przypomina, że „zadziałało u mnie” to jeszcze nie dowód.</p>
-        <p>Czapka EEG to ukłon w stronę tematu, który Daniel lubi najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+        <p>W Psyche Waves jest głosem sceptycyzmu: pojawia się przy poziomie pewności (Wiemy, Badania sugerują, Hipoteza) i sprawdza nagłówki. Czapka EEG to ukłon w stronę tematu, który Daniel lubi najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">W moich tematach</p>
+      <h2 class="h-sec">Gdzie się pojawia, a gdzie milczy</h2>
+      <div class="roles">
+        {role.map(([t, poz, o]) => (
+          <div class="role">
+            <h3>{t}</h3>
+            <span class={`lvl ${poz === 'Poważnie' || poz === 'Raczej wcale' ? '' : 'k'}`}>{poz}</span>
+            <p>{o}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -58,6 +81,7 @@ const zasady = [
     <div class="wrap">
       <p class="eyebrow">Miny</p>
       <h2 class="h-sec">Sześć wyrazów twarzy</h2>
+      <p class="muted" style="margin-top:8px;max-width:60ch">Ostatnia mina jest na tematy, przy których żarty się kończą.</p>
       <ul class="pl-faces">
         {miny.map(([f, n, o, w, h]) => (
           <li>
@@ -66,6 +90,14 @@ const zasady = [
           </li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap narrow">
+      <p class="eyebrow">Placebo Junior</p>
+      <h2 class="h-sec">A dla dzieci?</h2>
+      <p class="muted" style="margin-top:10px">Placebo ma też osobną, łagodną gałąź: karty pracy dla dzieci i rodziców. To odrębna linia i nie wpływa na to, jak pojawia się w treściach dla dorosłych. <a href="/sklep/#junior">Zobacz karty pracy</a>.</p>
     </div>
   </section>
 
