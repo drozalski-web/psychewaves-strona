@@ -47,7 +47,7 @@ export async function aktualnosci(limit = 3): Promise<Aktualnosc[]> {
       opis: 'Koszulki, bluzy, torby i maskotka Placebo. Zapisz się, a dam Ci znać, gdy ruszy.',
       href: '/sklep/', obraz: '/placebo/fartuch/h3-usmiech-fartuch.webp' },
     { rodzaj: 'info', etykieta: 'Sklep z misją', tytul: 'Pomagamy wspólnie',
-      opis: 'Część kwoty ze sprzedaży chcę oddawać na pomoc młodym osobom w kryzysie. Cel wybierzemy razem, w ankiecie.',
+      opis: 'Część kwoty ze sprzedaży chcę oddawać na pomoc w zdrowiu psychicznym. Komu dokładnie, wybierzemy razem w głosowaniu.',
       href: '/sklep/', obraz: '/placebo/fartuch/h6-powaga-fartuch.webp' },
     { rodzaj: 'info', etykieta: 'Święta', tytul: 'Coś na święta',
       opis: 'Oryginalny prezent dla bliskich, którzy lubią mówić wprost. Zajrzyj do sklepu, gdy ruszy.',
