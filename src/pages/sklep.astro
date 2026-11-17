@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Separator from '../components/Separator.astro';
+import FormularzNewsletter from '../components/FormularzNewsletter.astro';
 import { produkty, grupy } from '../data/produkty';
 ---
 <Base tytul="Linia Placebo" opis="Linia Placebo od Psyche Waves: materiały do krytycznego czytania psychologii, karty pracy i gadżety dla dzieci (Linia Placebo Junior). Pierwsza karta pracy jest darmowa.">
@@ -45,14 +46,7 @@ import { produkty, grupy } from '../data/produkty';
       <p class="eyebrow">Lista oczekujących</p>
       <h2 class="h-sec">Daj znać, gdy pojawi się coś nowego</h2>
       <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowa karta pracy albo produkt. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
-      <form class="waitlist" name="lista-placebo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
-        <input type="hidden" name="form-name" value="lista-placebo">
-        <p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p>
-        <label for="wl-email">Adres e-mail</label>
-        <input id="wl-email" type="email" name="email" required autocomplete="email" inputmode="email">
-        <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach Psyche Waves.</label>
-        <button class="btn primary" type="submit">Zapisz mnie</button>
-      </form>
+      <FormularzNewsletter nazwa="lista-placebo" id="wl" />
     </div>
   </section>
 

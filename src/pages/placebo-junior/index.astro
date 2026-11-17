@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Separator from '../../components/Separator.astro';
 import ListaArtykulow from '../../components/ListaArtykulow.astro';
+import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
 import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../data/produkty';
 const karta = najnowszaDarmowaKarta();
 const gadzet = najnowszyGadzet();
@@ -74,16 +75,17 @@ const gadzetPokaz = gadzet ?? gadzetNext;
       <h2 class="h-sec">{gadzet ? 'Najnowszy gadżet z Placebo' : 'Pierwszy gadżet: maskotka Placebo'}</h2>
       {gadzetPokaz && (
         <article class="junior-card">
-          <img class="junior-card-img gadzet" src="/placebo/fartuch/front-fartuch.webp" width="469" height="614" alt="Placebo w fartuchu laboratoryjnym: wzór maskotki" loading="lazy">
+          <img class="junior-card-img gadzet" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką, szeroko się uśmiecha" loading="lazy">
           <div class="junior-card-body">
             <p class="shop-type">{gadzetPokaz.typ}</p>
             <h3>{gadzetPokaz.nazwa}</h3>
             <p class="muted">{gadzetPokaz.opis}</p>
             {!gadzet && <p><span class="lvl">W przygotowaniu</span></p>}
+            {!gadzet && <p class="muted"><strong style="color:var(--ink)">Chcesz ją mieć?</strong> Zapisz się poniżej. Liczba zapisów pokaże mi, czy warto zamówić pierwszą partię.</p>}
             <div class="btns">
               {gadzet
                 ? <a class="btn primary" href={`/sklep/#${gadzet.id}`}>Zobacz w sklepie</a>
-                : <a class="btn primary" href="/sklep/#lista">Dam Ci znać, gdy będzie gotowa</a>}
+                : <a class="btn primary" href="#newsletter">Chcę maskotkę</a>}
               <a class="btn" href="/sklep/#junior">Więcej z Linii Placebo Junior</a>
             </div>
           </div>
@@ -92,9 +94,22 @@ const gadzetPokaz = gadzet ?? gadzetNext;
     </div>
   </section>
 
-  <section class="tight">
+  <section class="tight" id="newsletter">
     <div class="wrap">
-      <p class="note" style="max-width:62ch">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą. Telefon Zaufania dla Dzieci i Młodzieży: 116 111.</p>
+      <div class="newsletter">
+        <div>
+          <p class="eyebrow">Newsletter</p>
+          <h2 class="h-sec">Placebo Junior w Twojej skrzynce</h2>
+          <p class="muted" style="margin-top:10px;max-width:46ch">Nowe karty pracy, publikacje dla rodziców i wiadomość o premierze maskotki. Rzadko i bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+        </div>
+        <FormularzNewsletter nazwa="newsletter-junior" id="nj" maskotka />
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap center">
+      <p class="note">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą. Telefon Zaufania dla Dzieci i Młodzieży: 116 111.</p>
     </div>
   </section>
 </Base>

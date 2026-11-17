@@ -1,0 +1,11 @@
+Prompt do wygenerowania uśmiechniętej, pełnej postaci Placebo w fartuchu (np. do karty maskotki). Najlepiej wgraj do generatora arkusz materialy/placebo/arkusz-placebo-fartuch.webp jako wzorzec postaci.
+
+STYLE: 2D cartoon illustration. Bold, clean, uniform outlines in very dark navy (#16304F), never pure black. Flat cel shading with one soft shadow tone. Expressive face, big readable eyes, slightly exaggerated proportions. Muted, cool, natural colors; brand accents in turquoise (#4FB3BF). No red, no purple, no neon. No watermark, no logo. The only text allowed anywhere is the word "PLACEBO" on the name badge.
+
+CHARACTER - PLACEBO (identical to the attached reference sheet, same proportions, colors and cap details): a small, chubby white laboratory rat, cute rather than creepy. Large round pink ears, small pink nose, long pink tail curved in a soft wave, round dark glossy eyes with white highlights, expressive tufted white eyebrows. Snug turquoise (#4FB3BF) mesh EEG cap with small round silver electrodes; thin turquoise wires gather at the back of his head into a tiny "ponytail". Small silver ear tag in the ear on the viewer's left. He wears an open, loose pale grey-blue (#CCE4EC) laboratory coat reaching the lower belly, with wide navy (#24456E) lapels and cuffs and two slanted lower pockets; a small round navy patch with a turquoise EEG wave (no text) on the chest on the viewer's left; a small white rectangular name badge with a thin navy border reading exactly "PLACEBO" in bold navy uppercase letters on the chest on the viewer's right. No stethoscope, no props.
+
+POSE AND EXPRESSION: full body, front view, standing upright on hind legs, both front paws raised and open in a friendly welcoming gesture. Big warm smile, eyes closed in a happy curve, eyebrows relaxed and slightly raised. Kind and cheerful, still a little bit cheeky.
+
+BACKGROUND: plain pale mist (#E9F3F6), no shadow on the floor except a very soft one under the feet. High resolution, at least 2000 px tall, clean edges for easy background removal.
+
+Po generacji sprawdź: pisownię PLACEBO, kolczyk po właściwej stronie, brak dodatkowych napisów i rekwizytów.

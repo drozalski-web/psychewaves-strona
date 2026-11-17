@@ -1,0 +1,14 @@
+---
+// Formularz zapisu (Netlify Forms). Każdy formularz ma własną nazwę, żeby zapisy były rozróżnialne w panelu Netlify.
+interface Props { nazwa: string; id: string; maskotka?: boolean }
+const { nazwa, id, maskotka = false } = Astro.props;
+---
+<form class="waitlist" name={nazwa} method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
+  <input type="hidden" name="form-name" value={nazwa}>
+  <p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p>
+  <label for={`${id}-email`}>Adres e-mail</label>
+  <input id={`${id}-email`} type="email" name="email" required autocomplete="email" inputmode="email">
+  {maskotka && <label class="check"><input type="checkbox" name="chce_maskotke"> Chcę maskotkę Placebo: daj mi znać, gdy będzie dostępna.</label>}
+  <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach Psyche Waves.</label>
+  <button class="btn primary" type="submit">Zapisz mnie</button>
+</form>
