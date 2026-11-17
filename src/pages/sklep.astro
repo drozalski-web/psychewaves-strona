@@ -8,13 +8,13 @@ const produkty = [
   { grupa: 'dorosli', id: 'mity-eeg', nazwa: 'Karty „Mit czy fakt: EEG”', typ: 'Zestaw kart · PDF', opis: 'Co mierzy EEG, a czego nie powie. Z krótkimi uzasadnieniami i źródłami.', status: 'wkrotce' },
   { grupa: 'junior', id: 'karta-fale', nazwa: 'Fale w mojej głowie', typ: 'Karta pracy dla dzieci (6–10 lat) · PDF', opis: 'Termometr fal: dziecko rysuje, jak „faluje” w ciele i głowie, i wybiera jeden spokojny krok z Placebo. Do wydruku, razem z dorosłym.', status: 'dostepne', href: '/karty-pracy/placebo-fale-w-mojej-glowie.pdf' },
   { grupa: 'junior', id: 'pakiet-kart', nazwa: 'Pakiet kart pracy z Placebo', typ: 'Zestaw 10 kart · PDF', opis: 'Emocje w ciele, oddech z kroplą, „skąd to wiem?” dla małych detektywów, plan na trudny dzień. Z krótkim przewodnikiem dla rodzica lub nauczyciela.', status: 'wkrotce' },
-    { grupa: 'wspolne', id: 'naklejki', nazwa: 'Naklejki Placebo', typ: 'Fizyczne · sklep w przygotowaniu', opis: 'Sześć min Placebo w arkuszu naklejek. Najpierw sprawdzam jakość druku i koszty wysyłki.', status: 'wkrotce' },
-  { grupa: 'wspolne', id: 'notes', nazwa: 'Notes „Fale się uspokajają”', typ: 'Fizyczny · sklep w przygotowaniu', opis: 'Dziennik nastroju z falą EEG i Placebo na marginesach. Bez obietnic terapii: to narzędzie do obserwacji.', status: 'wkrotce' },
+    { grupa: 'gadzety', id: 'naklejki', nazwa: 'Naklejki Placebo', typ: 'Fizyczne · sklep w przygotowaniu', opis: 'Sześć min Placebo w arkuszu naklejek. Najpierw sprawdzam jakość druku i koszty wysyłki.', status: 'wkrotce' },
+  { grupa: 'gadzety', id: 'notes', nazwa: 'Notes „Fale się uspokajają”', typ: 'Fizyczny · sklep w przygotowaniu', opis: 'Dziennik nastroju z falą EEG i Placebo na marginesach. Bez obietnic terapii: to narzędzie do obserwacji.', status: 'wkrotce' },
 ];
 const grupy = [
   ['dorosli', 'Dla dorosłych i studentów', 'Placebo jako przewodnik po dowodach: materiały do krytycznego czytania psychologii.'],
   ['junior', 'Placebo Junior', 'Karty pracy dla dzieci i dorosłych, którzy z nimi pracują. Odrębna, łagodna linia.'],
-  ['wspolne', 'Drobiazgi z Placebo', 'Fizyczne rzeczy dla wszystkich. Najpierw sprawdzam jakość druku i popyt.'],
+  ['gadzety', 'Gadżety z Placebo', 'Fizyczne drobiazgi. Najpierw sprawdzam jakość druku i popyt.'],
 ];
 ---
 <Base tytul="Linia Placebo" opis="Linia Placebo od Psyche Waves: materiały do krytycznego czytania psychologii, karty pracy dla dzieci i drobiazgi z maskotką. Pierwsza karta pracy jest darmowa.">
@@ -53,7 +53,7 @@ const grupy = [
     </div>
   </section>
 
-  <section class="tight">
+  <section class="tight" id="lista">
     <div class="wrap narrow">
       <Separator />
       <p class="eyebrow">Lista oczekujących</p>

@@ -282,3 +282,5 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;he
 .pl-faces img{height:130px;width:auto;max-width:100%;object-fit:contain;object-position:bottom;margin-bottom:6px}
 .pl-faces h3{font-size:1.05rem}
 .pl-faces p{font-size:.88rem}
+.pl-hero-img.junior{width:min(100%,300px)}
+section[id]{scroll-margin-top:90px}
