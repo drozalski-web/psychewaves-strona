@@ -20,7 +20,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
           <a class="btn" href="#jak-pracowac">Jak pracować z dzieckiem</a>
           <a class="btn" href="#karty-pracy">Karty pracy</a>
           <a class="btn" href="#gadzety">Gadżety</a>
-          <a class="btn primary" href="/sklep/#junior">Sklep Placebo Junior</a>
+          <a class="btn primary" href="/sklep/placebo-junior/">Sklep Placebo Junior</a>
         </div>
       </div>
       <img class="pl-hero-img junior" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką, szeroko się uśmiecha z zamkniętymi oczami" fetchpriority="high">
@@ -51,7 +51,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
             </ul>
             <div class="btns">
               <a class="btn primary" href={karta.href} download>Pobierz za darmo</a>
-              <a class="btn" href="/sklep/#junior">Więcej kart pracy w sklepie</a>
+              <a class="btn" href="/sklep/placebo-junior/">Więcej kart pracy w sklepie</a>
             </div>
           </div>
         </article>
@@ -74,9 +74,9 @@ const gadzetPokaz = gadzet ?? gadzetNext;
             {!gadzet && <p class="muted"><strong style="color:var(--ink)">Chcesz ją mieć?</strong> Zapisz się poniżej. Liczba zapisów pokaże mi, czy warto zamówić pierwszą partię.</p>}
             <div class="btns">
               {gadzet
-                ? <a class="btn primary" href={`/sklep/#${gadzet.id}`}>Zobacz w sklepie</a>
+                ? <a class="btn primary" href={`/sklep/placebo-junior/#${gadzet.id}`}>Zobacz w sklepie</a>
                 : <a class="btn primary" href="#newsletter">Chcę maskotkę</a>}
-              <a class="btn" href="/sklep/#junior">Więcej z Linii Placebo Junior</a>
+              <a class="btn" href="/sklep/placebo-junior/">Więcej z Linii Placebo Junior</a>
             </div>
           </div>
         </article>

@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import SklepNav from '../../components/SklepNav.astro';
+import ProduktyLista from '../../components/ProduktyLista.astro';
+import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
+---
+<Base tytul="Materiały do wydruku" opis="Materiały do krytycznego czytania psychologii od Psyche Waves: checklisty, plansze i karty. W przygotowaniu.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Sklep · materiały cyfrowe</p>
+      <h1>Materiały do wydruku</h1>
+      <p class="standfirst">Placebo jako przewodnik po dowodach: checklisty, plansze i karty do krytycznego czytania psychologii. Pliki PDF, które możesz wydrukować i powiesić nad biurkiem.</p>
+    </div>
+  </section>
+  <SklepNav aktywny="materialy" />
+  <section>
+    <div class="wrap">
+      <ProduktyLista grupa="dorosli" />
+    </div>
+  </section>
+  <section class="tight" id="lista">
+    <div class="wrap">
+      <p class="eyebrow">Lista oczekujących</p>
+      <h2 class="h-sec">Daj znać, gdy pojawi się coś nowego</h2>
+      <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowy materiał. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+      <FormularzNewsletter nazwa="lista-materialy" id="wm" />
+    </div>
+  </section>
+</Base>

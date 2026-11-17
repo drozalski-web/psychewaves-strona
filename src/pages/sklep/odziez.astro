@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import SklepNav from '../../components/SklepNav.astro';
+import WzorKarta from '../../components/WzorKarta.astro';
+import { wzory, typy, linie } from '../../data/sklep';
+const dostepneLinie = linie.filter((l) => wzory.some((w) => w.linia === l));
+---
+<Base tytul="Odzież i torby" opis="Koszulki, bluzy i torby Psyche Waves z hasłami psychoedukacji bez wstydu i z Placebo. Wzory w przygotowaniu: wybierz te, które chcesz mieć.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Sklep · odzież i torby</p>
+      <h1>Odzież i torby</h1>
+      <p class="standfirst">{wzory.length} wzorów w przygotowaniu. Sprzedaż jeszcze nie ruszyła, ale możesz zaznaczyć „Chcę to” przy tych, które Ci się podobają, i zostawić e-mail. Wzory z największą liczbą głosów trafią do produkcji jako pierwsze.</p>
+    </div>
+  </section>
+  <SklepNav aktywny="odziez" />
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="filtry" id="filtry">
+        <div class="filtr-grupa" role="group" aria-label="Rodzaj">
+          <button type="button" data-f="typ" data-v="" aria-pressed="true">Wszystko</button>
+          {Object.entries(typy).map(([k, n]) => <button type="button" data-f="typ" data-v={k} aria-pressed="false">{n}</button>)}
+        </div>
+        <div class="filtr-grupa" role="group" aria-label="Linia">
+          <button type="button" data-f="linia" data-v="" aria-pressed="true">Wszystkie linie</button>
+          <button type="button" data-f="placebo" data-v="1" aria-pressed="false">Z Placebo</button>
+          {dostepneLinie.filter((l) => l !== 'Placebo').map((l) => <button type="button" data-f="linia" data-v={l} aria-pressed="false">{l}</button>)}
+        </div>
+        <p class="muted" id="licznik-wzorow" aria-live="polite">{wzory.length} wzorów</p>
+      </div>
+
+      <form name="wybor-wzorow" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
+        <input type="hidden" name="form-name" value="wybor-wzorow">
+        <p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p>
+
+        <div class="wzory-grid" id="wzory">
+          {wzory.map((w) => <WzorKarta wzor={w} wybor />)}
+        </div>
+        <p class="muted" id="brak-wzorow" hidden>Brak wzorów dla tego wyboru.</p>
+
+        <div class="zapis" id="zapis">
+          <h2 class="h-sec">Zapisz swój wybór</h2>
+          <p class="muted" style="margin-top:8px">Wybrano: <strong id="wybrano">0</strong>. Nic nie kupujesz i nie płacisz. Napiszę, gdy ruszy sprzedaż, i dam pierwszeństwo osobom z listy. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+          <div class="waitlist">
+            <label for="ow-email">Adres e-mail</label>
+            <input id="ow-email" type="email" name="email" required autocomplete="email" inputmode="email">
+            <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o sprzedaży i nowych wzorach Psyche Waves.</label>
+            <button class="btn primary" type="submit">Zapisz mnie</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="wybor-bar" id="wybor-bar" hidden>
+    <div class="wrap"><span>Wybrano: <strong id="wybrano-bar">0</strong></span><a class="btn primary" href="#zapis">Zapisz wybór</a></div>
+  </div>
+
+  <script>
+    const karty = Array.from(document.querySelectorAll<HTMLElement>('.wzor'));
+    const stan: Record<string, string> = { typ: '', linia: '', placebo: '' };
+    const licznik = document.getElementById('licznik-wzorow')!;
+    const brak = document.getElementById('brak-wzorow')!;
+    function filtruj() {
+      let n = 0;
+      for (const k of karty) {
+        const ok = (!stan.typ || k.dataset.typ === stan.typ) && (!stan.linia || k.dataset.linia === stan.linia) && (!stan.placebo || k.dataset.placebo === '1');
+        k.hidden = !ok;
+        if (ok) n++;
+      }
+      licznik.textContent = `${n} ${n === 1 ? 'wzór' : 'wzorów'}`;
+      brak.hidden = n > 0;
+    }
+    document.querySelectorAll<HTMLButtonElement>('#filtry button').forEach((b) => {
+      b.addEventListener('click', () => {
+        const f = b.dataset.f!;
+        if (f === 'linia' || f === 'placebo') { stan.linia = ''; stan.placebo = ''; }
+        stan[f] = b.dataset.v ?? '';
+        const grupa = b.parentElement!;
+        if (f !== 'typ') document.querySelectorAll<HTMLButtonElement>('#filtry [data-f="linia"], #filtry [data-f="placebo"]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        else grupa.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        filtruj();
+      });
+    });
+    // przełącznik widoków (kolor, przód/tył)
+    document.querySelectorAll<HTMLElement>('.wzor').forEach((k) => {
+      k.querySelectorAll<HTMLButtonElement>('[data-widok-btn]').forEach((b) => {
+        b.addEventListener('click', () => {
+          const i = b.dataset.widokBtn!;
+          k.querySelectorAll<HTMLImageElement>('img[data-widok]').forEach((im) => (im.hidden = im.dataset.widok !== i));
+          k.querySelectorAll('[data-widok-btn]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        });
+      });
+    });
+    // licznik wyboru
+    const bar = document.getElementById('wybor-bar')!;
+    const wybrano = document.getElementById('wybrano')!;
+    const wybranoBar = document.getElementById('wybrano-bar')!;
+    function policz() {
+      const n = document.querySelectorAll('input[name="chce"]:checked').length;
+      wybrano.textContent = wybranoBar.textContent = String(n);
+      bar.hidden = n === 0;
+    }
+    document.querySelectorAll('input[name="chce"]').forEach((c) => c.addEventListener('change', policz));
+    const zapis = document.getElementById('zapis')!;
+    new IntersectionObserver((e) => { if (e[0].isIntersecting) bar.classList.add('ukryty'); else bar.classList.remove('ukryty'); }).observe(zapis);
+  </script>
+</Base>

@@ -1,0 +1,42 @@
+---
+import Base from '../../layouts/Base.astro';
+import SklepNav from '../../components/SklepNav.astro';
+import ProduktyLista from '../../components/ProduktyLista.astro';
+import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
+---
+<Base tytul="Linia Placebo Junior" opis="Linia Placebo Junior: karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Sklep · Placebo Junior</p>
+      <h1>Linia Placebo Junior</h1>
+      <p class="standfirst">Karty pracy i gadżety dla dzieci w wieku 6–10 lat i dorosłych, którzy z nimi pracują. Pierwsza karta jest darmowa, pierwszym gadżetem będzie maskotka Placebo.</p>
+      <div class="btns" style="margin-top:18px"><a class="btn" href="/placebo-junior/">Wróć na stronę Placebo Junior</a></div>
+    </div>
+  </section>
+  <SklepNav aktywny="junior" />
+  <section id="junior">
+    <div class="wrap">
+      <h2 class="h-sec">Karty pracy</h2>
+      <ProduktyLista grupa="junior" rodzaj="karta" />
+    </div>
+  </section>
+  <section class="tight" id="gadzety">
+    <div class="wrap">
+      <h2 class="h-sec">Gadżety</h2>
+      <ProduktyLista grupa="junior" rodzaj="gadzet" />
+    </div>
+  </section>
+  <section class="tight" id="lista">
+    <div class="wrap">
+      <p class="eyebrow">Lista oczekujących</p>
+      <h2 class="h-sec">Daj znać, gdy będzie maskotka i nowe karty</h2>
+      <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowy produkt. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+      <FormularzNewsletter nazwa="newsletter-junior" id="wj" maskotka />
+    </div>
+  </section>
+  <section class="tight">
+    <div class="wrap center">
+      <p class="note">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą.</p>
+    </div>
+  </section>
+</Base>
