@@ -3,18 +3,18 @@ import Base from '../layouts/Base.astro';
 import Fala from '../components/Fala.astro';
 import Separator from '../components/Separator.astro';
 const miny = [
-  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 228],
-  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 230],
-  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 303, 228],
-  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 228],
-  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 313, 233],
-  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 228],
+  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 285],
+  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 288],
+  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 302, 285],
+  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 285],
+  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 314, 290],
+  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 285],
 ];
 const role = [
   ['EEG i biofeedback', 'Pełna rola', 'Jego dom. Sprawdza obietnice cudów i pokazuje, co pomiar mózgu mówi, a czego nie mówi.'],
   ['ADHD', 'Lekko', 'Weryfikuje mity i nagłówki typu „każdy ma ADHD”. Nie żartuje z objawów.'],
   ['Relacje', 'Lekko', 'Sprawdza pop-psychologię: quizy stylów przywiązania, etykietowanie ex.'],
-  ['Uzależnienia i chemseks', 'Poważnie', 'Tylko mity i fakty o badaniach. Przy redukcji szkód nie ma humoru.'],
+  ['Uzależnienia i chemseks', 'Poważnie', ''],
   ['Borderline, zaburzenia afektywne, psychoza', 'Raczej wcale', 'Najwyżej poważny znaczek przy poziomie pewności.'],
 ];
 const zasady = [
@@ -29,13 +29,14 @@ const zasady = [
       <div class="pl-hero-text">
         <p class="eyebrow">Przewodnik po dowodach</p>
         <h1>Poznaj Placebo</h1>
-        <p class="lead">Biały szczur laboratoryjny w czapce EEG. Mówi mało, patrzy sceptycznie i jest życzliwy. Przy każdej tezie, mitycie i nagłówku pyta: <strong>„Skąd to wiemy?”</strong></p>
+        <p class="lead">Placebo to szczur, który słyszał już wszystko: „działa, bo to czuję”, „naukowcy to ukrywają”, „sprawdziłem na sobie”. Mówi mało, patrzy sceptycznie i na wszystko odpowiada jednym pytaniem: <strong>„Skąd to wiemy?”</strong></p>
         <div class="btns">
           <a class="btn primary" href="/publikacje/">Czytaj publikacje</a>
+          <a class="btn" href="/placebo-junior/">Placebo Junior</a>
           <a class="btn" href="/sklep/">Linia Placebo</a>
         </div>
       </div>
-      <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, stoi na tylnych łapach i unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
+      <img class="pl-hero-img" src="/placebo/fartuch/tq-fartuch.webp" width="456" height="631" alt="Placebo: biały szczur w czapce EEG i fartuchu laboratoryjnym z plakietką, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
     </div>
   </section>
 
@@ -46,7 +47,7 @@ const zasady = [
       <h2 class="h-sec">Kontrola jakości dla psychoedukacji</h2>
       <div class="about-text" style="margin-top:16px">
         <p>Efekt placebo to jedno z najlepiej znanych zjawisk w badaniach: samo oczekiwanie poprawy potrafi zmienić to, jak się czujemy. Dlatego dobre badania mają grupę kontrolną. Placebo przypomina, że „zadziałało u mnie” to jeszcze nie dowód.</p>
-        <p>W Psyche Waves jest głosem sceptycyzmu: pojawia się przy poziomie pewności (Wiemy, Badania sugerują, Hipoteza) i sprawdza nagłówki. Czapka EEG to ukłon w stronę tematu, który Daniel lubi najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+        <p>W Psyche Waves pilnuje poziomu pewności (Wiemy, Badania sugerują, Hipoteza) i sprawdza nagłówki, zanim zrobią to za mnie komentarze. Czapka EEG to ukłon w stronę tematu, który lubię najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
       </div>
     </div>
   </section>
@@ -60,7 +61,7 @@ const zasady = [
           <div class="role">
             <h3>{t}</h3>
             <span class={`lvl ${poz === 'Poważnie' || poz === 'Raczej wcale' ? '' : 'k'}`}>{poz}</span>
-            <p>{o}</p>
+            {o && <p>{o}</p>}
           </div>
         ))}
       </div>
@@ -81,11 +82,10 @@ const zasady = [
     <div class="wrap">
       <p class="eyebrow">Miny</p>
       <h2 class="h-sec">Sześć wyrazów twarzy</h2>
-      <p class="muted" style="margin-top:8px;max-width:60ch">Ostatnia mina jest na tematy, przy których żarty się kończą.</p>
       <ul class="pl-faces">
         {miny.map(([f, n, o, w, h]) => (
           <li>
-            <img src={`/placebo/${f}.webp`} width={w} height={h} alt={`Placebo: ${String(n).toLowerCase()}`} loading="lazy">
+            <img src={`/placebo/fartuch/${f}-fartuch.webp`} width={w} height={h} alt={`Placebo w fartuchu: ${String(n).toLowerCase()}`} loading="lazy">
             <h3>{n}</h3><p>{o}</p>
           </li>
         ))}
@@ -94,10 +94,11 @@ const zasady = [
   </section>
 
   <section class="tight">
-    <div class="wrap narrow">
+    <div class="wrap">
       <p class="eyebrow">Placebo Junior</p>
       <h2 class="h-sec">A dla dzieci?</h2>
-      <p class="muted" style="margin-top:10px">Placebo ma też osobną, łagodną gałąź: karty pracy dla dzieci i rodziców. To odrębna linia i nie wpływa na to, jak pojawia się w treściach dla dorosłych. <a href="/sklep/#junior">Zobacz karty pracy</a>.</p>
+      <p class="muted" style="margin-top:10px;max-width:62ch">Placebo ma też osobną, łagodną gałąź: psychoedukację dla dzieci i rodziców oraz karty pracy. To odrębna część strony i nie wpływa na to, jak Placebo pojawia się w treściach dla dorosłych.</p>
+      <div class="btns" style="margin-top:16px"><a class="btn primary" href="/placebo-junior/">Placebo Junior</a></div>
     </div>
   </section>
 

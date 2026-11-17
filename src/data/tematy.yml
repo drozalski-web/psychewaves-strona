@@ -35,3 +35,20 @@
 - id: granice
   tytul: "Granice w relacji bez poczucia winy"
   kategoria: "Relacje"
+
+# Placebo Junior: kolejka tematów dla dzieci i rodziców (osobna od publikacji dla dorosłych).
+# Propozycje do akceptacji Daniela; treści dla dzieci przed publikacją powinien przejrzeć psycholog dziecięcy lub pedagog.
+- id: junior-fale
+  odbiorca: dzieci
+  tytul: "Fale w mojej głowie: emocje dla dzieci i dorosłych, którzy z nimi są"
+  kategoria: "Placebo Junior · emocje"
+
+- id: junior-trudne-emocje
+  odbiorca: dzieci
+  tytul: "Jak rozmawiać z dzieckiem, gdy ma „dużą falę”"
+  kategoria: "Placebo Junior · dla rodziców"
+
+- id: junior-detektyw
+  odbiorca: dzieci
+  tytul: "Mały detektyw: skąd to wiemy? Jak sprawdzać, co mówi internet"
+  kategoria: "Placebo Junior · krytyczne myślenie"

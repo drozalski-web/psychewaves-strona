@@ -272,3 +272,13 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;he
 .role .lvl{justify-self:start}
 .role p{color:var(--muted);font-size:.94rem}
 .shop-group{margin-bottom:44px}
+
+/* Placebo: układ w jednej linii (komputer), zawijanie na mniejszych ekranach */
+@media (min-width:1000px){
+  .roles{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .pl-faces{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+  .pl-faces li{padding:14px 12px 16px}
+}
+.pl-faces img{height:130px;width:auto;max-width:100%;object-fit:contain;object-position:bottom;margin-bottom:6px}
+.pl-faces h3{font-size:1.05rem}
+.pl-faces p{font-size:.88rem}

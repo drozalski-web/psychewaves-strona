@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import Separator from '../../components/Separator.astro';
+import ListaArtykulow from '../../components/ListaArtykulow.astro';
+---
+<Base tytul="Placebo Junior" opis="Placebo Junior: psychoedukacja dla dzieci i rodziców oraz karty pracy z Placebo. Osobna, łagodna część Psyche Waves.">
+  <section class="hero">
+    <div class="wrap pl-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Dla dzieci i dorosłych, którzy z nimi są</p>
+        <h1>Placebo Junior</h1>
+        <p class="lead">Tu Placebo zdejmuje sarkazm i zostaje przy tym, co umie najlepiej: sprawdza, tłumaczy i pyta. Psychoedukacja o emocjach, falach w głowie i „skąd to wiemy?”, w wersji dla dzieci i ich rodziców.</p>
+        <div class="btns">
+          <a class="btn primary" href="/karty-pracy/placebo-fale-w-mojej-glowie.pdf" download>Pobierz kartę pracy</a>
+          <a class="btn" href="/sklep/#junior">Karty pracy w sklepie</a>
+        </div>
+      </div>
+      <img class="pl-hero-img" src="/placebo/fartuch/front-fartuch.webp" width="469" height="614" alt="Placebo w fartuchu laboratoryjnym z plakietką, stoi na tylnych łapach" fetchpriority="high">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <Separator />
+      <p class="eyebrow">Publikacje</p>
+      <h2 class="h-sec">Dla dzieci i rodziców</h2>
+      <p class="muted" style="margin-top:8px;max-width:62ch">Osobna część od publikacji dla dorosłych. Krótko, prosto, bez diagnoz.</p>
+      <ListaArtykulow odbiorca="dzieci" zKategoria />
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Karty pracy</p>
+      <h2 class="h-sec">Do wydruku, razem z dorosłym</h2>
+      <p class="muted" style="margin-top:8px;max-width:62ch">Pierwsza karta jest darmowa. Kolejne pojawią się w sklepie.</p>
+      <div class="btns" style="margin-top:16px">
+        <a class="btn primary" href="/karty-pracy/placebo-fale-w-mojej-glowie.pdf" download>Fale w mojej głowie (PDF)</a>
+        <a class="btn" href="/sklep/#junior">Wszystkie karty pracy</a>
+      </div>
+      <p class="note" style="margin-top:28px;max-width:62ch">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą. Telefon Zaufania dla Dzieci i Młodzieży: 116 111.</p>
+    </div>
+  </section>
+</Base>
