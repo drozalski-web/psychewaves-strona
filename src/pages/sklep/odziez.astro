@@ -1,4 +1,6 @@
 ---
+import { SKLEP_OTWARTY } from '../../data/sklep-config';
+if (!SKLEP_OTWARTY) return Astro.rewrite('/sklep/');
 import Base from '../../layouts/Base.astro';
 import SklepNav from '../../components/SklepNav.astro';
 import WzorKarta from '../../components/WzorKarta.astro';

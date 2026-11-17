@@ -375,3 +375,6 @@ section[id]{scroll-margin-top:90px}
   .wzor-body .muted{display:none}
   .wzor-badges{top:6px;left:6px}
 }
+
+/* Sklep w budowie: taśma w kolorach marki */
+.tasma{height:14px;background:repeating-linear-gradient(135deg,var(--deep) 0 18px,var(--wave) 18px 36px)}

@@ -1,0 +1,40 @@
+---
+import Base from '../layouts/Base.astro';
+import FormularzNewsletter from './FormularzNewsletter.astro';
+const powstaje = [
+  'Koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu',
+  'Materiały do wydruku do krytycznego czytania psychologii',
+  'Linia Placebo Junior: karty pracy i maskotka Placebo',
+];
+---
+<Base tytul="Sklep w budowie" opis="Sklep Psyche Waves jest w budowie. Zostaw e-mail, a dam Ci znać, gdy ruszy.">
+  <div class="tasma" role="presentation" aria-hidden="true"></div>
+  <section class="hero">
+    <div class="wrap pl-hero junior-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Sklep Psyche Waves</p>
+        <h1>Sklep w budowie</h1>
+        <p class="lead">Placebo ogląda każdy szew i pyta, skąd wiemy, że się nie rozpruje. Otworzę sklep, gdy odpowiedź będzie brzmiała: wiemy. Daty nie podam, bo Placebo zapytałby, skąd ją mam.</p>
+        <ul class="plain">
+          {powstaje.map((p) => <li>{p}</li>)}
+        </ul>
+        <div class="btns"><a class="btn primary" href="#zapis">Powiadom mnie o otwarciu</a><a class="btn" href="/publikacje/">Czytaj publikacje</a></div>
+      </div>
+      <img class="pl-hero-img junior" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką szeroko się uśmiecha z zamkniętymi oczami" fetchpriority="high">
+    </div>
+  </section>
+  <div class="tasma" role="presentation" aria-hidden="true"></div>
+
+  <section id="zapis">
+    <div class="wrap">
+      <div class="newsletter">
+        <div>
+          <p class="eyebrow">Powiadomienie o otwarciu</p>
+          <h2 class="h-sec">Napiszę raz, gdy sklep ruszy</h2>
+          <p class="muted" style="margin-top:10px">Jedna wiadomość, bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+        </div>
+        <FormularzNewsletter nazwa="sklep-otwarcie" id="sw" />
+      </div>
+    </div>
+  </section>
+</Base>
