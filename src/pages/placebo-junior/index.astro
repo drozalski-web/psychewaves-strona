@@ -2,10 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import Separator from '../../components/Separator.astro';
 import ListaArtykulow from '../../components/ListaArtykulow.astro';
-const gadzety = [
-  ['Naklejki Placebo', 'Sześć min Placebo na arkuszu naklejek: od „bez wrażenia” po wielki uśmiech.'],
-  ['Notes „Fale się uspokajają”', 'Mały notes, w którym można rysować swoje fale. Dla dzieci i dla dorosłych, którzy im towarzyszą.'],
-];
+import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../data/produkty';
+const karta = najnowszaDarmowaKarta();
+const gadzet = najnowszyGadzet();
+const gadzetNext = gadzetWkrotce();
 ---
 <Base tytul="Placebo Junior" opis="Placebo Junior: karty pracy, wskazówki dla rodziców i nauczycieli oraz gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
   <section class="hero">
@@ -15,44 +15,19 @@ const gadzety = [
         <h1>Placebo Junior</h1>
         <p class="lead">Cześć, jestem Placebo! Mam czapkę, która pokazuje fale, i mnóstwo pytań. Pokażę Ci, że emocje są jak fale: raz małe, raz duże, a potem się uspokajają. Razem z dorosłym pokolorujesz, narysujesz i sprawdzisz, co pomaga właśnie Tobie.</p>
         <div class="btns">
-          <a class="btn primary" href="#karty-pracy">Karty pracy</a>
           <a class="btn" href="#jak-pracowac">Jak pracować z dzieckiem</a>
+          <a class="btn" href="#karty-pracy">Karty pracy</a>
           <a class="btn" href="#gadzety">Gadżety</a>
+          <a class="btn primary" href="/sklep/#junior">Sklep Placebo Junior</a>
         </div>
       </div>
       <img class="pl-hero-img junior" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką, szeroko się uśmiecha z zamkniętymi oczami" fetchpriority="high">
     </div>
   </section>
 
-  <section id="karty-pracy">
+  <section id="jak-pracowac">
     <div class="wrap">
       <Separator />
-      <p class="eyebrow">Karty pracy</p>
-      <h2 class="h-sec">Do wydruku, razem z dorosłym</h2>
-      <p class="muted" style="margin-top:8px;max-width:62ch">Kolorowanie, zakreślanie i rysowanie zamiast wykładu. Nie ma złych odpowiedzi. Pierwsza karta jest darmowa, kolejne pojawią się w sklepie.</p>
-      <ul class="shop" style="margin-top:20px">
-        <li class="item">
-          <div>
-            <p class="shop-type">Karta pracy · 6–10 lat · PDF, 2 strony</p>
-            <h3>Fale w mojej głowie</h3>
-            <p>Termometr fal, mapa ciała, oddech z kroplą i spokojny krok wybrany przez dziecko. Ze wskazówkami dla dorosłego.</p>
-          </div>
-          <div class="shop-cta"><a class="btn primary" href="/karty-pracy/placebo-fale-w-mojej-glowie.pdf" download>Pobierz za darmo</a></div>
-        </li>
-        <li class="item">
-          <div>
-            <p class="shop-type">Zestaw 10 kart · PDF</p>
-            <h3>Pakiet kart pracy z Placebo</h3>
-            <p>Emocje w ciele, oddech z kroplą, „skąd to wiem?” dla małych detektywów i plan na trudny dzień. Z przewodnikiem dla rodzica lub nauczyciela.</p>
-          </div>
-          <div class="shop-cta"><span class="lvl">W przygotowaniu</span></div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="tight" id="jak-pracowac">
-    <div class="wrap">
       <p class="eyebrow">Publikacje dla dzieci i rodziców</p>
       <h2 class="h-sec">Jak pracować z dzieckiem</h2>
       <p class="muted" style="margin-top:8px;max-width:62ch">Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych.</p>
@@ -60,15 +35,49 @@ const gadzety = [
     </div>
   </section>
 
+  <section class="tight" id="karty-pracy">
+    <div class="wrap">
+      <p class="eyebrow">Karty pracy</p>
+      <h2 class="h-sec">Do wydruku, razem z dorosłym</h2>
+      <p class="muted" style="margin-top:8px;max-width:62ch">Kolorowanie, zakreślanie i rysowanie zamiast wykładu. Nie ma złych odpowiedzi. Tutaj możesz pobrać jedną kartę za darmo, a więcej czeka w sklepie.</p>
+      {karta && (
+        <ul class="shop" style="margin-top:20px">
+          <li class="item">
+            <div>
+              <p class="shop-type">{karta.typ}</p>
+              <h3>{karta.nazwa}</h3>
+              <p>{karta.opis}</p>
+            </div>
+            <div class="shop-cta"><a class="btn primary" href={karta.href} download>Pobierz za darmo</a></div>
+          </li>
+        </ul>
+      )}
+      <div class="btns" style="margin-top:20px"><a class="btn" href="/sklep/#junior">Więcej kart pracy w sklepie</a></div>
+    </div>
+  </section>
+
   <section class="tight" id="gadzety">
     <div class="wrap">
       <p class="eyebrow">Gadżety</p>
-      <h2 class="h-sec">Drobiazgi z Placebo</h2>
-      <p class="muted" style="margin-top:8px;max-width:62ch">Najpierw sprawdzam jakość druku i to, czy ktoś takich rzeczy potrzebuje. Zapisz się na listę, a dam znać, gdy będą gotowe.</p>
-      <div class="principles">
-        {gadzety.map(([t, o]) => <div><h3>{t}</h3><p>{o}</p><div class="levels"><span class="lvl">W przygotowaniu</span></div></div>)}
+      <h2 class="h-sec">{gadzet ? 'Najnowszy gadżet z Placebo' : 'Gadżety z Placebo'}</h2>
+      {gadzet ? (
+        <ul class="shop" style="margin-top:20px">
+          <li class="item">
+            <div>
+              <p class="shop-type">{gadzet.typ}</p>
+              <h3>{gadzet.nazwa}</h3>
+              <p>{gadzet.opis}</p>
+            </div>
+            <div class="shop-cta"><a class="btn primary" href={`/sklep/#${gadzet.id}`}>Zobacz w sklepie</a></div>
+          </li>
+        </ul>
+      ) : (
+        <p class="muted" style="margin-top:8px;max-width:62ch">Pierwsze gadżety są w przygotowaniu{gadzetNext ? `, na początek: ${gadzetNext.nazwa}` : ''}. Najpierw sprawdzam jakość druku. Zapisz się na listę, a dam znać, gdy będą gotowe.</p>
+      )}
+      <div class="btns" style="margin-top:20px">
+        <a class="btn" href="/sklep/#junior">Więcej z Linii Placebo Junior w sklepie</a>
+        {!gadzet && <a class="btn" href="/sklep/#lista">Zapisz się na listę</a>}
       </div>
-      <div class="btns" style="margin-top:20px"><a class="btn" href="/sklep/#lista">Zapisz się na listę</a><a class="btn" href="/sklep/">Cały sklep</a></div>
     </div>
   </section>
 

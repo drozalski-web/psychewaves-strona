@@ -1,53 +1,39 @@
 ---
 import Base from '../layouts/Base.astro';
 import Separator from '../components/Separator.astro';
-// Status: 'dostepne' (darmowe, do pobrania) albo 'wkrotce' (lista oczekujących). Cen nie podajemy, dopóki produkt nie jest gotowy.
-const produkty = [
-  { grupa: 'dorosli', id: 'checklista', nazwa: 'Skąd to wiemy? Checklista czytania badań', typ: 'Dla studentów i dorosłych · PDF', opis: 'Siedem pytań, które warto zadać każdej tezie z psychologii: kto badał, na kim, z jaką próbą, z grupą kontrolną czy bez, co z tego wynika, a co nie.', status: 'wkrotce' },
-  { grupa: 'dorosli', id: 'poziomy', nazwa: 'Plansza „Poziomy pewności”', typ: 'Plakat · PDF', opis: 'Wiemy, badania sugerują, hipoteza: jak to rozróżniać i skąd Psyche Waves je bierze. Do notatek, pokoju studenta, gabinetu.', status: 'wkrotce' },
-  { grupa: 'dorosli', id: 'mity-eeg', nazwa: 'Karty „Mit czy fakt: EEG”', typ: 'Zestaw kart · PDF', opis: 'Co mierzy EEG, a czego nie powie. Z krótkimi uzasadnieniami i źródłami.', status: 'wkrotce' },
-  { grupa: 'junior', id: 'karta-fale', nazwa: 'Fale w mojej głowie', typ: 'Karta pracy dla dzieci (6–10 lat) · PDF', opis: 'Termometr fal: dziecko rysuje, jak „faluje” w ciele i głowie, i wybiera jeden spokojny krok z Placebo. Do wydruku, razem z dorosłym.', status: 'dostepne', href: '/karty-pracy/placebo-fale-w-mojej-glowie.pdf' },
-  { grupa: 'junior', id: 'pakiet-kart', nazwa: 'Pakiet kart pracy z Placebo', typ: 'Zestaw 10 kart · PDF', opis: 'Emocje w ciele, oddech z kroplą, „skąd to wiem?” dla małych detektywów, plan na trudny dzień. Z krótkim przewodnikiem dla rodzica lub nauczyciela.', status: 'wkrotce' },
-    { grupa: 'gadzety', id: 'naklejki', nazwa: 'Naklejki Placebo', typ: 'Fizyczne · sklep w przygotowaniu', opis: 'Sześć min Placebo w arkuszu naklejek. Najpierw sprawdzam jakość druku i koszty wysyłki.', status: 'wkrotce' },
-  { grupa: 'gadzety', id: 'notes', nazwa: 'Notes „Fale się uspokajają”', typ: 'Fizyczny · sklep w przygotowaniu', opis: 'Dziennik nastroju z falą EEG i Placebo na marginesach. Bez obietnic terapii: to narzędzie do obserwacji.', status: 'wkrotce' },
-];
-const grupy = [
-  ['dorosli', 'Dla dorosłych i studentów', 'Placebo jako przewodnik po dowodach: materiały do krytycznego czytania psychologii.'],
-  ['junior', 'Placebo Junior', 'Karty pracy dla dzieci i dorosłych, którzy z nimi pracują. Odrębna, łagodna linia.'],
-  ['gadzety', 'Gadżety z Placebo', 'Fizyczne drobiazgi. Najpierw sprawdzam jakość druku i popyt.'],
-];
+import { produkty, grupy } from '../data/produkty';
 ---
-<Base tytul="Linia Placebo" opis="Linia Placebo od Psyche Waves: materiały do krytycznego czytania psychologii, karty pracy dla dzieci i drobiazgi z maskotką. Pierwsza karta pracy jest darmowa.">
+<Base tytul="Linia Placebo" opis="Linia Placebo od Psyche Waves: materiały do krytycznego czytania psychologii, karty pracy i gadżety dla dzieci (Linia Placebo Junior). Pierwsza karta pracy jest darmowa.">
   <section class="article-head">
     <div class="wrap">
       <p class="eyebrow">Sklep</p>
       <h1>Linia Placebo</h1>
-      <p class="standfirst">Materiały do krytycznego czytania psychologii, karty pracy dla dzieci i drobiazgi z maskotką Psyche Waves. Zaczynamy od materiałów cyfrowych, bo da się je sprawdzić i poprawić, zanim cokolwiek trafi do druku.</p>
+      <p class="standfirst">Materiały do krytycznego czytania psychologii, karty pracy i gadżety dla dzieci (Linia Placebo Junior) Psyche Waves. Zaczynamy od materiałów cyfrowych, bo da się je sprawdzić i poprawić, zanim cokolwiek trafi do druku.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       {grupy.map((g) => (
-        <div class="shop-group" id={g[0]}>
-          <h2 class="h-sec">{g[1]}</h2>
-          <p class="muted" style="margin-top:6px">{g[2]}</p>
-        <ul class="shop">
-        {produkty.filter((p) => p.grupa === g[0]).map((p) => (
-          <li class="item" id={p.id}>
-            <div>
-              <p class="shop-type">{p.typ}</p>
-              <h3>{p.nazwa}</h3>
-              <p>{p.opis}</p>
-            </div>
-            <div class="shop-cta">
-              {p.status === 'dostepne'
-                ? <a class="btn primary" href={p.href} download>Pobierz za darmo</a>
-                : <span class="lvl">W przygotowaniu</span>}
-            </div>
-          </li>
-        ))}
-        </ul>
+        <div class="shop-group" id={g.id}>
+          <h2 class="h-sec">{g.nazwa}</h2>
+          <p class="muted" style="margin-top:6px">{g.opis}</p>
+          <ul class="shop">
+            {produkty.filter((p) => p.grupa === g.id).map((p) => (
+              <li class="item" id={p.id}>
+                <div>
+                  <p class="shop-type">{p.typ}</p>
+                  <h3>{p.nazwa}</h3>
+                  <p>{p.opis}</p>
+                </div>
+                <div class="shop-cta">
+                  {p.status === 'dostepne'
+                    ? <a class="btn primary" href={p.href} download>{p.darmowy ? 'Pobierz za darmo' : 'Pobierz'}</a>
+                    : <span class="lvl">W przygotowaniu</span>}
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
     </div>
