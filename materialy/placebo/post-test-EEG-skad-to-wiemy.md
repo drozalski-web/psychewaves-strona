@@ -10,7 +10,7 @@ Format: karuzela 6 slajdów (1080×1350). Poziom Placebo: **pełny** (EEG to jeg
 - Nauka: mały znaczek `h1-deadpan` przy przypisie z poziomem pewności, z napisem „Skąd to wiemy?” jako etykietą graficzną.
 - Wniosek: `h3-usmiech` w rogu, mała wersja.
 - Impuls, Wodnik i Źródła: bez Placebo, żeby nie przeładować slajdów.
-- Pliki: `materialy/placebo/wzorce/` (przezroczyste PNG). Ciemne tło: ten sam kontur granatowy wystarczy; biała sierść jest dobrze widoczna.
+- Pliki: `materialy/placebo/bez-ubrania/` (przezroczyste PNG). Ciemne tło: ten sam kontur granatowy wystarczy; biała sierść jest dobrze widoczna.
 
 ## KADRY
 
