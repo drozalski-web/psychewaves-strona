@@ -406,3 +406,24 @@ section[id]{scroll-margin-top:90px}
 .news-body .badge{font-size:.68rem}
 .news-card.info .news-img img[src$=".webp"]{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:center bottom}
 .news-card.info .news-img img[src$=".webp"]{height:122px;width:auto;max-height:none;align-self:end}
+
+/* Telefon: menu w jednej przewijanej linii zamiast trzech rzędów */
+@media (max-width:700px){
+  header.site .wrap{flex-direction:column;align-items:flex-start;gap:8px;padding-block:10px 6px}
+  nav.main{width:100%;margin-inline:-4px}
+  nav.main ul{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:2px;padding-bottom:4px}
+  nav.main ul::-webkit-scrollbar{display:none}
+  nav.main a{white-space:nowrap;padding:7px 11px;font-size:.92rem}
+  .hero{padding-block:36px 28px}
+  .pl-hero-img{width:min(100%,260px)}
+}
+@media (max-width:700px){
+  .pl-hero-img,.pl-hero-img.junior{width:min(100%,210px)}
+  .pl-faces{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .pl-faces li{padding:12px 10px 14px}
+  .pl-faces img{height:100px}
+  .roles{gap:12px}
+  .pl-box,.junior-panel,.zapis,.newsletter{padding:20px 18px}
+  .junior-card{padding:16px}
+  h1{overflow-wrap:anywhere}
+}
