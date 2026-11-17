@@ -6,15 +6,16 @@ import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../dat
 const karta = najnowszaDarmowaKarta();
 const gadzet = najnowszyGadzet();
 const gadzetNext = gadzetWkrotce();
+const gadzetPokaz = gadzet ?? gadzetNext;
 ---
-<Base tytul="Placebo Junior" opis="Placebo Junior: karty pracy, wskazówki dla rodziców i nauczycieli oraz gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
+<Base tytul="Placebo Junior" opis="Placebo Junior: publikacje dla dzieci i rodziców, karty pracy i gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
   <section class="hero">
-    <div class="wrap pl-hero">
+    <div class="wrap pl-hero junior-hero">
       <div class="pl-hero-text">
         <p class="eyebrow">Dla dzieci 6–10 lat i ich dorosłych</p>
         <h1>Placebo Junior</h1>
         <p class="lead">Cześć, jestem Placebo! Mam czapkę, która pokazuje fale, i mnóstwo pytań. Pokażę Ci, że emocje są jak fale: raz małe, raz duże, a potem się uspokajają. Razem z dorosłym pokolorujesz, narysujesz i sprawdzisz, co pomaga właśnie Tobie.</p>
-        <div class="btns">
+        <div class="btns btns-line">
           <a class="btn" href="#jak-pracowac">Jak pracować z dzieckiem</a>
           <a class="btn" href="#karty-pracy">Karty pracy</a>
           <a class="btn" href="#gadzety">Gadżety</a>
@@ -27,11 +28,17 @@ const gadzetNext = gadzetWkrotce();
 
   <section id="jak-pracowac">
     <div class="wrap">
-      <Separator />
-      <p class="eyebrow">Publikacje dla dzieci i rodziców</p>
-      <h2 class="h-sec">Jak pracować z dzieckiem</h2>
-      <p class="muted" style="margin-top:8px;max-width:62ch">Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych.</p>
-      <ListaArtykulow odbiorca="dzieci" zKategoria />
+      <div class="junior-panel">
+        <div class="junior-panel-head">
+          <img src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="48" height="48" alt="" aria-hidden="true">
+          <div>
+            <p class="eyebrow">Publikacje dla dzieci i rodziców</p>
+            <h2 class="h-sec">Jak pracować z dzieckiem</h2>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:10px;max-width:62ch">Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych, z własną listą artykułów.</p>
+        <ListaArtykulow odbiorca="dzieci" zKategoria />
+      </div>
     </div>
   </section>
 
@@ -39,45 +46,49 @@ const gadzetNext = gadzetWkrotce();
     <div class="wrap">
       <p class="eyebrow">Karty pracy</p>
       <h2 class="h-sec">Do wydruku, razem z dorosłym</h2>
-      <p class="muted" style="margin-top:8px;max-width:62ch">Kolorowanie, zakreślanie i rysowanie zamiast wykładu. Nie ma złych odpowiedzi. Tutaj możesz pobrać jedną kartę za darmo, a więcej czeka w sklepie.</p>
       {karta && (
-        <ul class="shop" style="margin-top:20px">
-          <li class="item">
-            <div>
-              <p class="shop-type">{karta.typ}</p>
-              <h3>{karta.nazwa}</h3>
-              <p>{karta.opis}</p>
+        <article class="junior-card">
+          <img class="junior-card-img" src="/karty-pracy/podglad-fale-w-mojej-glowie.webp" width="909" height="1287" alt="Podgląd pierwszej strony karty pracy „Fale w mojej głowie”: Placebo i termometr fal" loading="lazy">
+          <div class="junior-card-body">
+            <p class="shop-type">{karta.typ}</p>
+            <h3>{karta.nazwa}</h3>
+            <p class="muted">{karta.opis}</p>
+            <ul class="plain">
+              <li>Zakreślanie i rysowanie, bez czytania długich tekstów</li>
+              <li>Nie ma złych odpowiedzi</li>
+              <li>Do wypełnienia razem z dorosłym</li>
+            </ul>
+            <div class="btns">
+              <a class="btn primary" href={karta.href} download>Pobierz za darmo</a>
+              <a class="btn" href="/sklep/#junior">Więcej kart pracy w sklepie</a>
             </div>
-            <div class="shop-cta"><a class="btn primary" href={karta.href} download>Pobierz za darmo</a></div>
-          </li>
-        </ul>
+          </div>
+        </article>
       )}
-      <div class="btns" style="margin-top:20px"><a class="btn" href="/sklep/#junior">Więcej kart pracy w sklepie</a></div>
     </div>
   </section>
 
   <section class="tight" id="gadzety">
     <div class="wrap">
       <p class="eyebrow">Gadżety</p>
-      <h2 class="h-sec">{gadzet ? 'Najnowszy gadżet z Placebo' : 'Gadżety z Placebo'}</h2>
-      {gadzet ? (
-        <ul class="shop" style="margin-top:20px">
-          <li class="item">
-            <div>
-              <p class="shop-type">{gadzet.typ}</p>
-              <h3>{gadzet.nazwa}</h3>
-              <p>{gadzet.opis}</p>
+      <h2 class="h-sec">{gadzet ? 'Najnowszy gadżet z Placebo' : 'Pierwszy gadżet: maskotka Placebo'}</h2>
+      {gadzetPokaz && (
+        <article class="junior-card">
+          <img class="junior-card-img gadzet" src="/placebo/fartuch/front-fartuch.webp" width="469" height="614" alt="Placebo w fartuchu laboratoryjnym: wzór maskotki" loading="lazy">
+          <div class="junior-card-body">
+            <p class="shop-type">{gadzetPokaz.typ}</p>
+            <h3>{gadzetPokaz.nazwa}</h3>
+            <p class="muted">{gadzetPokaz.opis}</p>
+            {!gadzet && <p><span class="lvl">W przygotowaniu</span></p>}
+            <div class="btns">
+              {gadzet
+                ? <a class="btn primary" href={`/sklep/#${gadzet.id}`}>Zobacz w sklepie</a>
+                : <a class="btn primary" href="/sklep/#lista">Dam Ci znać, gdy będzie gotowa</a>}
+              <a class="btn" href="/sklep/#junior">Więcej z Linii Placebo Junior</a>
             </div>
-            <div class="shop-cta"><a class="btn primary" href={`/sklep/#${gadzet.id}`}>Zobacz w sklepie</a></div>
-          </li>
-        </ul>
-      ) : (
-        <p class="muted" style="margin-top:8px;max-width:62ch">Pierwsze gadżety są w przygotowaniu{gadzetNext ? `, na początek: ${gadzetNext.nazwa}` : ''}. Najpierw sprawdzam jakość druku. Zapisz się na listę, a dam znać, gdy będą gotowe.</p>
+          </div>
+        </article>
       )}
-      <div class="btns" style="margin-top:20px">
-        <a class="btn" href="/sklep/#junior">Więcej z Linii Placebo Junior w sklepie</a>
-        {!gadzet && <a class="btn" href="/sklep/#lista">Zapisz się na listę</a>}
-      </div>
     </div>
   </section>
 

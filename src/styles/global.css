@@ -284,3 +284,26 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;he
 .pl-faces p{font-size:.88rem}
 .pl-hero-img.junior{width:min(100%,300px)}
 section[id]{scroll-margin-top:90px}
+
+/* Placebo Junior: wyraźne oddzielenie od publikacji dla dorosłych */
+.btns-line .btn{padding:10px 16px;font-size:.92rem}
+@media (min-width:1000px){.btns-line{flex-wrap:nowrap}.junior-hero{grid-template-columns:minmax(0,1fr) 300px}.pl-hero-img.junior{width:300px}}
+.btn-junior{padding:6px 18px 6px 8px;gap:10px}
+.btn-junior img{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:50% 30%;background:var(--mist)}
+.junior-panel{background:var(--mist);border:1px solid var(--line);border-left:6px solid var(--wave);border-radius:18px;padding:26px 28px 28px}
+.junior-panel-head{display:flex;gap:16px;align-items:center}
+.junior-panel-head img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 30%;background:var(--bg);flex:none}
+.junior-panel .posts{margin-top:18px}
+.junior-panel .post,.junior-panel .post:last-child{border-color:var(--line)}
+.junior-panel .soon{margin-top:22px}
+.junior-card{display:grid;gap:24px;margin-top:22px;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 2px 14px rgba(22,48,79,.06)}
+@media (min-width:720px){.junior-card{grid-template-columns:220px minmax(0,1fr);align-items:center;padding:26px 30px;gap:32px}}
+.junior-card-img{width:100%;max-width:220px;height:auto;border-radius:10px;border:1px solid var(--line);justify-self:center;background:#fff}
+.junior-card-img.gadzet{border:0;background:transparent;max-width:200px}
+.junior-card-body{display:grid;gap:10px;align-content:center;min-width:0}
+.junior-card-body h3{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+.junior-card-body ul.plain{margin-top:2px}
+.junior-card-body .btns{margin-top:8px}
+.junior-head{background:linear-gradient(180deg,var(--bg) 0%,var(--mist) 100%);border-top:6px solid var(--wave)}
+.junior-tag{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:4px 14px 4px 4px;background:var(--mist);border-radius:999px;font-size:.85rem;font-weight:700;color:var(--accent)}
+.junior-tag img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:50% 30%;background:var(--bg)}
