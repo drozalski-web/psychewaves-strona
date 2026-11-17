@@ -12,13 +12,14 @@ export type Produkt = {
   darmowy?: boolean;
   href?: string;
   dodano?: string;
+  obraz?: string;
 };
 
 export const produkty: Produkt[] = [
   { grupa: 'dorosli', rodzaj: 'materialy', id: 'checklista', nazwa: 'Skąd to wiemy? Checklista czytania badań', typ: 'Dla studentów i dorosłych · PDF', opis: 'Siedem pytań, które warto zadać każdej tezie z psychologii: kto badał, na kim, z jaką próbą, z grupą kontrolną czy bez, co z tego wynika, a co nie.', status: 'wkrotce' },
   { grupa: 'dorosli', rodzaj: 'materialy', id: 'poziomy', nazwa: 'Plansza „Poziomy pewności”', typ: 'Plakat · PDF', opis: 'Wiemy, badania sugerują, hipoteza: jak to rozróżniać i skąd Psyche Waves je bierze. Do notatek, pokoju studenta, gabinetu.', status: 'wkrotce' },
   { grupa: 'dorosli', rodzaj: 'materialy', id: 'mity-eeg', nazwa: 'Karty „Mit czy fakt: EEG”', typ: 'Zestaw kart · PDF', opis: 'Co mierzy EEG, a czego nie powie. Z krótkimi uzasadnieniami i źródłami.', status: 'wkrotce' },
-  { grupa: 'junior', rodzaj: 'karta', id: 'karta-fale', nazwa: 'Fale w mojej głowie', typ: 'Karta pracy · 6–10 lat · PDF, 2 strony', opis: 'Termometr fal, mapa ciała, oddech z kroplą i spokojny krok wybrany przez dziecko. Ze wskazówkami dla dorosłego.', status: 'dostepne', darmowy: true, href: '/karty-pracy/placebo-fale-w-mojej-glowie.pdf', dodano: '2026-11-15' },
+  { grupa: 'junior', rodzaj: 'karta', id: 'karta-fale', nazwa: 'Fale w mojej głowie', typ: 'Karta pracy · 6–10 lat · PDF, 2 strony', opis: 'Termometr fal, mapa ciała, oddech z kroplą i spokojny krok wybrany przez dziecko. Ze wskazówkami dla dorosłego.', status: 'dostepne', darmowy: true, href: '/karty-pracy/placebo-fale-w-mojej-glowie.pdf', dodano: '2026-11-15', obraz: '/karty-pracy/podglad-fale-w-mojej-glowie.webp' },
   { grupa: 'junior', rodzaj: 'karta', id: 'pakiet-kart', nazwa: 'Pakiet kart pracy z Placebo', typ: 'Zestaw 10 kart · PDF', opis: 'Emocje w ciele, oddech z kroplą, „skąd to wiem?” dla małych detektywów, plan na trudny dzień. Z krótkim przewodnikiem dla rodzica lub nauczyciela.', status: 'wkrotce' },
   { grupa: 'junior', rodzaj: 'gadzet', id: 'maskotka', nazwa: 'Maskotka Placebo', typ: 'Gadżet · pierwszy w produkcji', opis: 'Miękka maskotka Placebo w fartuchu z plakietką. Pilnuje biurka, plecaka albo łóżka i patrzy tak, jakby właśnie pytała „skąd to wiemy?”. Dla dzieci, rodziców i wszystkich, którzy lubią sceptycznego szczura.', status: 'wkrotce' },
   { grupa: 'junior', rodzaj: 'gadzet', id: 'naklejki', nazwa: 'Naklejki Placebo', typ: 'Gadżet · sklep w przygotowaniu', opis: 'Sześć min Placebo na arkuszu naklejek: od „bez wrażenia” po wielki uśmiech. Najpierw sprawdzam jakość druku i koszty wysyłki.', status: 'wkrotce' },

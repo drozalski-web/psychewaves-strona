@@ -70,7 +70,7 @@ section{padding-block:56px}
 .hero .lead{font-size:clamp(1rem,1.3vw,1.08rem);color:var(--ink)}
 .hero .meta{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.92rem;color:var(--muted)}
 .hero .meta span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--wave);margin-right:8px;vertical-align:middle}
-.hero-wave{width:100%;height:auto;display:block;margin-top:8px}
+.hero-wave{width:100%;max-width:480px;height:auto;display:block;margin-top:8px}
 .hero-wave .drop{transform-origin:890px 560px;animation:bob 5s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -378,3 +378,17 @@ section[id]{scroll-margin-top:90px}
 
 /* Sklep w budowie: taśma w kolorach marki */
 .tasma{height:14px;background:repeating-linear-gradient(135deg,var(--deep) 0 18px,var(--wave) 18px 36px)}
+
+/* Aktualności na stronie głównej */
+.news{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
+.news-card a{display:grid;grid-template-rows:auto 1fr;height:100%;border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--bg)}
+.news-card a:hover{border-color:var(--accent);box-shadow:0 4px 18px rgba(22,48,79,.08)}
+.news-card.produkt a{border-color:var(--accent);border-width:2px}
+.news-img{display:grid;place-items:center;background:var(--mist);height:200px;overflow:hidden;padding:10px}
+.news-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.news-card.info .news-img{padding:6px}
+.news-body{display:grid;gap:6px;align-content:start;padding:16px 18px 18px}
+.news-body .badge{justify-self:start}
+.news-title{font-family:var(--display);font-size:1.3rem;line-height:1.2}
+.news-desc{color:var(--muted);font-size:.95rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-date{color:var(--muted);font-size:.82rem}

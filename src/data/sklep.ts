@@ -12,6 +12,8 @@ export type WzorSklepu = {
   nowosc?: boolean;
   limit?: boolean;    // edycja limitowana
   opis: string;
+  status?: 'dostepny';   // ustaw, gdy wzór wchodzi do sprzedaży (wtedy trafia do „Aktualności” na stronie głównej)
+  dodano?: string;       // data wejścia do sklepu (RRRR-MM-DD)
   obrazy: Obraz[];    // pierwsza pozycja = widok główny; kolejne to kolory lub tył
 };
 

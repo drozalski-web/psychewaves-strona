@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Fala from '../components/Fala.astro';
 import Separator from '../components/Separator.astro';
 import ListaArtykulow from '../components/ListaArtykulow.astro';
+import Aktualnosci from '../components/Aktualnosci.astro';
 const tematy = [
   ['Uzależnienia', 'Mechanizmy nagrody, nawroty, chemseks. Redukcja szkód zamiast moralizowania.'],
   ['ADHD', 'Uwaga, czas, emocje. Jak ADHD wygląda u dorosłych i dlaczego tak długo bywa niezauważone.'],
@@ -25,6 +26,8 @@ const tematy = [
       <div class="meta"><span>Ze źródłami</span><span>Z poziomem pewności</span><span>Bez diagnoz przez internet</span></div>
     </div>
   </section>
+
+  <Aktualnosci />
 
   <section>
     <div class="wrap">
