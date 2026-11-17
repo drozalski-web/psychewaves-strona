@@ -44,14 +44,14 @@ export async function aktualnosci(limit = 3): Promise<Aktualnosc[]> {
   // Karty informacyjne, dopóki sklep jest zamknięty. Nowe produkty mają pierwszeństwo i wypierają je z listy.
   const info: Aktualnosc[] = SKLEP_OTWARTY ? [] : [
     { rodzaj: 'info', etykieta: 'Sklep', tytul: 'Sklep w budowie',
-      opis: 'Koszulki, bluzy, torby, materiały i maskotka Placebo. Zapisz się, a dam Ci znać, gdy ruszy.',
+      opis: 'Koszulki, bluzy, torby i maskotka Placebo. Zapisz się, a dam Ci znać, gdy ruszy.',
       href: '/sklep/', obraz: '/placebo/fartuch/h3-usmiech-fartuch.webp' },
-    { rodzaj: 'info', etykieta: 'Po co ten sklep', tytul: 'Rzeczy, które mówią to, co psychoedukacja',
-      opis: 'Sklep ma pokazywać, że o zdrowiu psychicznym można mówić bez wstydu, i finansować dalszą psychoedukację. Planuję też przekazywać część kwoty ze sprzedaży na pomoc młodym osobom w kryzysie. Organizację i zasady podam przed startem sprzedaży.',
+    { rodzaj: 'info', etykieta: 'Sklep z misją', tytul: 'Pomagamy wspólnie',
+      opis: 'Część kwoty ze sprzedaży chcę oddawać na pomoc młodym osobom w kryzysie. Cel wybierzemy razem, w ankiecie.',
       href: '/sklep/', obraz: '/placebo/fartuch/h6-powaga-fartuch.webp' },
-    { rodzaj: 'info', etykieta: 'Święta', tytul: 'Linia świąteczna z Placebo',
-      opis: 'Dwie koszulki i dwie bluzy na święta, m.in. „Przy wigilijnym stole nie diagnozuję” i „W święta pomagam sobie”. Terminu premiery jeszcze nie znam, więc nie obiecuję dostawy przed świętami.',
-      href: '/sklep/', obraz: '/sklep/cicha-noc-granatowa.webp' },
+    { rodzaj: 'info', etykieta: 'Święta', tytul: 'Coś na święta',
+      opis: 'Oryginalny prezent dla bliskich, którzy lubią mówić wprost. Zajrzyj do sklepu, gdy ruszy.',
+      href: '/sklep/', obraz: '/aktualnosci/choinka.svg' },
   ];
   return [...nowe, ...info];
 }
