@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Separator from '../../components/Separator.astro';
-import ListaArtykulow from '../../components/ListaArtykulow.astro';
+import PanelPublikacji from '../../components/PanelPublikacji.astro';
 import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
 import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../data/produkty';
 const karta = najnowszaDarmowaKarta();
@@ -29,17 +29,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
 
   <section id="jak-pracowac">
     <div class="wrap">
-      <div class="junior-panel">
-        <div class="junior-panel-head">
-          <img src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="48" height="48" alt="" aria-hidden="true">
-          <div>
-            <p class="eyebrow">Publikacje dla dzieci i rodziców</p>
-            <h2 class="h-sec">Jak pracować z dzieckiem</h2>
-          </div>
-        </div>
-        <p class="muted" style="margin-top:10px;max-width:62ch">Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych, z własną listą artykułów.</p>
-        <ListaArtykulow odbiorca="dzieci" zKategoria />
-      </div>
+      <PanelPublikacji odbiorca="dzieci" twarz="h3-usmiech" eyebrow="Publikacje dla dzieci i rodziców" tytul="Jak pracować z dzieckiem" opis="Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych, z własną listą artykułów." />
     </div>
   </section>
 
@@ -109,7 +99,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
 
   <section class="tight">
     <div class="wrap center">
-      <p class="note">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą. Telefon Zaufania dla Dzieci i Młodzieży: 116 111.</p>
+      <p class="note">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą.</p>
     </div>
   </section>
 </Base>

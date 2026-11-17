@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import ListaArtykulow from '../../components/ListaArtykulow.astro';
+import PanelPublikacji from '../../components/PanelPublikacji.astro';
 ---
 <Base tytul="Publikacje" opis="Publikacje Psyche Waves dla dorosłych: uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG. Ze źródłami i poziomem pewności.">
   <section class="article-head">
@@ -11,7 +11,9 @@ import ListaArtykulow from '../../components/ListaArtykulow.astro';
       <div class="btns" style="margin-top:18px"><a class="btn btn-junior" href="/placebo-junior/#jak-pracowac"><img src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="36" height="36" alt="" aria-hidden="true">Placebo Junior: publikacje dla dzieci</a></div>
     </div>
   </section>
-  <section class="tight">
-    <div class="wrap"><ListaArtykulow zKategoria /></div>
+  <section>
+    <div class="wrap">
+      <PanelPublikacji odbiorca="dorosli" twarz="h2-sceptyk" eyebrow="Artykuły dla dorosłych" tytul="Ze źródłami i poziomem pewności" opis="Mechanizmy, przykłady i pełne listy źródeł. Przy każdej tezie Placebo pyta: skąd to wiemy?" />
+    </div>
   </section>
 </Base>

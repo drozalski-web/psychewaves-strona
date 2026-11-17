@@ -1,0 +1,18 @@
+---
+// Panel z listą artykułów: ten sam styl dla dorosłych i dla Placebo Junior, z inną miną Placebo.
+import ListaArtykulow from './ListaArtykulow.astro';
+import type { Odbiorca } from '../lib/tresci';
+interface Props { odbiorca: Odbiorca; eyebrow: string; tytul: string; opis: string; twarz: string; id?: string }
+const { odbiorca, eyebrow, tytul, opis, twarz, id } = Astro.props;
+---
+<div class="junior-panel" id={id}>
+  <div class="junior-panel-head">
+    <img src={`/placebo/fartuch/${twarz}-fartuch.webp`} width="56" height="56" alt="" aria-hidden="true">
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="h-sec">{tytul}</h2>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:10px;max-width:62ch">{opis}</p>
+  <ListaArtykulow odbiorca={odbiorca} zKategoria />
+</div>
