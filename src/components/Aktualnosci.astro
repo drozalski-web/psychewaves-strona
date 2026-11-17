@@ -4,7 +4,7 @@ const pozycje = await aktualnosci(3);
 const dataPl = (d?: Date) => d?.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 {pozycje.length > 0 && (
-  <section class="tight">
+  <section class="tight" id="aktualnosci">
     <div class="wrap">
       <p class="eyebrow">Aktualności</p>
       <h2 class="h-sec">Co nowego</h2>

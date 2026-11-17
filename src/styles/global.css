@@ -392,3 +392,4 @@ section[id]{scroll-margin-top:90px}
 .news-title{font-family:var(--display);font-size:1.3rem;line-height:1.2}
 .news-desc{color:var(--muted);font-size:.95rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .news-date{color:var(--muted);font-size:.82rem}
+.news-card.info .news-desc{-webkit-line-clamp:unset;display:block}
