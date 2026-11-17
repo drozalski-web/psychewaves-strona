@@ -1,6 +1,8 @@
 # Odpowiedzi do drukarni (szkice do wysłania)
 
-Do obu wiadomości dołącz dwa pliki: `Psyche-Waves-mockupy-odziez-i-torby.pdf` (19 stron, wszystkie wzory, także bluzy) i `Psyche-Waves-Specyfikacja-odziez-i-torby-v3.4.pdf`. Lista wzorów testowych jest do wyboru, w nawiasach kwadratowych znajdziesz przykład.
+Szkice 1 i 2: koszulkowo.com i druga drukarnia (min. 25 szt.). Szkice 3 i 4: CAROL i Reflect/Openwear.pl. Na końcu jest zestawienie, co każda z nich oferuje.
+
+Do obu wiadomości dołącz dwa pliki: `Psyche-Waves-mockupy-odziez-i-torby.pdf` (19 stron, wszystkie wzory, także bluzy) i `Psyche-Waves-Specyfikacja-odziez-i-torby-v3.5.pdf`. Lista wzorów testowych jest do wyboru, w nawiasach kwadratowych znajdziesz przykład.
 
 ---
 
@@ -52,3 +54,63 @@ Pozdrawiam,
 Daniel Różalski
 Psyche Waves · psychoedukacja
 tel. 602 645 275 · psychewaves.pl · @psychewaves.pl
+
+---
+
+## 3. Odpowiedź do CAROL (min. haft 10, DTF 10, sitodruk 30 szt.; bez wysyłki do klienta)
+
+**Temat:** Re: Wycena znakowania: odzież i torby Psyche Waves (wizualizacje i ilości w załączeniu)
+
+Dzień dobry,
+
+dziękuję za konkretne informacje. W załączeniu przesyłam wizualizacje wszystkich wzorów (koszulki, bluzy i torby) oraz specyfikację, w której przy każdym wzorze podałem liczbę kolorów i miejsce nadruku.
+
+Do wyceny proszę o ofertę w następującym zakresie: DTF, po [10] szt. na wzór, dla wzorów: [np. koszulka „Horoskopy” (granatowa), bluza „Fale” (granatowa), torba „Nie wszystko trzeba nieść samemu” (jasna)]. Proszę też o ceny dla [25 i 50] szt. na wzór. Część wzorów ma kolorową grafikę (maskotkę), dlatego interesuje nas DTF. Dla wzorów z samym tekstem w 1–2 kolorach proszę dodatkowo o wycenę sitodruku (30 szt.), liczbę kolorów podałem w specyfikacji.
+
+Mam kilka pytań:
+
+1. **Wysyłka.** Rozumiem, że nie wysyłają Państwo do klientów. Zamówienie odbierzemy i wyślemy sami z własną ulotką, więc proszę o wycenę z dostawą na jeden adres.
+2. **Minimum.** Czy 10 szt. dotyczy sztuk łącznie (we wszystkich rozmiarach XS–XXL), czy każdego rozmiaru osobno? Czy ten sam wzór na dwóch kolorach ubrania (np. granatowym i jasnym) liczy się jako jeden, czy jako dwa projekty?
+3. **Próba.** Ile kosztuje próba (1 szt.) w DTF dla wybranego wzoru i ile trwa jej wykonanie? Chcemy zacząć od próby, a dopiero potem zamówić.
+4. **Termin.** Podali Państwo 10 dni roboczych od zaakceptowanych prób. Mamy cztery wzory świąteczne (dwie koszulki, dwie bluzy). Do kiedy trzeba zaakceptować próbę, żeby paczka dotarła przed świętami?
+5. **Ubrania.** Czy dostarczają Państwo odzież (Stanley/Stella lub równoważna, bawełna organiczna, najlepiej GOTS), czy mamy dostarczyć własną? Jakie kolory są dostępne od ręki: granat, biały, jasny błękitno-szary, torba naturalna?
+6. **Haft i drobny napis.** Znak marki na piersi bluz (ok. 6 cm) ma pod spodem napis „Psyche Waves” o wysokości liter ok. 3 mm. Czy w hafcie będzie czytelny? Jeśli nie, zrobimy go w DTF.
+7. **Dodatki.** Czy możliwa jest metka tkana z naszym logo na karku i pakowanie bez plastiku? Jeśli tak, za jaką dopłatą?
+
+Pozdrawiam,
+Daniel Różalski
+Psyche Waves · psychoedukacja
+tel. 602 645 275 · psychewaves.pl · @psychewaves.pl
+
+---
+
+## 4. Odpowiedź do Reflect / Openwear.pl (Pan Mateusz; Stanley/Stella z UK)
+
+**Temat:** Re: Współpraca: odzież z nadrukiem i haftem dla marki Psyche Waves
+
+Dzień dobry Panie Mateuszu,
+
+dziękuję za odpowiedź. W załączeniu przesyłam wizualizacje wszystkich wzorów i specyfikację, w której przy każdym wzorze podałem ilość kolorów, miejsce i rozmiar nadruku oraz kolor ubrania. Odpowiadam też na kwestie, o które Pan pytał.
+
+1. **Druk pod naszą marką.** Chodziło mi właśnie o to, o czym Pan pisze: wysyłka do naszych klientów jako Psyche Waves (nadawca), z naszą ulotką w paczce. Dziękuję za potwierdzenie. Proszę o warunki: koszt wysyłki i pakowania jednej paczki, czy mogą Państwo dołączyć ulotkę i czy przyjmują Państwo zamówienia pojedynczo, czy tylko hurtowo.
+2. **Minimum i próba.** Na start potrzebujemy tylko wersji testowych. Jakie jest minimum na wzór w poszczególnych technikach (haft, sitodruk, ewentualnie DTF lub DTG) i ile kosztuje próba 1 szt.? Do wyceny podaję wzory: [np. koszulka „Horoskopy” (granatowa), bluza „Fale” (granatowa), torba „Nie wszystko trzeba nieść samemu”].
+3. **Grafika pełnokolorowa.** Część wzorów ma kolorową maskotkę. Wspomniał Pan tylko o sitodruku plastizolowym. Czy wykonują Państwo DTF lub DTG dla takich wzorów?
+4. **Odporność nadruku.** Jaką wytrzymałość na pranie deklarują Państwo dla plastizolu?
+5. **Termin i Stanley/Stella.** Rozumiem, że przy Stanley/Stella termin 1–12 [grudnia] odpada przez czas sprowadzenia towaru z Wielkiej Brytanii. Czy mają Państwo od ręki, w Polsce lub UE, odzież z bawełny organicznej o zbliżonej gramaturze (koszulka 180–220 g/m², bluza 300–350 g/m²) w kolorach granat, biały i jasny błękitno-szary oraz torbę naturalną? Cztery wzory świąteczne (dwie koszulki, dwie bluzy) musiałyby dotrzeć przed świętami. Do kiedy trzeba je zamówić? Pozostałe wzory mogą poczekać na Stanley/Stella.
+6. **Haft i drobny napis.** Znak marki na piersi bluz (ok. 6 cm) ma pod spodem napis „Psyche Waves” o wysokości liter ok. 3 mm. Czy w hafcie będzie czytelny?
+
+Pozdrawiam,
+Daniel Różalski
+Psyche Waves · psychoedukacja
+tel. 602 645 275 · psychewaves.pl · @psychewaves.pl
+
+---
+
+## Zestawienie odpowiedzi drukarni (stan na 17.11.2026)
+
+| Drukarnia | Techniki | Minimum | Wysyłka do klienta z naszą ulotką | Próba | Termin |
+|---|---|---|---|---|---|
+| koszulkowo.com | DTG (ich propozycja) | nie podano | nie podano | nie podano | nie podano |
+| Druga drukarnia (min. 25 szt.) | sitodruk (farby wodne, plastizolowe, wywabowe), efekty | 25 szt. na wzór | nie (brak print on demand) | niekorzystna cenowo | ok. 15 dni roboczych od zamówienia i akceptacji wizualizacji |
+| CAROL | haft, DTF, sitodruk | haft 10, DTF 10, sitodruk 30 szt. (wzór i kolorystyka) | nie (umowa z firmą kurierską), wysyłka na nasz adres | koszt zależy od techniki, potrzebna wizualizacja | 10 dni roboczych od zaakceptowanych prób |
+| Reflect / Openwear.pl | sitodruk plastizolowy, haft | nie podano („zależy”) | tak, nadawcą może być Psyche Waves | nie podano | Stanley/Stella z UK: termin 1–12 odpada |
