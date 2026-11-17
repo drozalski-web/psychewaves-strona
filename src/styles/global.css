@@ -428,3 +428,29 @@ section[id]{scroll-margin-top:90px}
   .junior-card{padding:16px}
   h1{overflow-wrap:anywhere}
 }
+
+/* Telefon: obszary dotyku min. 44 px, czytelniejsze litery, wskazówka przewijania menu, krótsze strony */
+.btn{min-height:44px}
+footer.site a{display:inline-block;padding:10px 4px;margin:-10px -4px}
+.brand-sub{font-size:.7rem}
+.badge{font-size:.78rem}
+.chip,.lvl{font-size:.86rem}
+.news-date,.post .info{font-size:.9rem}
+@media (max-width:700px){
+  nav.main a{min-height:44px;display:flex;align-items:center}
+  nav.main ul{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:24px}
+  .news,.pl-faces,.roles{display:flex;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:12px;margin-inline:-16px;padding:4px 16px 10px}
+  .news::-webkit-scrollbar,.pl-faces::-webkit-scrollbar,.roles::-webkit-scrollbar{display:none}
+  .news > li{flex:0 0 78%;scroll-snap-align:start}
+  .roles > .role{flex:0 0 72%;scroll-snap-align:start}
+  .pl-faces > li{flex:0 0 46%;scroll-snap-align:start}
+  .topic{padding:16px 0}
+  section{padding-block:40px}
+  section.tight{padding-top:4px}
+  .principles{gap:18px;margin-top:20px}
+}
+.waitlist .check{padding-block:6px}
+.waitlist .check input{width:22px;height:22px;margin-top:2px}
+.waitlist label[for]{padding-block:4px}
+.back{display:inline-block;padding:10px 0}
+.mailbox .mail,.ig{display:inline-block;padding:6px 0}
