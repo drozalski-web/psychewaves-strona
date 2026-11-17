@@ -29,7 +29,7 @@ const zasady = [
       <div class="pl-hero-text">
         <p class="eyebrow">Przewodnik po dowodach</p>
         <h1>Poznaj Placebo</h1>
-        <p class="lead">Placebo to szczur, który słyszał już wszystko: „działa, bo to czuję”, „naukowcy to ukrywają”, „sprawdziłem na sobie”. Mówi mało, patrzy sceptycznie i na wszystko odpowiada jednym pytaniem: <strong>„Skąd to wiemy?”</strong></p>
+        <p class="lead">Placebo to szczur, który słyszał już wszystko: „działa, bo to czuję”, „naukowcy to ukrywają”, „sprawdziłem na sobie”. Mówi mało, patrzy sceptycznie i na wszystko odpowiada jednym pytaniem: <strong class="nb">„Skąd&nbsp;to&nbsp;wiemy?”</strong></p>
         <div class="btns">
           <a class="btn primary" href="/publikacje/">Czytaj publikacje</a>
           <a class="btn" href="/placebo-junior/">Placebo Junior</a>
@@ -42,12 +42,14 @@ const zasady = [
 
   <section>
     <div class="wrap">
+      <div class="pl-box">
       <Separator />
       <p class="eyebrow">Po co on tu jest</p>
       <h2 class="h-sec">Kontrola jakości dla psychoedukacji</h2>
       <div class="about-text" style="margin-top:16px">
         <p>Efekt placebo to jedno z najlepiej znanych zjawisk w badaniach: samo oczekiwanie poprawy potrafi zmienić to, jak się czujemy. Dlatego dobre badania mają grupę kontrolną. Placebo przypomina, że „zadziałało u mnie” to jeszcze nie dowód.</p>
         <p>W Psyche Waves pilnuje poziomu pewności (Wiemy, Badania sugerują, Hipoteza) i sprawdza nagłówki, zanim zrobią to za mnie komentarze. Czapka EEG to ukłon w stronę tematu, który lubię najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+      </div>
       </div>
     </div>
   </section>
@@ -72,7 +74,7 @@ const zasady = [
     <div class="wrap">
       <p class="eyebrow">Zasady Placebo</p>
       <h2 class="h-sec">Jak się zachowuje</h2>
-      <div class="principles">
+      <div class="principles boxed">
         {zasady.map(([t, o]) => <div><h3>{t}</h3><p>{o}</p></div>)}
       </div>
     </div>
@@ -95,17 +97,21 @@ const zasady = [
 
   <section class="tight">
     <div class="wrap">
-      <p class="eyebrow">Placebo Junior</p>
-      <h2 class="h-sec">A dla dzieci?</h2>
-      <p class="muted" style="margin-top:10px;max-width:62ch">Placebo ma też osobną, łagodną gałąź: psychoedukację dla dzieci i rodziców oraz karty pracy. To odrębna część strony i nie wpływa na to, jak Placebo pojawia się w treściach dla dorosłych.</p>
-      <div class="btns" style="margin-top:16px"><a class="btn primary" href="/placebo-junior/">Placebo Junior</a></div>
+      <div class="pl-box mist">
+        <p class="eyebrow">Placebo Junior</p>
+        <h2 class="h-sec">A dla dzieci?</h2>
+        <p class="muted" style="margin-top:10px">Placebo ma też osobną, łagodną gałąź: psychoedukację dla dzieci i rodziców oraz karty pracy. To odrębna część strony i nie wpływa na to, jak Placebo pojawia się w treściach dla dorosłych.</p>
+        <div class="btns" style="margin-top:16px"><a class="btn primary" href="/placebo-junior/">Placebo Junior</a></div>
+      </div>
     </div>
   </section>
 
   <section class="tight">
     <div class="wrap">
-      <Fala klasa="hero-wave" opis="Fala EEG, która przechodzi z chaosu w spokój i kończy się kroplą wody" />
-      <p class="note" style="margin-top:18px">Placebo jest postacią z ilustracji. Nie udziela porad ani diagnoz. Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+      <div class="pl-box">
+        <Fala klasa="hero-wave" opis="Fala EEG, która przechodzi z chaosu w spokój i kończy się kroplą wody" />
+        <p class="muted" style="margin-top:18px;font-size:.92rem">Placebo jest postacią z ilustracji. Nie udziela porad ani diagnoz. Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+      </div>
     </div>
   </section>
 </Base>

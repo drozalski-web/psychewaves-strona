@@ -275,7 +275,6 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;he
 
 /* Placebo: układ w jednej linii (komputer), zawijanie na mniejszych ekranach */
 @media (min-width:1000px){
-  .roles{grid-template-columns:repeat(5,minmax(0,1fr))}
   .pl-faces{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
   .pl-faces li{padding:14px 12px 16px}
 }
@@ -314,3 +313,12 @@ section[id]{scroll-margin-top:90px}
 .center{text-align:center}
 .center .note{margin-inline:auto;max-width:min(100%,960px);width:auto;border-top:0;padding-top:0;position:relative}
 .center .note::before{content:"";display:block;width:120px;height:3px;background:var(--wave);margin:0 auto 12px}
+
+/* Placebo: ramki i pełna szerokość tekstu */
+.nb{white-space:nowrap}
+.pl-box{border:1px solid var(--line);border-left:6px solid var(--wave);border-radius:18px;padding:28px 30px;background:var(--bg)}
+.pl-box.mist{background:var(--mist)}
+.pl-box .about-text,.pl-box p{max-width:none}
+.pl-box .sep{margin-bottom:14px}
+.pl-box .hero-wave{max-width:560px}
+.principles.boxed > div{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:var(--bg)}
