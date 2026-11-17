@@ -1,0 +1,18 @@
+---
+interface Props { aktywny: 'start' | 'odziez' | 'materialy' | 'junior' }
+const { aktywny } = Astro.props;
+const zakladki = [
+  ['start', '/sklep/', 'Sklep'],
+  ['odziez', '/sklep/odziez/', 'Odzież i torby'],
+  ['materialy', '/sklep/materialy/', 'Materiały'],
+  ['junior', '/sklep/placebo-junior/', 'Placebo Junior'],
+];
+---
+<nav class="sklep-nav" aria-label="Sekcje sklepu">
+  <div class="wrap">
+    <ul>
+      {zakladki.map(([id, href, nazwa]) => <li><a href={href} aria-current={id === aktywny ? 'page' : undefined}>{nazwa}</a></li>)}
+    </ul>
+    <span class="lvl sklep-status">Sklep w przygotowaniu</span>
+  </div>
+</nav>

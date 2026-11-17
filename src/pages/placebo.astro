@@ -1,0 +1,107 @@
+---
+import Base from '../layouts/Base.astro';
+import Separator from '../components/Separator.astro';
+const miny = [
+  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 285],
+  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 288],
+  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 302, 285],
+  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 285],
+  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 314, 290],
+  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 285],
+];
+const role = [
+  ['EEG i biofeedback', 'Pełna rola', 'Jego dom. Sprawdza obietnice cudów i pokazuje, co pomiar mózgu mówi, a czego nie mówi.'],
+  ['ADHD', 'Lekko', 'Weryfikuje mity i nagłówki typu „każdy ma ADHD”. Nie żartuje z objawów.'],
+  ['Relacje', 'Lekko', 'Sprawdza pop-psychologię: quizy stylów przywiązania, etykietowanie ex.'],
+  ['Uzależnienia i chemseks', 'Poważnie', ''],
+  ['Borderline, zaburzenia afektywne, psychoza', 'Raczej wcale', 'Najwyżej poważny znaczek przy poziomie pewności.'],
+];
+const zasady = [
+  ['Pyta o źródła', 'Jego hasło to „Skąd to wiemy?”. Pojawia się przy ocenie pewności: wiemy, badania sugerują czy hipoteza.'],
+  ['Żartuje z błędów myślenia', 'Z mitów, skrótów i zbyt pewnych nagłówków. Nigdy z osób, ich objawów ani ich kryzysów.'],
+  ['Ucisza się, gdy robi się ciężko', 'Przy tematach kryzysu, przemocy i uzależnień pojawia się tylko w poważnej, życzliwej wersji albo wcale.'],
+];
+---
+<Base tytul="Placebo" opis="Placebo: szczur w czapce EEG, który przy każdej tezie z psychologii pyta „skąd to wiemy?”. Przewodnik po dowodach w Psyche Waves.">
+  <section class="hero">
+    <div class="wrap pl-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Przewodnik po dowodach</p>
+        <h1>Poznaj Placebo</h1>
+        <p class="lead">Placebo to szczur, który słyszał już wszystko: „działa, bo to czuję”, „naukowcy to ukrywają”, „sprawdziłem na sobie”. Mówi mało, patrzy sceptycznie i na wszystko odpowiada jednym pytaniem: <strong class="nb">„Skąd&nbsp;to&nbsp;wiemy?”</strong></p>
+        <div class="btns">
+          <a class="btn primary" href="/publikacje/">Czytaj publikacje</a>
+          <a class="btn" href="/placebo-junior/">Placebo Junior</a>
+          <a class="btn" href="/sklep/">Sklep</a>
+        </div>
+      </div>
+      <img class="pl-hero-img" src="/placebo/fartuch/tq-fartuch.webp" width="456" height="631" alt="Placebo: biały szczur w czapce EEG i fartuchu laboratoryjnym z plakietką, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="pl-box">
+      <Separator />
+      <p class="eyebrow">Po co on tu jest</p>
+      <h2 class="h-sec">Kontrola jakości dla psychoedukacji</h2>
+      <div class="about-text" style="margin-top:16px">
+        <p>Efekt placebo to jedno z najlepiej znanych zjawisk w badaniach: samo oczekiwanie poprawy potrafi zmienić to, jak się czujemy. Dlatego dobre badania mają grupę kontrolną. Placebo przypomina, że „zadziałało u mnie” to jeszcze nie dowód.</p>
+        <p>W Psyche Waves pilnuje poziomu pewności (Wiemy, Badania sugerują, Hipoteza) i sprawdza nagłówki, zanim zrobią to za mnie komentarze. Czapka EEG to ukłon w stronę tematu, który lubię najbardziej: co da się zmierzyć w mózgu, a czego nie da się z tego wywnioskować.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">W moich tematach</p>
+      <h2 class="h-sec">Gdzie się pojawia, a gdzie milczy</h2>
+      <div class="roles">
+        {role.map(([t, poz, o]) => (
+          <div class="role">
+            <h3>{t}</h3>
+            <span class={`lvl ${poz === 'Poważnie' || poz === 'Raczej wcale' ? '' : 'k'}`}>{poz}</span>
+            {o && <p>{o}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Zasady Placebo</p>
+      <h2 class="h-sec">Jak się zachowuje</h2>
+      <div class="principles boxed">
+        {zasady.map(([t, o]) => <div><h3>{t}</h3><p>{o}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Miny</p>
+      <h2 class="h-sec">Sześć wyrazów twarzy</h2>
+      <ul class="pl-faces">
+        {miny.map(([f, n, o, w, h]) => (
+          <li>
+            <img src={`/placebo/fartuch/${f}-fartuch.webp`} width={w} height={h} alt={`Placebo w fartuchu: ${String(n).toLowerCase()}`} loading="lazy">
+            <h3>{n}</h3><p>{o}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="pl-box mist">
+        <p class="eyebrow">Placebo Junior</p>
+        <h2 class="h-sec">A dla dzieci?</h2>
+        <p class="muted" style="margin-top:10px">Placebo ma też osobną, łagodną gałąź: psychoedukację dla dzieci i rodziców oraz karty pracy. To odrębna część strony i nie wpływa na to, jak Placebo pojawia się w treściach dla dorosłych.</p>
+        <div class="btns" style="margin-top:16px"><a class="btn primary" href="/placebo-junior/">Placebo Junior</a></div>
+      </div>
+    </div>
+  </section>
+</Base>

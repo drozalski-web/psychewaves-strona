@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Separator from './Separator.astro';
+import SklepNav from './SklepNav.astro';
+import WzorKarta from './WzorKarta.astro';
+import FormularzNewsletter from './FormularzNewsletter.astro';
+import { wzory, wyrozniane } from '../data/sklep';
+const kafelki = [
+  ['/sklep/odziez/', `Odzież i torby`, `${wzory.length} wzorów: koszulki, bluzy i torby z hasłami Psyche Waves i z Placebo. Na razie możesz je obejrzeć i wybrać te, które chcesz mieć.`, ['skad-przod', 'bateria-przod', 'nie-wszystko'], 'Zobacz wzory'],
+  ['/sklep/materialy/', 'Materiały do wydruku', 'Checklisty, plansze i karty do krytycznego czytania psychologii. Z poziomami pewności i źródłami.', null, 'Zobacz materiały'],
+  ['/sklep/placebo-junior/', 'Linia Placebo Junior', 'Karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.', null, 'Zobacz Placebo Junior'],
+];
+---
+<Base tytul="Sklep" opis="Sklep Psyche Waves: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu, materiały do wydruku i Linia Placebo Junior. Wzory w przygotowaniu.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Sklep Psyche Waves</p>
+      <h1>Rzeczy z hasłami, które mówią to, co psychoedukacja bez wstydu.</h1>
+      <p class="standfirst">Koszulki, bluzy i torby, materiały do wydruku i Linia Placebo Junior. Sklep jest w przygotowaniu: możesz już obejrzeć wzory i wybrać te, które chcesz mieć. Dzięki temu będę wiedzieć, od czego zacząć produkcję.</p>
+      <div class="btns" style="margin-top:20px">
+        <a class="btn primary" href="/sklep/odziez/">Zobacz wzory</a>
+        <a class="btn" href="#lista">Zapisz się na listę</a>
+      </div>
+    </div>
+  </section>
+  <SklepNav aktywny="start" />
+
+  <section>
+    <div class="wrap">
+      <ul class="kafelki">
+        {kafelki.map(([href, tytul, opis, obrazy, cta]) => (
+          <li class="kafelek">
+            <a href={href as string}>
+              {obrazy && <span class="kafelek-obrazy">{(obrazy as string[]).map((o) => <img src={`/sklep/${o}.webp`} width="800" height="1000" alt="" loading="lazy">)}</span>}
+              <h2>{tytul}</h2>
+              <p class="muted">{opis}</p>
+              <span class="kafelek-cta">{cta} →</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Wyróżnione wzory</p>
+      <h2 class="h-sec">Na początek</h2>
+      <div class="wzory-grid">
+        {wyrozniane.map((w) => <WzorKarta wzor={w} />)}
+      </div>
+      <div class="btns" style="margin-top:22px"><a class="btn primary" href="/sklep/odziez/">Zobacz wszystkie wzory i wybierz swoje</a></div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Jak to będzie działać</p>
+      <h2 class="h-sec">Trzy kroki</h2>
+      <ol class="kroki">
+        <li><strong>Wybierz.</strong> Obejrzyj wzory i zaznacz „Chcę to” przy tych, które Ci się podobają. Nic nie kupujesz i nie płacisz.</li>
+        <li><strong>Zostaw e-mail.</strong> Wzory, które wybierze najwięcej osób, trafią do produkcji jako pierwsze.</li>
+        <li><strong>Dam Ci znać.</strong> Gdy sprzedaż ruszy, napiszę jako pierwszy do osób z listy. Planuję produkcję na zamówienie, bez magazynu.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tight" id="lista">
+    <div class="wrap">
+      <Separator />
+      <p class="eyebrow">Lista oczekujących</p>
+      <h2 class="h-sec">Daj znać, gdy sklep ruszy</h2>
+      <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowy produkt albo ruszy sprzedaż. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+      <FormularzNewsletter nazwa="lista-placebo" id="wl" />
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap center">
+      <p class="note">Materiały i karty pracy są edukacyjne i nie są terapią ani diagnozą. Jeśli potrzebujesz pomocy teraz, numery znajdziesz poniżej.</p>
+    </div>
+  </section>
+</Base>

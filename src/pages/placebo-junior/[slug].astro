@@ -1,0 +1,11 @@
+---
+import StronaArtykulu from '../../components/StronaArtykulu.astro';
+import { artykuly } from '../../lib/tresci';
+
+export async function getStaticPaths() {
+  const lista = await artykuly('dzieci');
+  return lista.map((a) => ({ params: { slug: a.id }, props: { a } }));
+}
+const { a } = Astro.props;
+---
+<StronaArtykulu a={a} dzieci />

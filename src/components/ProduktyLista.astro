@@ -1,0 +1,22 @@
+---
+import { produkty } from '../data/produkty';
+interface Props { grupa: 'dorosli' | 'junior'; rodzaj?: 'karta' | 'gadzet' | 'materialy' }
+const { grupa, rodzaj } = Astro.props;
+const lista = produkty.filter((p) => p.grupa === grupa && (!rodzaj || p.rodzaj === rodzaj));
+---
+<ul class="shop">
+  {lista.map((p) => (
+    <li class="item" id={p.id}>
+      <div>
+        <p class="shop-type">{p.typ}</p>
+        <h3>{p.nazwa}</h3>
+        <p>{p.opis}</p>
+      </div>
+      <div class="shop-cta">
+        {p.status === 'dostepne'
+          ? <a class="btn primary" href={p.href} download>{p.darmowy ? 'Pobierz za darmo' : 'Pobierz'}</a>
+          : <span class="lvl">W przygotowaniu</span>}
+      </div>
+    </li>
+  ))}
+</ul>

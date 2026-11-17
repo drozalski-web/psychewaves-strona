@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Fala from '../components/Fala.astro';
 import Separator from '../components/Separator.astro';
 import ListaArtykulow from '../components/ListaArtykulow.astro';
+import Aktualnosci from '../components/Aktualnosci.astro';
 const tematy = [
   ['Uzależnienia', 'Mechanizmy nagrody, nawroty, chemseks. Redukcja szkód zamiast moralizowania.'],
   ['ADHD', 'Uwaga, czas, emocje. Jak ADHD wygląda u dorosłych i dlaczego tak długo bywa niezauważone.'],
@@ -49,6 +50,20 @@ const tematy = [
 
   <section class="tight">
     <div class="wrap">
+      <div class="teaser">
+        <img src="/placebo/fartuch/front-fartuch.webp" width="469" height="614" alt="Placebo, biały szczur w czapce EEG i fartuchu laboratoryjnym, patrzy sceptycznie" loading="lazy">
+        <div>
+          <p class="eyebrow">Przewodnik po dowodach</p>
+          <h2 class="h-sec">Poznaj Placebo</h2>
+          <p style="margin-top:8px">Szczur w czapce EEG, który przy każdej tezie z psychologii pyta: „Skąd to wiemy?”. Pilnuje poziomu pewności, a przy trudnych tematach milknie.</p>
+          <div class="btns"><a class="btn primary" href="/placebo/">Poznaj Placebo</a><a class="btn" href="/placebo-junior/">Placebo Junior</a><a class="btn" href="/sklep/">Sklep</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
       <p class="eyebrow">Jak tu piszę</p>
       <div class="principles">
         <div><h3>Ze źródłami</h3><p>Każda publikacja kończy się bibliografią. Nie cytuję badań, których nie przeczytałem.</p></div>
@@ -58,4 +73,6 @@ const tematy = [
       </div>
     </div>
   </section>
+
+  <Aktualnosci />
 </Base>

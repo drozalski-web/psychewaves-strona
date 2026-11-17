@@ -7,6 +7,9 @@ const sciezka = Astro.url.pathname;
 const menu = [
   { href: '/', nazwa: 'Start' },
   { href: '/publikacje/', nazwa: 'Publikacje' },
+  { href: '/placebo/', nazwa: 'Placebo' },
+  { href: '/placebo-junior/', nazwa: 'Placebo Junior' },
+  { href: '/sklep/', nazwa: 'Sklep' },
   { href: '/o-mnie/', nazwa: 'O mnie' },
   { href: '/kontakt/', nazwa: 'Kontakt' },
 ];
@@ -79,7 +82,7 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
   <footer class="site">
     <div class="wrap">
       <div class="row">
-        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl</span>
+        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/wspolpraca/">Współpraca</a></span>
         <span class="hash">#PSYCHEWAVES</span>
       </div>
       <p>Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>

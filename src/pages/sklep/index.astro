@@ -1,0 +1,6 @@
+---
+import SklepStart from '../../components/SklepStart.astro';
+import SklepWBudowie from '../../components/SklepWBudowie.astro';
+import { SKLEP_OTWARTY } from '../../data/sklep-config';
+---
+{SKLEP_OTWARTY ? <SklepStart /> : <SklepWBudowie />}

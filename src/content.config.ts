@@ -7,6 +7,8 @@ const artykuly = defineCollection({
     tytul: z.string(),
     zajawka: z.string(),
     kategoria: z.string(),
+    // dla kogo: dorośli (publikacje naukowe) albo dzieci i rodzice (Placebo Junior)
+    odbiorca: z.enum(['dorosli', 'dzieci']).default('dorosli'),
     data: z.coerce.date(),
     czasCzytania: z.number(),
     // id tematu z src/data/tematy.yml; po publikacji temat znika z „W przygotowaniu”

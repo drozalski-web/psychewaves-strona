@@ -1,0 +1,105 @@
+---
+import Base from '../../layouts/Base.astro';
+import Separator from '../../components/Separator.astro';
+import PanelPublikacji from '../../components/PanelPublikacji.astro';
+import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
+import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../data/produkty';
+const karta = najnowszaDarmowaKarta();
+const gadzet = najnowszyGadzet();
+const gadzetNext = gadzetWkrotce();
+const gadzetPokaz = gadzet ?? gadzetNext;
+---
+<Base tytul="Placebo Junior" opis="Placebo Junior: publikacje dla dzieci i rodziców, karty pracy i gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
+  <section class="hero">
+    <div class="wrap pl-hero junior-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Dla dzieci 6–10 lat i ich dorosłych</p>
+        <h1>Placebo Junior</h1>
+        <p class="lead">Cześć, jestem Placebo! Mam czapkę, która pokazuje fale, i mnóstwo pytań. Pokażę Ci, że emocje są jak fale: raz małe, raz duże, a potem się uspokajają. Razem z dorosłym pokolorujesz, narysujesz i sprawdzisz, co pomaga właśnie Tobie.</p>
+        <div class="btns btns-line">
+          <a class="btn" href="#jak-pracowac">Jak pracować z dzieckiem</a>
+          <a class="btn" href="#karty-pracy">Karty pracy</a>
+          <a class="btn" href="#gadzety">Gadżety</a>
+          <a class="btn primary" href="/sklep/placebo-junior/">Sklep Placebo Junior</a>
+        </div>
+      </div>
+      <img class="pl-hero-img junior" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką, szeroko się uśmiecha z zamkniętymi oczami" fetchpriority="high">
+    </div>
+  </section>
+
+  <section id="jak-pracowac">
+    <div class="wrap">
+      <PanelPublikacji odbiorca="dzieci" twarz="h3-usmiech" eyebrow="Publikacje dla dzieci i rodziców" tytul="Jak pracować z dzieckiem" opis="Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych, z własną listą artykułów." />
+    </div>
+  </section>
+
+  <section class="tight" id="karty-pracy">
+    <div class="wrap">
+      <p class="eyebrow">Karty pracy</p>
+      <h2 class="h-sec">Do wydruku, razem z dorosłym</h2>
+      {karta && (
+        <article class="junior-card">
+          <img class="junior-card-img" src="/karty-pracy/podglad-fale-w-mojej-glowie.webp" width="909" height="1287" alt="Podgląd pierwszej strony karty pracy „Fale w mojej głowie”: Placebo i termometr fal" loading="lazy">
+          <div class="junior-card-body">
+            <p class="shop-type">{karta.typ}</p>
+            <h3>{karta.nazwa}</h3>
+            <p class="muted">{karta.opis}</p>
+            <ul class="plain">
+              <li>Zakreślanie i rysowanie, bez czytania długich tekstów</li>
+              <li>Nie ma złych odpowiedzi</li>
+              <li>Do wypełnienia razem z dorosłym</li>
+            </ul>
+            <div class="btns">
+              <a class="btn primary" href={karta.href} download>Pobierz za darmo</a>
+              <a class="btn" href="/sklep/placebo-junior/">Więcej kart pracy znajdziesz w sklepie</a>
+            </div>
+          </div>
+        </article>
+      )}
+    </div>
+  </section>
+
+  <section class="tight" id="gadzety">
+    <div class="wrap">
+      <p class="eyebrow">Gadżety</p>
+      <h2 class="h-sec">{gadzet ? 'Najnowszy gadżet z Placebo' : 'Pierwszy gadżet: maskotka Placebo'}</h2>
+      {gadzetPokaz && (
+        <article class="junior-card">
+          <img class="junior-card-img gadzet" src="/placebo/fartuch/h3-usmiech-fartuch.webp" width="302" height="285" alt="Placebo w fartuchu z plakietką, szeroko się uśmiecha" loading="lazy">
+          <div class="junior-card-body">
+            <p class="shop-type">{gadzetPokaz.typ}</p>
+            <h3>{gadzetPokaz.nazwa}</h3>
+            <p class="muted">{gadzetPokaz.opis}</p>
+            {!gadzet && <p><span class="lvl">W przygotowaniu</span></p>}
+            {!gadzet && <p class="muted"><strong style="color:var(--ink)">Chcesz ją mieć?</strong> Zapisz się poniżej. Liczba zapisów pokaże mi, czy warto zamówić pierwszą partię.</p>}
+            <div class="btns">
+              {gadzet
+                ? <a class="btn primary" href={`/sklep/placebo-junior/#${gadzet.id}`}>Zobacz w sklepie</a>
+                : <a class="btn primary" href="#newsletter">Chcę maskotkę</a>}
+              <a class="btn" href="/sklep/placebo-junior/">Więcej z Linii Placebo Junior</a>
+            </div>
+          </div>
+        </article>
+      )}
+    </div>
+  </section>
+
+  <section class="tight" id="newsletter">
+    <div class="wrap">
+      <div class="newsletter">
+        <div>
+          <p class="eyebrow">Newsletter</p>
+          <h2 class="h-sec">Placebo Junior w Twojej skrzynce</h2>
+          <p class="muted" style="margin-top:10px">Nowe karty pracy, publikacje dla rodziców i wiadomość o premierze maskotki. Rzadko i bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
+        </div>
+        <FormularzNewsletter nazwa="newsletter-junior" id="nj" maskotka />
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap center">
+      <p class="note">Materiały są edukacyjne, dla dorosłych pracujących z dziećmi, i nie są terapią ani diagnozą. Jeśli dziecko ma trudności, które Cię niepokoją, porozmawiaj ze specjalistą.</p>
+    </div>
+  </section>
+</Base>

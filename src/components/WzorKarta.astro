@@ -1,0 +1,31 @@
+---
+import type { WzorSklepu } from '../data/sklep';
+import { typy } from '../data/sklep';
+interface Props { wzor: WzorSklepu; wybor?: boolean }
+const { wzor, wybor = false } = Astro.props;
+const w = wzor;
+---
+<article class="wzor" data-typ={w.typ} data-linia={w.linia} data-placebo={w.placebo ? '1' : '0'}>
+  <div class="wzor-media">
+    {w.obrazy.map((o, i) => (
+      <img src={o.src} width="800" height="1000" alt={`${w.nazwa}: ${o.etykieta.toLowerCase()}`} loading={i === 0 ? 'eager' : 'lazy'} data-widok={i} hidden={i !== 0}>
+    ))}
+    <div class="wzor-badges">
+      {w.nowosc && <span class="badge nowe">Nowość</span>}
+      {w.limit && <span class="badge">Edycja limitowana</span>}
+      {w.placebo && <span class="badge">Z Placebo</span>}
+    </div>
+  </div>
+  {w.obrazy.length > 1 && (
+    <div class="wzor-widoki" role="group" aria-label="Widok wzoru">
+      {w.obrazy.map((o, i) => <button type="button" data-widok-btn={i} aria-pressed={i === 0 ? 'true' : 'false'}>{o.etykieta}</button>)}
+    </div>
+  )}
+  <div class="wzor-body">
+    <p class="shop-type">{typy[w.typ]} · {w.linia}</p>
+    <h3>{w.nazwa}</h3>
+    <p class="muted">{w.opis}</p>
+    <p class="wzor-kolory">{w.kolory.join(' · ')}</p>
+    {wybor && <label class="chce-btn"><input type="checkbox" name="chce" value={w.id}><span>Chcę to</span></label>}
+  </div>
+</article>

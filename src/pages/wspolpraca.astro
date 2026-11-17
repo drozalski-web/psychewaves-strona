@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import Separator from '../components/Separator.astro';
+const email = 'kontakt@psychewaves.pl';
+const formaty = [
+  ['Seria „Skąd to wiemy?”', 'Placebo sprawdza jedną tezę związaną z Twoją branżą: sen, uwaga, EEG, edukacja, aplikacje. Z poziomem pewności i źródłami, oznaczone jako współpraca.'],
+  ['Karta pracy lub plakat z logo', 'Materiał do pobrania dla rodziców, szkół albo gabinetów. Twoja marka jako fundator darmowego zasobu, bez promowania produktu w treści edukacyjnej.'],
+  ['Partner linii Placebo', 'Wspólna edycja naklejek, notesów lub kart pracy. Dla wydawców, drukarni, księgarń i organizacji edukacyjnych.'],
+  ['Warsztat lub prelekcja', 'Psychoedukacja z Placebo dla studentów, szkół i firm: mechanizmy, a nie diagnozy.'],
+];
+const tak = ['Edukacja, książki, papiernictwo, narzędzia do nauki', 'Technologie i sprzęt do pomiaru snu lub aktywności, bez obietnic leczenia', 'Organizacje pozarządowe, uczelnie, wydawnictwa, festiwale nauki', 'Zdrowie psychiczne: platformy do szukania specjalistów, jeśli ich oferta jest rzetelna'];
+const nie = ['Alkohol, nikotyna, hazard, zakłady, pożyczki', 'Suplementy i produkty obiecujące efekt „dla mózgu” lub „na lęk”', 'Cokolwiek sugerującego leczenie, diagnozę lub zastąpienie terapii', 'Treści, w których Placebo żartuje z osób w kryzysie'];
+---
+<Base tytul="Współpraca" opis="Współpraca z Psyche Waves i maskotką Placebo: formaty, zasady, czego nie robimy. Dla marek z obszaru edukacji, nauki i zdrowia psychicznego.">
+  <section class="article-head">
+    <div class="wrap">
+      <p class="eyebrow">Dla marek i organizacji</p>
+      <h1>Współpraca z Placebo</h1>
+      <p class="standfirst">Psyche Waves to psychoedukacja ze źródłami, a Placebo to jej twarz. Współpracuję z markami, którym zależy na zaufaniu odbiorców, więc zasady mam przejrzyste.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Formaty</p>
+      <h2 class="h-sec">Co możemy zrobić razem</h2>
+      <div class="principles">
+        {formaty.map(([t, o]) => <div><h3>{t}</h3><p>{o}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <Separator />
+      <p class="eyebrow">Zasady</p>
+      <h2 class="h-sec">Na czym się opieramy</h2>
+      <div class="pl-cols">
+        <div><h3>Chętnie</h3><ul class="plain">{tak.map((t) => <li>{t}</li>)}</ul></div>
+        <div><h3>Nie robimy</h3><ul class="plain">{nie.map((t) => <li>{t}</li>)}</ul></div>
+      </div>
+      <div class="about-text" style="margin-top:28px">
+        <p><strong>Oznaczenie.</strong> Każda współpraca jest wyraźnie oznaczona jako reklama lub materiał partnerski.</p>
+        <p><strong>Niezależność.</strong> Partner nie zatwierdza wniosków merytorycznych ani poziomu pewności. Może sprawdzić fakty dotyczące własnej firmy.</p>
+        <p><strong>Pomoc.</strong> Treści o trudnych tematach zawsze zawierają numery pomocowe, niezależnie od partnera.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Kontakt</p>
+      <h2 class="h-sec">Napisz kilka zdań o swojej marce</h2>
+      <p class="muted" style="margin-top:10px">Aktualne statystyki konta i wzór oferty przesyłam na zapytanie. Napisz, kim jest Twój odbiorca i co chcecie osiągnąć.</p>
+      <div class="btns" style="margin-top:18px">
+        <a class="btn primary" href={`mailto:${email}?subject=Wsp%C3%B3%C5%82praca%20z%20Placebo`}>Napisz e-mail</a>
+        <a class="btn" href="/placebo/">Poznaj Placebo</a>
+      </div>
+    </div>
+  </section>
+</Base>

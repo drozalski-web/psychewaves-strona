@@ -1,0 +1,28 @@
+---
+import { aktualnosci } from '../lib/aktualnosci';
+const pozycje = await aktualnosci(3);
+const dataPl = (d?: Date) => d?.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+{pozycje.length > 0 && (
+  <section class="tight" id="aktualnosci">
+    <div class="wrap">
+      <p class="eyebrow">Aktualności</p>
+      <h2 class="h-sec">Co nowego</h2>
+      <ul class="news">
+        {pozycje.map((a) => (
+          <li class={`news-card ${a.rodzaj}`}>
+            <a href={a.href}>
+              {a.obraz && <span class="news-img"><img src={a.obraz} alt="" loading="lazy"></span>}
+              <span class="news-body">
+                <span class={`badge${a.rodzaj === 'produkt' ? ' nowe' : ''}`}>{a.etykieta}</span>
+                <span class="news-title">{a.tytul}</span>
+                <span class="news-desc">{a.opis}</span>
+                {a.data && <span class="news-date">{dataPl(a.data)}</span>}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
