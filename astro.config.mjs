@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Zamienia `Wiemy`, `Badania sugerują`, `Hipoteza` (kod w linii) na plakietki poziomu pewności.
-const POZIOMY = { 'Wiemy': 'claim', 'Badania sugerują': 'claim', 'Hipoteza': 'claim h' };
+const POZIOMY = { 'Wiemy': 'claim w', 'Badania sugerują': 'claim', 'Hipoteza': 'claim h' };
 function rehypePoziomPewnosci() {
   const walk = (node, parent) => {
     if (node.type === 'element' && node.tagName === 'code' && parent?.tagName !== 'pre') {
