@@ -45,10 +45,10 @@ export async function aktualnosci(limit = 3): Promise<Aktualnosc[]> {
   const info: Aktualnosc[] = SKLEP_OTWARTY ? [] : [
     { rodzaj: 'info', etykieta: 'Sklep', tytul: 'Sklep w budowie',
       opis: 'Koszulki, bluzy, torby i gadżety Placebo. Zapisz się, a dam Ci znać, gdy ruszy.',
-      href: '/sklep/', obraz: '/placebo/fartuch/h3-usmiech-fartuch.webp' },
+      href: '/sklep/', obraz: '/placebo/h3-usmiech.webp' },
     { rodzaj: 'info', etykieta: 'Sklep z misją', tytul: 'Pomagamy wspólnie',
       opis: 'Sklep pozwoli mi rozwijać się zawodowo i dalej tworzyć psychoedukację. Część kwoty oddam na pomoc w zdrowiu psychicznym, a komu, wybierzemy razem w głosowaniu.',
-      href: '/sklep/', obraz: '/placebo/fartuch/h6-powaga-fartuch.webp' },
+      href: '/sklep/', obraz: '/placebo/h6-powaga.webp' },
     { rodzaj: 'info', etykieta: 'Święta', tytul: 'Coś na święta',
       opis: 'Oryginalny prezent dla bliskich, którzy lubią mówić wprost. Zajrzyj do sklepu, gdy ruszy.',
       href: '/sklep/', obraz: '/aktualnosci/choinka.svg' },

@@ -2,18 +2,22 @@
 import Base from '../layouts/Base.astro';
 import Separator from '../components/Separator.astro';
 const miny = [
-  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 285],
-  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 288],
-  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 302, 285],
-  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 285],
-  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 314, 290],
-  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 285],
+  ['h1-deadpan', 'Bez wrażenia', 'Tak patrzy na tytuł „cudowny sposób na mózg”.', 303, 228],
+  ['h2-sceptyk', 'Uniesiona brew', 'Pytanie „skąd to wiemy?” w wersji obrazkowej.', 294, 230],
+  ['h3-usmiech', 'Ciepły uśmiech', 'Kiedy ktoś zadaje dobre pytanie albo prosi o pomoc.', 303, 228],
+  ['h4-zdziwienie', 'Zdziwienie', 'Gdy badanie wyszło inaczej, niż zakładano.', 302, 228],
+  ['h5-facepalm', 'Dłoń na twarzy', 'Reakcja na wielkie wnioski z małej próby.', 313, 233],
+  ['h6-powaga', 'Poważnie i życzliwie', 'Wersja na trudne tematy. Tu nie ma żartów.', 300, 228],
+];
+const warianty = [
+  ['/placebo/front.webp', 469, 613, 'Placebo w czapce EEG, bez ubrania', 'Domyślny', 'W postach, rolkach, na stronie i w Placebo Junior. Tylko ta wersja pojawia się przy trudnych tematach.'],
+  ['/placebo/fartuch/front-fartuch.webp', 469, 614, 'Placebo w fartuchu laboratoryjnym z plakietką', 'W fartuchu', 'Przy badaniach i nauce: warsztaty, prezentacje, współprace. Nigdy przy trudnych tematach, bo fartuch sugeruje uprawnienia, których Placebo (ani ja) nie ma.'],
 ];
 const role = [
   ['EEG i biofeedback', 'Pełna rola', 'Jego dom. Sprawdza obietnice cudów i pokazuje, co pomiar mózgu mówi, a czego nie mówi.'],
   ['ADHD', 'Lekko', 'Weryfikuje mity i nagłówki typu „każdy ma ADHD”. Nie żartuje z objawów.'],
   ['Relacje', 'Lekko', 'Sprawdza pop-psychologię: quizy stylów przywiązania, etykietowanie ex.'],
-  ['Uzależnienia i chemseks', 'Poważnie', ''],
+  ['Uzależnienia i chemseks', 'Poważnie', 'Tylko poważna, życzliwa mina albo wcale. Bez żartów i zawsze z numerami pomocy.'],
   ['Borderline, zaburzenia afektywne, psychoza', 'Raczej wcale', 'Najwyżej poważny znaczek przy poziomie pewności.'],
 ];
 const zasady = [
@@ -35,7 +39,7 @@ const zasady = [
           <a class="btn" href="/sklep/">Sklep</a>
         </div>
       </div>
-      <img class="pl-hero-img" src="/placebo/fartuch/tq-fartuch.webp" width="456" height="631" alt="Placebo: biały szczur w czapce EEG i fartuchu laboratoryjnym z plakietką, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
+      <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
     </div>
   </section>
 
@@ -86,8 +90,23 @@ const zasady = [
       <ul class="pl-faces">
         {miny.map(([f, n, o, w, h]) => (
           <li>
-            <img src={`/placebo/fartuch/${f}-fartuch.webp`} width={w} height={h} alt={`Placebo w fartuchu: ${String(n).toLowerCase()}`} loading="lazy">
+            <img src={`/placebo/${f}.webp`} width={w} height={h} alt={`Placebo: ${String(n).toLowerCase()}`} loading="lazy">
             <h3>{n}</h3><p>{o}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Dwa warianty</p>
+      <h2 class="h-sec">Kiedy Placebo zakłada fartuch</h2>
+      <ul class="pl-warianty">
+        {warianty.map(([src, w, h, alt, n, o]) => (
+          <li>
+            <img src={src} width={w} height={h} alt={alt} loading="lazy">
+            <div><h3>{n}</h3><p>{o}</p></div>
           </li>
         ))}
       </ul>
