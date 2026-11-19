@@ -1,0 +1,127 @@
+---
+// Akcja #stopsprawdzam: łączy krytyczne czytanie psychologii, Placebo, publikacje i odzież.
+import '@fontsource/inter/latin-700-italic.css';
+import '@fontsource/inter/latin-ext-700-italic.css';
+import Base from '../layouts/Base.astro';
+import Separator from '../components/Separator.astro';
+
+const pytania = [
+  ['Kto to mówi?', 'Badacz, lekarz, influencer czy firma, która coś sprzedaje? To jeszcze nie przesądza o prawdzie, ale mówi, czego się spodziewać.'],
+  ['Skąd to wiemy?', 'Czy jest badanie, a jeśli tak, to jakie? „Naukowcy odkryli” bez nazwiska, czasopisma i roku to dopiero obietnica źródła.'],
+  ['Na kim to sprawdzono?', 'Na 20 studentach, na myszach czy na tysiącach osób? Wynik z małej albo bardzo wąskiej grupy nie musi dotyczyć Ciebie.'],
+  ['Z czym to porównano?', 'Bez grupy kontrolnej nie wiadomo, czy zadziałała metoda, czas, czy samo oczekiwanie poprawy, czyli efekt placebo.'],
+  ['Jak pewny jest wniosek?', 'Jedno badanie to hipoteza albo wskazówka. Pewność rośnie, gdy wynik powtarza się w wielu niezależnych pracach.'],
+];
+
+const sygnaly = [
+  ['/placebo/h5-facepalm.webp', 313, 233, 'Placebo zasłania twarz dłonią', '„Jedno badanie zmienia wszystko”', 'Wielki wniosek z jednej, często małej próby.'],
+  ['/placebo/h4-zdziwienie.webp', 302, 228, 'Placebo jest zdziwione', '„Wiąże się z…” czytane jako „powoduje”', 'Dwie rzeczy występują razem, ale to jeszcze nie znaczy, że jedna wywołuje drugą.'],
+  ['/placebo/h1-deadpan.webp', 303, 228, 'Placebo patrzy bez wrażenia', '„Cudowny sposób na mózg”', 'Obietnica szybkiej, pewnej zmiany, zwykle z linkiem do zakupu.'],
+  ['/placebo/h2-sceptyk.webp', 294, 230, 'Placebo unosi brew', '„Sprawdziłem na sobie”', 'Własne doświadczenie jest ważne, ale nie odróżnia działania od przypadku i oczekiwań.'],
+];
+
+const gdzie = [
+  ['Publikacje', 'Każda teza ma plakietkę pewności, a każdy tekst kończy się pełną bibliografią.', '/publikacje/', 'Czytaj publikacje'],
+  ['Placebo', 'Szczur w czapce EEG, który przy każdej tezie pyta „skąd to wiemy?”. Twarz akcji.', '/placebo/', 'Poznaj Placebo'],
+  ['Odzież', 'Na każdej koszulce, bluzie i torbie jest znak #stopsprawdzam. Sklep jest jeszcze w budowie.', '/sklep/', 'Zobacz sklep'],
+];
+---
+<Base tytul="#stopsprawdzam" opis="#stopsprawdzam: zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, zatrzymaj się i sprawdź. Pięć pytań Placebo i poziomy pewności.">
+  <section class="hero">
+    <div class="wrap pl-hero">
+      <div class="pl-hero-text">
+        <p class="eyebrow">Akcja Psyche Waves i Placebo</p>
+        <h1 class="sp-znak"><span class="sp-hash">#stop</span><span class="sp-akcent">sprawdzam</span></h1>
+        <p class="lead">Zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, zatrzymaj się na chwilę i sprawdź. Nie chodzi o to, żeby nie wierzyć w nic. Chodzi o to, żeby wiedzieć, <strong>jak bardzo</strong> można w coś wierzyć.</p>
+        <div class="btns">
+          <a class="btn primary" href="#pytania">Pięć pytań</a>
+          <a class="btn" href="/publikacje/">Czytaj publikacje</a>
+        </div>
+      </div>
+      <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">
+    </div>
+  </section>
+
+  <section id="pytania">
+    <div class="wrap">
+      <div class="pl-box">
+        <Separator />
+        <p class="eyebrow">Zanim podasz dalej</p>
+        <h2 class="h-sec">Pięć pytań Placebo</h2>
+        <ol class="sp-pytania">
+          {pytania.map(([t, o]) => <li><h3>{t}</h3><p>{o}</p></li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Sygnały ostrzegawcze</p>
+      <h2 class="h-sec">Kiedy Placebo unosi brew</h2>
+      <ul class="sp-sygnaly">
+        {sygnaly.map(([src, w, h, alt, t, o]) => (
+          <li>
+            <img src={src} width={w} height={h} alt={alt} loading="lazy">
+            <div><h3>{t}</h3><p>{o}</p></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Poziomy pewności</p>
+      <h2 class="h-sec">Trzy słowa zamiast „naukowo udowodnione”</h2>
+      <div class="principles boxed">
+        <div><span class="claim w">Wiemy</span><h3>Dobrze zbadane</h3><p>Wynik powtarza się w wielu badaniach i przeglądach. Nadal może się zmienić, ale to najmocniejsza wiedza, jaką mamy.</p></div>
+        <div><span class="claim">Badania sugerują</span><h3>Są dane, ale nie komplet</h3><p>Kilka badań wskazuje w jedną stronę, ale próby bywają małe albo niereprezentatywne.</p></div>
+        <div><span class="claim h">Hipoteza</span><h3>Pomysł do sprawdzenia</h3><p>Rozsądne przypuszczenie albo interpretacja. Może się potwierdzić, może upaść.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <p class="eyebrow">Gdzie spotkasz #stopsprawdzam</p>
+      <h2 class="h-sec">Jedna akcja, trzy miejsca</h2>
+      <div class="principles boxed">
+        {gdzie.map(([t, o, href, cta]) => <div><h3>{t}</h3><p>{o}</p><a class="sp-link" href={href}>{cta} →</a></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="pl-box mist">
+        <p class="eyebrow">Twoja kolej</p>
+        <h2 class="h-sec">Widzisz podejrzany nagłówek?</h2>
+        <p class="muted" style="margin-top:10px">Oznacz go na Instagramie hashtagiem <strong>#stopsprawdzam</strong>, napisz do <strong>@stopsprawdzam</strong> albo wyślij mi link mailem. Najciekawsze rozłożę na części w publikacji lub rolce, razem ze źródłami i poziomem pewności. Placebo żartuje z nagłówków i błędów myślenia, nigdy z ludzi.</p>
+        <div class="btns" style="margin-top:16px">
+          <a class="btn primary" href="https://www.instagram.com/stopsprawdzam/" rel="noopener">Instagram @stopsprawdzam</a>
+          <a class="btn" href="mailto:kontakt@psychewaves.pl?subject=%23stopsprawdzam">Wyślij nagłówek mailem</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .sp-znak{font-family:var(--body);font-weight:700;letter-spacing:-.02em;line-height:1.05;font-size:clamp(2.1rem,5vw,3.5rem);overflow-wrap:normal}
+  .sp-hash,.sp-akcent{display:inline-block;white-space:nowrap}
+  .sp-hash{color:var(--ink)}
+  .sp-akcent{color:var(--accent);font-style:italic;padding-right:.08em}
+  .sp-pytania{list-style:none;counter-reset:pyt;margin:22px 0 0;padding:0;display:grid;gap:18px}
+  .sp-pytania li{counter-increment:pyt;display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:14px}
+  .sp-pytania li::before{content:counter(pyt);grid-row:span 2;width:40px;height:40px;border-radius:50%;background:var(--mist);color:var(--accent);font:700 1.1rem/40px var(--body);text-align:center}
+  .sp-pytania h3{font-size:1.25rem;margin-top:6px}
+  .sp-pytania p{color:var(--muted);font-size:.97rem}
+  .sp-sygnaly{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+  .sp-sygnaly li{background:var(--mist);border-radius:16px;padding:16px 18px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center}
+  .sp-sygnaly img{width:96px;height:auto}
+  .sp-sygnaly h3{font-size:1.12rem;margin-bottom:4px}
+  .sp-sygnaly p{color:var(--muted);font-size:.95rem}
+  .principles.boxed .claim{margin-bottom:10px}
+  .sp-link{display:inline-block;margin-top:10px;font-weight:600;color:var(--accent);padding-block:10px;margin-block:0 -10px}
+</style>
