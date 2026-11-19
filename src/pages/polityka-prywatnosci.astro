@@ -1,9 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SKLEP_PRZENIESIONY } from '../lib/witryna';
+// Po przeniesieniu sklepu ta sama polityka obowiązuje na obu domenach (przy przełączeniu zaktualizuj datę niżej).
+const serwisy = SKLEP_PRZENIESIONY ? 'psychewaves.pl i stopsprawdzam.pl' : 'psychewaves.pl';
 // Aktualizuj datę i listę dostawców przy każdej zmianie (np. po wyborze narzędzia do newslettera).
 const aktualizacja = '19 listopada 2026';
 ---
-<Base tytul="Polityka prywatności" opis="Jakie dane zbiera psychewaves.pl, po co, jak długo je przechowuję i jakie masz prawa. Bez śledzenia i bez reklam.">
+<Base tytul="Polityka prywatności" opis={`Jakie dane zbiera ${serwisy}, po co, jak długo je przechowuję i jakie masz prawa. Bez śledzenia i bez reklam.`}>
   <section class="article-head">
     <div class="wrap narrow">
       <p class="eyebrow">RODO</p>
@@ -15,7 +18,7 @@ const aktualizacja = '19 listopada 2026';
 
   <div class="prose wrap narrow">
     <h2>Kto jest administratorem danych</h2>
-    <p>Administratorem danych osobowych jest <strong>Daniel Różalski</strong>, autor serwisu Psyche Waves (psychewaves.pl). W każdej sprawie dotyczącej danych napisz na <a href="mailto:kontakt@psychewaves.pl">kontakt@psychewaves.pl</a>.</p>
+    <p>Administratorem danych osobowych jest <strong>Daniel Różalski</strong>, {SKLEP_PRZENIESIONY ? 'autor serwisów Psyche Waves (psychewaves.pl) i #stopsprawdzam (stopsprawdzam.pl)' : 'autor serwisu Psyche Waves (psychewaves.pl)'}. W każdej sprawie dotyczącej danych napisz na <a href="mailto:kontakt@psychewaves.pl">kontakt@psychewaves.pl</a>.</p>
 
     <h2>Jakie dane, po co i na jakiej podstawie</h2>
     <div class="tab-scroll">

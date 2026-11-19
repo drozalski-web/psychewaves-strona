@@ -1,9 +1,9 @@
 ---
 // Akcja #stopsprawdzam: łączy krytyczne czytanie psychologii, Placebo, publikacje i odzież.
-import '@fontsource/inter/latin-700-italic.css';
-import '@fontsource/inter/latin-ext-700-italic.css';
+// Na stopsprawdzam.pl ta strona jest stroną główną (zob. src/lib/witryny.mjs).
 import Base from '../layouts/Base.astro';
 import Separator from '../components/Separator.astro';
+import { NA_STOPSPRAWDZAM } from '../lib/witryna';
 
 const pytania = [
   ['Kto to mówi?', 'Badacz, lekarz, influencer czy firma, która coś sprzedaje? To jeszcze nie przesądza o prawdzie, ale mówi, czego się spodziewać.'],
@@ -35,7 +35,9 @@ const gdzie = [
         <p class="lead">Zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, zatrzymaj się na chwilę i sprawdź. Nie chodzi o to, żeby nie wierzyć w nic. Chodzi o to, żeby wiedzieć, <strong>jak bardzo</strong> można w coś wierzyć.</p>
         <div class="btns">
           <a class="btn primary" href="#pytania">Pięć pytań</a>
-          <a class="btn" href="/publikacje/">Czytaj publikacje</a>
+          {NA_STOPSPRAWDZAM
+            ? <a class="btn" href="/sklep/odziez/">Odzież i torby</a>
+            : <a class="btn" href="/publikacje/">Czytaj publikacje</a>}
         </div>
       </div>
       <img class="pl-hero-img" src="/placebo/tq.webp" width="456" height="631" alt="Placebo: biały szczur w turkusowej czapce EEG, unosi jedną dłoń jak mały wykładowca" fetchpriority="high">

@@ -20,6 +20,14 @@ Marka: skill `psycho-waves-brand` (paleta, czcionki, logo, głos, bezpieczeństw
 - Kolory w kodzie: turkus do tekstu to `#23727E` (kontrast WCAG AA), `#2F8F9D` tylko w logo, a `#4FB3BF` tylko w grafice (fala, kropla, punkty).
 - Strona jest zawsze jasna, także przy trybie ciemnym w telefonie. Nie dodawaj trybu ciemnego, bo marka wymaga białego lub mglistego tła.
 
+## Dwie domeny: psychewaves.pl i stopsprawdzam.pl
+
+- Ten sam kod buduje dwie strony. **psychewaves.pl** (edukacja) to budowa domyślna. **stopsprawdzam.pl** (akcja #stopsprawdzam i sklep z odzieżą) to drugi projekt Netlify z tego samego repozytorium ze zmienną `PUBLIC_WITRYNA=stopsprawdzam`.
+- Na stopsprawdzam.pl są tylko: strona akcji (`/stopsprawdzam/` staje się stroną główną `/`), `/sklep/*`, `/polityka-prywatnosci/` i 404. Odnośniki do działów edukacyjnych zamieniają się przy budowie na adresy psychewaves.pl, a stare ścieżki przekierowują tam przez `_redirects`.
+- `PUBLIC_SKLEP_NA_STOPSPRAWDZAM=true` ustawia się w projekcie psychewaves.pl **dopiero, gdy stopsprawdzam.pl działa**. Wtedy linki do sklepu i akcji prowadzą na nową domenę, a `/sklep/*` i `/stopsprawdzam/` przekierowują tam (zostaje tylko `/sklep/dziekuje/`, bo kończy zapis z /placebo-junior/). Bez tej zmiennej psychewaves.pl buduje się jak dawniej.
+- Logika: `src/lib/witryny.mjs` (które strony gdzie, przepisywanie odnośników), `scripts/witryny-integracja.mjs` (usuwanie stron, `_redirects`, `robots.txt` po budowie), `src/lib/witryna.ts` (stałe dla komponentów). W kodzie pisz zwykłe ścieżki (`/publikacje/`, `/sklep/`), a nie pełne adresy.
+- Podgląd lokalny stopsprawdzam.pl: `$env:PUBLIC_WITRYNA='stopsprawdzam'; npm run build; npx astro preview`.
+
 ## Struktura
 
 - `src/content/artykuly/*.md`: artykuły (frontmatter: tytul, zajawka, kategoria, data, czasCzytania, temat, szkic, zrodlaDoWeryfikacji, zrodla)

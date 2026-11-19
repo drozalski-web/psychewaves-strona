@@ -5,16 +5,17 @@ import SklepNav from './SklepNav.astro';
 import WzorKarta from './WzorKarta.astro';
 import FormularzNewsletter from './FormularzNewsletter.astro';
 import { wzory, wyrozniane } from '../data/sklep';
+import { MARKA_SKLEPU } from '../lib/witryna';
 const kafelki = [
-  ['/sklep/odziez/', `Odzież i torby`, `${wzory.length} wzorów: koszulki, bluzy i torby z hasłami Psyche Waves i z Placebo. Na razie możesz je obejrzeć i wybrać te, które chcesz mieć.`, ['skad-przod', 'bateria-przod', 'nie-wszystko'], 'Zobacz wzory'],
+  ['/sklep/odziez/', `Odzież i torby`, `${wzory.length} wzorów: koszulki, bluzy i torby z hasłami ${MARKA_SKLEPU} i z Placebo. Na razie możesz je obejrzeć i wybrać te, które chcesz mieć.`, ['skad-przod', 'bateria-przod', 'nie-wszystko'], 'Zobacz wzory'],
   ['/sklep/materialy/', 'Materiały do wydruku', 'Checklisty, plansze i karty do krytycznego czytania psychologii. Z poziomami pewności i źródłami.', null, 'Zobacz materiały'],
   ['/sklep/placebo-junior/', 'Linia Placebo Junior', 'Karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.', null, 'Zobacz Placebo Junior'],
 ];
 ---
-<Base tytul="Sklep" opis="Sklep Psyche Waves: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu, materiały do wydruku i Linia Placebo Junior. Wzory w przygotowaniu.">
+<Base tytul="Sklep" opis={`Sklep ${MARKA_SKLEPU}: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu, materiały do wydruku i Linia Placebo Junior. Wzory w przygotowaniu.`}>
   <section class="article-head">
     <div class="wrap">
-      <p class="eyebrow">Sklep Psyche Waves</p>
+      <p class="eyebrow">Sklep {MARKA_SKLEPU}</p>
       <h1>Rzeczy z hasłami, które mówią to, co psychoedukacja bez wstydu.</h1>
       <p class="standfirst">Koszulki, bluzy i torby, materiały do wydruku i Linia Placebo Junior. Sklep jest w przygotowaniu: możesz już obejrzeć wzory i wybrać te, które chcesz mieć. Dzięki temu będę wiedzieć, od czego zacząć produkcję.</p>
       <div class="btns" style="margin-top:20px">

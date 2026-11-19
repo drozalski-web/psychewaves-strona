@@ -1,5 +1,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import witryny from './scripts/witryny-integracja.mjs';
+import { ustawienia, ADRES_PW, ADRES_SS, czescStopsprawdzam } from './src/lib/witryny.mjs';
+
+// Ten sam kod buduje psychewaves.pl (domyślnie) albo stopsprawdzam.pl (PUBLIC_WITRYNA=stopsprawdzam). Zob. src/lib/witryny.mjs.
+const ust = ustawienia(process.env);
 
 // Zamienia `Wiemy`, `Badania sugerują`, `Hipoteza` (kod w linii) na plakietki poziomu pewności.
 const POZIOMY = { 'Wiemy': 'claim w', 'Badania sugerują': 'claim', 'Hipoteza': 'claim h' };
@@ -24,16 +29,25 @@ const POMIN = ['/sklep/dziekuje/', '/404'];
 const PODSTRONY_SKLEPU = ['/sklep/odziez/', '/sklep/materialy/', '/sklep/placebo-junior/'];
 
 export default defineConfig({
-  site: 'https://psychewaves.pl',
+  site: ust.naStopsprawdzam ? ADRES_SS : ADRES_PW,
   integrations: [
     sitemap({
       filter: (adres) => {
         const sciezka = new URL(adres).pathname;
         if (POMIN.some((p) => sciezka.startsWith(p))) return false;
         if (!sklepOtwarty && PODSTRONY_SKLEPU.includes(sciezka)) return false;
+        // Każda domena ma w mapie tylko swoje strony.
+        if (ust.naStopsprawdzam) return czescStopsprawdzam(sciezka) || sciezka === '/polityka-prywatnosci/';
+        if (ust.sklepPrzeniesiony) return !czescStopsprawdzam(sciezka);
         return true;
       },
+      // Strona akcji jest na stopsprawdzam.pl stroną główną.
+      serialize: (wpis) => {
+        if (ust.naStopsprawdzam && new URL(wpis.url).pathname === '/stopsprawdzam/') wpis.url = `${ADRES_SS}/`;
+        return wpis;
+      },
     }),
+    witryny(ust),
   ],
   markdown: { rehypePlugins: [rehypePoziomPewnosci] },
 });
