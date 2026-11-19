@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+// Aktualizuj datę i listę dostawców przy każdej zmianie (np. po wyborze narzędzia do newslettera).
+const aktualizacja = '19 listopada 2026';
+---
+<Base tytul="Polityka prywatności" opis="Jakie dane zbiera psychewaves.pl, po co, jak długo je przechowuję i jakie masz prawa. Bez śledzenia i bez reklam.">
+  <section class="article-head">
+    <div class="wrap narrow">
+      <p class="eyebrow">RODO</p>
+      <h1>Polityka prywatności</h1>
+      <p class="standfirst">Krótko: zbieram tylko adres e-mail, który sam zostawiasz, i wiadomości, które do mnie wysyłasz. Strona nie używa reklam, analityki ani plików cookie do śledzenia.</p>
+      <div class="byline"><span>Ostatnia aktualizacja: {aktualizacja}</span></div>
+    </div>
+  </section>
+
+  <div class="prose wrap narrow">
+    <h2>Kto jest administratorem danych</h2>
+    <p>Administratorem danych osobowych jest <strong>Daniel Różalski</strong>, autor serwisu Psyche Waves (psychewaves.pl). W każdej sprawie dotyczącej danych napisz na <a href="mailto:kontakt@psychewaves.pl">kontakt@psychewaves.pl</a>.</p>
+
+    <h2>Jakie dane, po co i na jakiej podstawie</h2>
+    <div class="tab-scroll">
+      <table class="rodo-tab">
+        <thead>
+          <tr><th scope="col">Sytuacja</th><th scope="col">Dane</th><th scope="col">Cel i podstawa prawna</th><th scope="col">Jak długo</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Sytuacja">Zapis na powiadomienia (otwarcie sklepu, Placebo Junior, nowe materiały, wybór wzorów)</td>
+            <td data-label="Dane">Adres e-mail; zaznaczone pola, np. „Chcę maskotkę” albo wybrane wzory</td>
+            <td data-label="Cel i podstawa prawna">Wysyłka wiadomości, o które prosisz. Podstawa: Twoja zgoda (art. 6 ust. 1 lit. a RODO) oraz zgoda na otrzymywanie wiadomości e-mail wymagana przepisami o komunikacji elektronicznej</td>
+            <td data-label="Jak długo">Do wycofania zgody albo do zakończenia danej listy. Potem adres usuwam</td>
+          </tr>
+          <tr>
+            <td data-label="Sytuacja">Wiadomość e-mail do mnie</td>
+            <td data-label="Dane">Adres e-mail, imię (jeśli je podasz), treść wiadomości</td>
+            <td data-label="Cel i podstawa prawna">Odpowiedź i prowadzenie rozmowy, np. o temacie lub współpracy. Podstawa: mój prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)</td>
+            <td data-label="Jak długo">Przez czas rozmowy i do 12 miesięcy po jej zakończeniu, chyba że rozmowa dotyczy umowy: wtedy przez okres wymagany przepisami</td>
+          </tr>
+          <tr>
+            <td data-label="Sytuacja">Wejście na stronę</td>
+            <td data-label="Dane">Adres IP, typ przeglądarki, czas i adres odwiedzonej podstrony (dzienniki serwera)</td>
+            <td data-label="Cel i podstawa prawna">Bezpieczeństwo i działanie strony. Podstawa: prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO)</td>
+            <td data-label="Jak długo">Według zasad dostawcy hostingu, zwykle kilka do kilkudziesięciu dni</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Podanie adresu e-mail jest dobrowolne, ale bez niego nie mogę wysłać powiadomienia. Nie podejmuję wobec Ciebie zautomatyzowanych decyzji i nie profiluję Cię.</p>
+
+    <h2>Dane o zdrowiu</h2>
+    <p>Nie proszę o informacje o zdrowiu, uzależnieniach ani życiu seksualnym i nie dzielę osób z listy według tematów, które je interesują. Jeśli w wiadomości opiszesz swoją sytuację, użyję jej wyłącznie do odpowiedzi. Nie prowadzę terapii ani diagnoz. Gdy potrzebujesz pomocy teraz, zadzwoń pod jeden z numerów na dole strony.</p>
+
+    <h2>Komu przekazuję dane</h2>
+    <p>Nie sprzedaję danych i nie przekazuję ich reklamodawcom ani partnerom współpracy. Korzystam z dostawców, którzy przetwarzają dane w moim imieniu:</p>
+    <ul>
+      <li><strong>Netlify, Inc.</strong> (USA): hosting strony, dzienniki serwera i formularze zapisu;</li>
+      <li><strong>OVH</strong> (UE): skrzynka e-mail kontakt@psychewaves.pl.</li>
+    </ul>
+    <p>Jeśli dane trafiają poza Europejski Obszar Gospodarczy (Netlify), odbywa się to na podstawie mechanizmów przewidzianych w RODO, czyli decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony albo standardowych klauzul umownych, zgodnie z umową powierzenia danych dostawcy. Jeśli zacznę używać narzędzia do wysyłki newslettera, dopiszę je tutaj przed pierwszą wysyłką.</p>
+
+    <h2>Pliki cookie i śledzenie</h2>
+    <p>Strona nie używa plików cookie do analityki ani reklam, nie ma pikseli mediów społecznościowych i nie osadza treści z Instagrama. Czcionki są wczytywane z tego samego serwera co strona, więc Twój adres IP nie trafia do Google Fonts. Link do Instagrama to zwykły odnośnik: po jego kliknięciu obowiązują zasady prywatności Instagrama (Meta).</p>
+
+    <h2>Dzieci</h2>
+    <p>Materiały Placebo Junior są przeznaczone dla dorosłych, którzy pracują z dziećmi. Formularze są dla osób dorosłych. Nie zbieram danych dzieci; jeśli dziecko zapisało się samodzielnie, napisz, a adres usunę.</p>
+
+    <h2>Twoje prawa</h2>
+    <p>Masz prawo do:</p>
+    <ul>
+      <li>dostępu do swoich danych i otrzymania ich kopii;</li>
+      <li>sprostowania danych;</li>
+      <li>usunięcia danych;</li>
+      <li>ograniczenia przetwarzania;</li>
+      <li>przeniesienia danych;</li>
+      <li>sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie;</li>
+      <li>wycofania zgody w dowolnym momencie, bez wpływu na zgodność z prawem wcześniejszego przetwarzania;</li>
+      <li>skargi do Prezesa Urzędu Ochrony Danych Osobowych (<a href="https://uodo.gov.pl/" rel="noopener">uodo.gov.pl</a>).</li>
+    </ul>
+    <p>Żeby skorzystać z praw albo wypisać się z listy, napisz na <a href="mailto:kontakt@psychewaves.pl">kontakt@psychewaves.pl</a>. Odpowiem najpóźniej w ciągu miesiąca.</p>
+
+    <h2>Zmiany</h2>
+    <p>Gdy zmieni się sposób przetwarzania danych (np. ruszy sklep albo newsletter), zaktualizuję tę stronę i datę na górze. O istotnych zmianach osoby z listy dostaną wiadomość.</p>
+  </div>
+</Base>

@@ -263,6 +263,21 @@ ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;he
 .waitlist .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--muted)}
 .waitlist .check input{margin-top:4px;flex:none}
 .waitlist button{justify-self:start}
+.waitlist .rodo{margin:0;font-size:.82rem;line-height:1.5;color:var(--muted)}
+.waitlist .rodo a{color:var(--accent)}
+/* Polityka prywatności: tabela celów przetwarzania */
+.prose table.rodo-tab{width:100%;min-width:0;border-collapse:collapse;font-size:.92rem;margin:1.2em 0}
+.prose table.rodo-tab th,.prose table.rodo-tab td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.prose table.rodo-tab th{background:var(--mist);font-weight:700}
+.prose .tab-scroll{overflow-x:auto}
+@media (max-width:640px){
+  .prose table.rodo-tab thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .prose table.rodo-tab,.prose table.rodo-tab tbody,.prose table.rodo-tab tr,.prose table.rodo-tab td{display:block;width:100%}
+  .prose table.rodo-tab tr{border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+  .prose table.rodo-tab td{border:0;border-top:1px solid var(--line)}
+  .prose table.rodo-tab td:first-child{border-top:0;background:var(--mist);font-weight:700}
+  .prose table.rodo-tab td:not(:first-child)::before{content:attr(data-label);display:block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+}
 .teaser{display:grid;gap:24px;align-items:center;background:var(--mist);border-radius:20px;padding:28px}
 @media (min-width:720px){.teaser{grid-template-columns:200px minmax(0,1fr);padding:32px 40px}}
 .teaser img{width:min(100%,180px);height:auto;justify-self:center}

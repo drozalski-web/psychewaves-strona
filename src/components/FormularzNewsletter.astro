@@ -10,5 +10,6 @@ const { nazwa, id, maskotka = false } = Astro.props;
   <input id={`${id}-email`} type="email" name="email" required autocomplete="email" inputmode="email">
   {maskotka && <label class="check"><input type="checkbox" name="chce_maskotke"> Chcę maskotkę Placebo: daj mi znać, gdy będzie dostępna.</label>}
   <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach Psyche Waves.</label>
+  <p class="rodo">Administratorem adresu jest Psyche Waves (Daniel Różalski). Zgodę możesz wycofać w każdej chwili, pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
   <button class="btn primary" type="submit">Zapisz mnie</button>
 </form>
