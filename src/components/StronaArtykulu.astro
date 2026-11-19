@@ -16,7 +16,7 @@ const artykulLd = {
   datePublished: d.data.toISOString().slice(0, 10),
   inLanguage: 'pl-PL',
   mainEntityOfPage: adres,
-  image: 'https://psychewaves.pl/og/psyche-waves.png',
+  image: dzieci ? 'https://psychewaves.pl/og/placebo-junior.png' : 'https://psychewaves.pl/og/psyche-waves.png',
   articleSection: d.kategoria,
   author: { '@type': 'Person', name: 'Daniel', url: 'https://psychewaves.pl/o-mnie/' },
   publisher: { '@id': 'https://psychewaves.pl/#marka' },
