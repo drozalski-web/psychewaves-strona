@@ -2,6 +2,7 @@
 // Formularz zapisu (Netlify Forms). Każdy formularz ma własną nazwę, żeby zapisy były rozróżnialne w panelu Netlify.
 interface Props { nazwa: string; id: string; maskotka?: boolean }
 const { nazwa, id, maskotka = false } = Astro.props;
+import { NA_STOPSPRAWDZAM } from '../lib/witryna';
 ---
 <form class="waitlist" name={nazwa} method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
   <input type="hidden" name="form-name" value={nazwa}>
@@ -9,7 +10,7 @@ const { nazwa, id, maskotka = false } = Astro.props;
   <label for={`${id}-email`}>Adres e-mail</label>
   <input id={`${id}-email`} type="email" name="email" required autocomplete="email" inputmode="email">
   {maskotka && <label class="check"><input type="checkbox" name="chce_maskotke"> Chcę maskotkę Placebo: daj mi znać, gdy będzie dostępna.</label>}
-  <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach Psyche Waves.</label>
+  <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach {NA_STOPSPRAWDZAM ? '#stopsprawdzam' : 'Psyche Waves'}.</label>
   <p class="rodo">Administratorem adresu jest Psyche Waves (Daniel Różalski). Zgodę możesz wycofać w każdej chwili, pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
   <button class="btn primary" type="submit">Zapisz mnie</button>
 </form>

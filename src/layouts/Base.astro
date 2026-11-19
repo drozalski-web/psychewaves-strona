@@ -12,7 +12,11 @@ import '@fontsource/lora/latin-500.css';
 import '@fontsource/lora/latin-ext-500.css';
 import '@fontsource/lora/latin-500-italic.css';
 import '@fontsource/lora/latin-ext-500-italic.css';
+// Inter Bold kursywą: znak #stopsprawdzam (plik pobiera się tylko tam, gdzie znak jest użyty).
+import '@fontsource/inter/latin-700-italic.css';
+import '@fontsource/inter/latin-ext-700-italic.css';
 import '../styles/global.css';
+import { NA_STOPSPRAWDZAM, ADRES_PW, ADRES_SS } from '../lib/witryna';
 
 interface Props {
   tytul?: string;
@@ -27,18 +31,25 @@ interface Props {
   /** Dodatkowe dane strukturalne schema.org (np. Article). */
   jsonLd?: Record<string, unknown>;
 }
+const marka = NA_STOPSPRAWDZAM ? '#stopsprawdzam' : 'Psyche Waves';
 const {
   tytul,
-  opis = 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
-  obraz = '/og/psyche-waves.png',
-  obrazAlt = 'Psyche Waves: psychoedukacja bez wstydu. Logo z falą EEG, która się uspokaja i kończy kroplą.',
+  opis = NA_STOPSPRAWDZAM
+    ? '#stopsprawdzam: zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, sprawdź. Akcja i odzież z Placebo.'
+    : 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
+  obraz = NA_STOPSPRAWDZAM ? '/og/stopsprawdzam.png' : '/og/psyche-waves.png',
+  obrazAlt = NA_STOPSPRAWDZAM
+    ? '#stopsprawdzam: zanim uwierzysz, sprawdź. Placebo w czapce EEG.'
+    : 'Psyche Waves: psychoedukacja bez wstydu. Logo z falą EEG, która się uspokaja i kończy kroplą.',
   typ = 'website',
   noindex = false,
   jsonLd,
 } = Astro.props;
-const pelnyTytul = tytul ? `${tytul} · Psyche Waves` : 'Psyche Waves · psychoedukacja bez wstydu';
+const domyslnyTytul = NA_STOPSPRAWDZAM ? '#stopsprawdzam · zanim uwierzysz, sprawdź' : 'Psyche Waves · psychoedukacja bez wstydu';
+const pelnyTytul = tytul && tytul !== marka ? `${tytul} · ${marka}` : domyslnyTytul;
 const sciezka = Astro.url.pathname;
-const kanoniczny = new URL(sciezka, Astro.site).href;
+// Na stopsprawdzam.pl strona akcji jest stroną główną.
+const kanoniczny = new URL(NA_STOPSPRAWDZAM && sciezka === '/stopsprawdzam/' ? '/' : sciezka, Astro.site).href;
 const obrazUrl = new URL(obraz, Astro.site).href;
 const witryna = {
   '@context': 'https://schema.org',
@@ -53,26 +64,48 @@ const witryna = {
       email: 'kontakt@psychewaves.pl',
       sameAs: ['https://www.instagram.com/psychewaves.pl/'],
     },
-    {
-      '@type': 'WebSite',
-      '@id': 'https://psychewaves.pl/#witryna',
-      name: 'Psyche Waves',
-      url: 'https://psychewaves.pl/',
-      inLanguage: 'pl-PL',
-      publisher: { '@id': 'https://psychewaves.pl/#marka' },
-    },
+    NA_STOPSPRAWDZAM
+      ? {
+          '@type': 'WebSite',
+          '@id': `${ADRES_SS}/#witryna`,
+          name: '#stopsprawdzam',
+          url: `${ADRES_SS}/`,
+          inLanguage: 'pl-PL',
+          publisher: { '@id': 'https://psychewaves.pl/#marka' },
+        }
+      : {
+          '@type': 'WebSite',
+          '@id': 'https://psychewaves.pl/#witryna',
+          name: 'Psyche Waves',
+          url: 'https://psychewaves.pl/',
+          inLanguage: 'pl-PL',
+          publisher: { '@id': 'https://psychewaves.pl/#marka' },
+        },
   ],
 };
-const menu = [
-  { href: '/', nazwa: 'Start' },
-  { href: '/publikacje/', nazwa: 'Publikacje' },
-  { href: '/placebo/', nazwa: 'Placebo' },
-  { href: '/placebo-junior/', nazwa: 'Placebo Junior' },
-  { href: '/sklep/', nazwa: 'Sklep' },
-  { href: '/o-mnie/', nazwa: 'O mnie' },
-  { href: '/kontakt/', nazwa: 'Kontakt' },
-];
-const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.startsWith(href));
+// Na stopsprawdzam.pl odnośniki do działów edukacyjnych zamieniają się przy budowie na adresy psychewaves.pl.
+const menu = NA_STOPSPRAWDZAM
+  ? [
+      { href: '/stopsprawdzam/', nazwa: 'Akcja' },
+      { href: '/sklep/', nazwa: 'Sklep' },
+      { href: '/sklep/odziez/', nazwa: 'Odzież i torby' },
+      { href: '/placebo/', nazwa: 'Placebo' },
+      { href: '/publikacje/', nazwa: 'Publikacje' },
+    ]
+  : [
+      { href: '/', nazwa: 'Start' },
+      { href: '/publikacje/', nazwa: 'Publikacje' },
+      { href: '/placebo/', nazwa: 'Placebo' },
+      { href: '/placebo-junior/', nazwa: 'Placebo Junior' },
+      { href: '/sklep/', nazwa: 'Sklep' },
+      { href: '/o-mnie/', nazwa: 'O mnie' },
+      { href: '/kontakt/', nazwa: 'Kontakt' },
+    ];
+// Aktywna jest najdłuższa pasująca pozycja (np. „Odzież i torby”, a nie jednocześnie „Sklep”).
+const aktywnyHref = menu
+  .filter((m) => (m.href === '/' ? sciezka === '/' : sciezka.startsWith(m.href)))
+  .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+const aktywny = (href: string) => href === aktywnyHref;
 ---
 <!doctype html>
 <html lang="pl">
@@ -83,7 +116,7 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
   <title>{pelnyTytul}</title>
   <meta name="description" content={opis}>
   {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={kanoniczny}>}
-  <meta property="og:site_name" content="Psyche Waves">
+  <meta property="og:site_name" content={marka}>
   <meta property="og:type" content={typ}>
   <meta property="og:url" content={kanoniczny}>
   <meta property="og:title" content={pelnyTytul}>
@@ -111,19 +144,28 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
 
   <header class="site">
     <div class="wrap">
-      <a class="brand" href="/" aria-label="Psyche Waves, strona główna">
-        <svg viewBox="0 0 1080 1080" aria-hidden="true">
-          <circle cx="540" cy="540" r="540" fill="url(#pwMark)"/>
-          <g transform="translate(540 540) scale(1.1) translate(-552 -540)">
-            <path d="M160 540 L205 520 L240 572 L275 436 L312 646 L346 468 L378 604 L408 502 L438 566 L462 528 C502 470 550 470 590 540 C634 618 684 618 728 540 C748 505 774 505 798 540" fill="none" stroke="#4FB3BF" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M890 452 C890 452 836 520 836 576 A54 54 0 0 0 944 576 C944 520 890 452 890 452 Z" fill="#4FB3BF"/>
-          </g>
-        </svg>
-        <span>
-          <span class="brand-name">Psyche <em>Waves</em></span>
-          <span class="brand-sub">PSYCHOEDUKACJA</span>
-        </span>
-      </a>
+      {NA_STOPSPRAWDZAM ? (
+        <a class="brand brand-ss" href="/stopsprawdzam/" aria-label="#stopsprawdzam, strona główna">
+          <span>
+            <span class="brand-ss-name">#stop<em>sprawdzam</em></span>
+            <span class="brand-sub">SKĄD TO WIEMY?</span>
+          </span>
+        </a>
+      ) : (
+        <a class="brand" href="/" aria-label="Psyche Waves, strona główna">
+          <svg viewBox="0 0 1080 1080" aria-hidden="true">
+            <circle cx="540" cy="540" r="540" fill="url(#pwMark)"/>
+            <g transform="translate(540 540) scale(1.1) translate(-552 -540)">
+              <path d="M160 540 L205 520 L240 572 L275 436 L312 646 L346 468 L378 604 L408 502 L438 566 L462 528 C502 470 550 470 590 540 C634 618 684 618 728 540 C748 505 774 505 798 540" fill="none" stroke="#4FB3BF" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M890 452 C890 452 836 520 836 576 A54 54 0 0 0 944 576 C944 520 890 452 890 452 Z" fill="#4FB3BF"/>
+            </g>
+          </svg>
+          <span>
+            <span class="brand-name">Psyche <em>Waves</em></span>
+            <span class="brand-sub">PSYCHOEDUKACJA</span>
+          </span>
+        </a>
+      )}
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-glowne" hidden>
         <span class="burger" aria-hidden="true"><span></span></span><span class="nav-toggle-txt">Menu</span>
       </button>
@@ -173,8 +215,12 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
   <footer class="site">
     <div class="wrap">
       <div class="row">
-        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/stopsprawdzam/">#stopsprawdzam</a> · <a href="/wspolpraca/">Współpraca</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
-        <span class="hash">#PSYCHEWAVES</span>
+        {NA_STOPSPRAWDZAM ? (
+          <span>© {new Date().getFullYear()} #stopsprawdzam · projekt <a href={`${ADRES_PW}/`}>Psyche Waves</a> · <a href="https://www.instagram.com/stopsprawdzam/" rel="noopener">@stopsprawdzam</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
+        ) : (
+          <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/stopsprawdzam/">#stopsprawdzam</a> · <a href="/wspolpraca/">Współpraca</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
+        )}
+        <span class="hash">{NA_STOPSPRAWDZAM ? '#STOPSPRAWDZAM' : '#PSYCHEWAVES'}</span>
       </div>
       <p>Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
     </div>

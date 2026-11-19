@@ -5,9 +5,10 @@ import Base from '../../layouts/Base.astro';
 import SklepNav from '../../components/SklepNav.astro';
 import WzorKarta from '../../components/WzorKarta.astro';
 import { wzory, typy, linie } from '../../data/sklep';
+import { MARKA_SKLEPU } from '../../lib/witryna';
 const dostepneLinie = linie.filter((l) => wzory.some((w) => w.linia === l));
 ---
-<Base tytul="Odzież i torby" opis="Koszulki, bluzy i torby Psyche Waves z hasłami psychoedukacji bez wstydu i z Placebo. Wzory w przygotowaniu: wybierz te, które chcesz mieć.">
+<Base tytul="Odzież i torby" opis={`Koszulki, bluzy i torby ${MARKA_SKLEPU} z hasłami psychoedukacji bez wstydu i z Placebo. Wzory w przygotowaniu: wybierz te, które chcesz mieć.`}>
   <section class="article-head">
     <div class="wrap">
       <p class="eyebrow">Sklep · odzież i torby</p>
@@ -47,7 +48,7 @@ const dostepneLinie = linie.filter((l) => wzory.some((w) => w.linia === l));
           <div class="waitlist">
             <label for="ow-email">Adres e-mail</label>
             <input id="ow-email" type="email" name="email" required autocomplete="email" inputmode="email">
-            <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o sprzedaży i nowych wzorach Psyche Waves.</label>
+            <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o sprzedaży i nowych wzorach {MARKA_SKLEPU}.</label>
             <p class="rodo">Administratorem adresu jest Psyche Waves (Daniel Różalski). Zgodę możesz wycofać w każdej chwili, pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
             <button class="btn primary" type="submit">Zapisz mnie</button>
           </div>

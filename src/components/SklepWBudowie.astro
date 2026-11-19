@@ -1,18 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import FormularzNewsletter from './FormularzNewsletter.astro';
+import { MARKA_SKLEPU } from '../lib/witryna';
 const powstaje = [
   'Koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu',
   'Materiały do wydruku do krytycznego czytania psychologii',
   'Linia Placebo Junior: karty pracy i maskotka Placebo',
 ];
 ---
-<Base tytul="Sklep w budowie" opis="Sklep Psyche Waves jest w budowie. Zostaw e-mail, a dam Ci znać, gdy ruszy.">
+<Base tytul="Sklep w budowie" opis={`Sklep ${MARKA_SKLEPU} jest w budowie. Zostaw e-mail, a dam Ci znać, gdy ruszy.`}>
   <div class="tasma" role="presentation" aria-hidden="true"></div>
   <section class="hero">
     <div class="wrap pl-hero junior-hero">
       <div class="pl-hero-text">
-        <p class="eyebrow">Sklep Psyche Waves</p>
+        <p class="eyebrow">Sklep {MARKA_SKLEPU}</p>
         <h1>Sklep w budowie</h1>
         <p class="lead">Placebo ogląda każdy szew i pyta, skąd wiemy, że się nie rozpruje. Otworzę sklep, gdy odpowiedź będzie brzmiała: wiemy. Daty nie podam, bo Placebo zapytałby, skąd ją mam.</p>
         <ul class="plain">
