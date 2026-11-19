@@ -1,9 +1,68 @@
 ---
+// Czcionki z własnego serwera (bez łączenia z Google Fonts: adres IP odwiedzającego nie trafia do Google). Tylko alfabet łaciński z polskimi znakami.
+import '@fontsource/dm-serif-display/latin-400.css';
+import '@fontsource/dm-serif-display/latin-ext-400.css';
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-ext-400.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-ext-600.css';
+import '@fontsource/inter/latin-700.css';
+import '@fontsource/inter/latin-ext-700.css';
+import '@fontsource/lora/latin-500.css';
+import '@fontsource/lora/latin-ext-500.css';
+import '@fontsource/lora/latin-500-italic.css';
+import '@fontsource/lora/latin-ext-500-italic.css';
 import '../styles/global.css';
-interface Props { tytul?: string; opis?: string }
-const { tytul, opis = 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.' } = Astro.props;
+
+interface Props {
+  tytul?: string;
+  opis?: string;
+  /** Obrazek do podglądu linku (1200×630), ścieżka od katalogu public. */
+  obraz?: string;
+  obrazAlt?: string;
+  /** 'article' dla publikacji, domyślnie 'website'. */
+  typ?: 'website' | 'article';
+  /** Strony techniczne (podziękowanie, 404) nie trafiają do wyszukiwarek. */
+  noindex?: boolean;
+  /** Dodatkowe dane strukturalne schema.org (np. Article). */
+  jsonLd?: Record<string, unknown>;
+}
+const {
+  tytul,
+  opis = 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
+  obraz = '/og/psyche-waves.png',
+  obrazAlt = 'Psyche Waves: psychoedukacja bez wstydu. Logo z falą EEG, która się uspokaja i kończy kroplą.',
+  typ = 'website',
+  noindex = false,
+  jsonLd,
+} = Astro.props;
 const pelnyTytul = tytul ? `${tytul} · Psyche Waves` : 'Psyche Waves · psychoedukacja bez wstydu';
 const sciezka = Astro.url.pathname;
+const kanoniczny = new URL(sciezka, Astro.site).href;
+const obrazUrl = new URL(obraz, Astro.site).href;
+const witryna = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://psychewaves.pl/#marka',
+      name: 'Psyche Waves',
+      url: 'https://psychewaves.pl/',
+      logo: 'https://psychewaves.pl/favicon.svg',
+      slogan: 'Psychoedukacja bez wstydu.',
+      email: 'kontakt@psychewaves.pl',
+      sameAs: ['https://www.instagram.com/psychewaves.pl/'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://psychewaves.pl/#witryna',
+      name: 'Psyche Waves',
+      url: 'https://psychewaves.pl/',
+      inLanguage: 'pl-PL',
+      publisher: { '@id': 'https://psychewaves.pl/#marka' },
+    },
+  ],
+};
 const menu = [
   { href: '/', nazwa: 'Start' },
   { href: '/publikacje/', nazwa: 'Publikacje' },
@@ -23,13 +82,23 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{pelnyTytul}</title>
   <meta name="description" content={opis}>
+  {noindex ? <meta name="robots" content="noindex"> : <link rel="canonical" href={kanoniczny}>}
+  <meta property="og:site_name" content="Psyche Waves">
+  <meta property="og:type" content={typ}>
+  <meta property="og:url" content={kanoniczny}>
   <meta property="og:title" content={pelnyTytul}>
   <meta property="og:description" content={opis}>
   <meta property="og:locale" content="pl_PL">
+  <meta property="og:image" content={obrazUrl}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={obrazAlt}>
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600;700&family=Lora:ital,wght@0,500;1,500&display=swap">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="sitemap" href="/sitemap-index.xml">
+  <script type="application/ld+json" set:html={JSON.stringify(witryna)} />
+  {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -82,7 +151,7 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
   <footer class="site">
     <div class="wrap">
       <div class="row">
-        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/wspolpraca/">Współpraca</a></span>
+        <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/wspolpraca/">Współpraca</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
         <span class="hash">#PSYCHEWAVES</span>
       </div>
       <p>Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>

@@ -7,8 +7,23 @@ const { Content } = await render(a);
 const d = a.data;
 const dataPl = d.data.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
 const wroc = dzieci ? ['/placebo-junior/', '← Placebo Junior'] : ['/publikacje/', '← Wszystkie publikacje'];
+const adres = new URL(Astro.url.pathname, Astro.site).href;
+const artykulLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: d.tytul,
+  description: d.zajawka,
+  datePublished: d.data.toISOString().slice(0, 10),
+  inLanguage: 'pl-PL',
+  mainEntityOfPage: adres,
+  image: 'https://psychewaves.pl/og/psyche-waves.png',
+  articleSection: d.kategoria,
+  author: { '@type': 'Person', name: 'Daniel', url: 'https://psychewaves.pl/o-mnie/' },
+  publisher: { '@id': 'https://psychewaves.pl/#marka' },
+  isAccessibleForFree: true,
+};
 ---
-<Base tytul={d.tytul} opis={d.zajawka}>
+<Base tytul={d.tytul} opis={d.zajawka} typ="article" jsonLd={artykulLd} noindex={d.szkic}>
   {d.szkic && (
     <div class="draft" role="note"><div class="wrap"><strong>Szkic.</strong> Ta publikacja nie jest widoczna na żywej stronie, dopóki go nie zaakceptujesz.</div></div>
   )}

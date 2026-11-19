@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /sklep/dziekuje/
+
+Sitemap: https://psychewaves.pl/sitemap-index.xml
