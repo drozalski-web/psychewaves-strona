@@ -1,21 +1,20 @@
 ---
 import { SKLEP_OTWARTY } from '../../data/sklep-config';
-if (!SKLEP_OTWARTY) return Astro.rewrite('/sklep/');
+// Dopóki sklep jest zamknięty, ta strona nie istnieje: wracamy na stronę Placebo Junior (jest tam zapis na newsletter).
+if (!SKLEP_OTWARTY) return Astro.rewrite('/placebo-junior/');
 import Base from '../../layouts/Base.astro';
-import SklepNav from '../../components/SklepNav.astro';
 import ProduktyLista from '../../components/ProduktyLista.astro';
 import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
 ---
-<Base tytul="Linia Placebo Junior" opis="Linia Placebo Junior: karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.">
+<Base sekcja="junior" tytul="Sklep Placebo Junior" opis="Sklep Placebo Junior: karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.">
   <section class="article-head">
     <div class="wrap">
-      <p class="eyebrow">Psyche Waves · Placebo Junior</p>
-      <h1>Linia Placebo Junior</h1>
+      <p class="eyebrow">Placebo Junior · sklep</p>
+      <h1>Sklep Placebo Junior</h1>
       <p class="standfirst">Karty pracy i gadżety dla dzieci w wieku 6–10 lat i dorosłych, którzy z nimi pracują. Pierwsza karta jest darmowa, pierwszym gadżetem będzie maskotka Placebo.</p>
       <div class="btns" style="margin-top:18px"><a class="btn" href="/placebo-junior/">Wróć na stronę Placebo Junior</a></div>
     </div>
   </section>
-  <SklepNav aktywny="junior" />
   <section id="junior">
     <div class="wrap">
       <h2 class="h-sec">Karty pracy</h2>
@@ -33,7 +32,7 @@ import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
       <p class="eyebrow">Lista oczekujących</p>
       <h2 class="h-sec">Daj znać, gdy będzie maskotka i nowe karty</h2>
       <p class="muted" style="margin-top:10px">Jedna wiadomość, gdy będzie nowy produkt. Bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
-      <FormularzNewsletter nazwa="newsletter-junior" id="wj" maskotka />
+      <FormularzNewsletter nazwa="newsletter-junior" id="wj" maskotka po="/placebo-junior/dziekuje/" marka="Placebo Junior" />
     </div>
   </section>
   <section class="tight">

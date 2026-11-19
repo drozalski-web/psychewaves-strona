@@ -15,3 +15,9 @@
   from = "/artykuly/*"
   to = "/publikacje/:splat"
   status = 301
+
+# Sklep Placebo Junior przeniesiony do wyspy Junior (/placebo-junior/sklep/)
+[[redirects]]
+  from = "/sklep/placebo-junior"
+  to = "/placebo-junior/sklep/"
+  status = 301

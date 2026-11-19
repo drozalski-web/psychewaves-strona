@@ -23,7 +23,7 @@ const artykulLd = {
   isAccessibleForFree: true,
 };
 ---
-<Base tytul={d.tytul} opis={d.zajawka} typ="article" jsonLd={artykulLd} noindex={d.szkic}>
+<Base tytul={d.tytul} opis={d.zajawka} typ="article" jsonLd={artykulLd} noindex={d.szkic} sekcja={dzieci ? 'junior' : undefined}>
   {d.szkic && (
     <div class="draft" role="note"><div class="wrap"><strong>Szkic.</strong> Ta publikacja nie jest widoczna na żywej stronie, dopóki go nie zaakceptujesz.</div></div>
   )}

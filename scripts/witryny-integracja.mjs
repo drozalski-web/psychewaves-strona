@@ -41,7 +41,7 @@ export default function witryny(ust) {
 
         for (const plik of plikiHtml(root)) {
           const p = sciezkaStrony(root, plik);
-          const zostaje = ust.naStopsprawdzam ? czescStopsprawdzam(p) || wspolne(p) : !czescStopsprawdzam(p) || p === '/sklep/dziekuje/';
+          const zostaje = ust.naStopsprawdzam ? czescStopsprawdzam(p) || wspolne(p) : !czescStopsprawdzam(p);
           if (!zostaje) { fs.rmSync(plik); usuniete++; }
         }
         if (ust.naStopsprawdzam) {
@@ -64,12 +64,15 @@ export default function witryny(ust) {
               '/stopsprawdzam/*  /  301',
               `/artykuly  ${ADRES_PW}/publikacje/  301`,
               `/artykuly/*  ${ADRES_PW}/publikacje/:splat  301`,
+              // Dawny adres sklepu Placebo Junior (sklep Junior jest teraz w wyspie Junior na psychewaves.pl).
+              `/sklep/placebo-junior  ${ADRES_PW}/placebo-junior/sklep/  301`,
               ...DZIALY_PW.flatMap((d) => [`/${d}  ${ADRES_PW}/${d}/  301`, `/${d}/*  ${ADRES_PW}/${d}/:splat  301`]),
             ]
           : [
               `/stopsprawdzam  ${ADRES_SS}/  301`,
               `/stopsprawdzam/*  ${ADRES_SS}/  301`,
-              // /sklep/dziekuje/ istnieje jako plik, więc Netlify go nie przekieruje.
+              // Dawny adres sklepu Placebo Junior: ma pierwszeństwo przed regułą /sklep/* poniżej.
+              '/sklep/placebo-junior  /placebo-junior/sklep/  301',
               `/sklep  ${ADRES_SS}/sklep/  301`,
               `/sklep/*  ${ADRES_SS}/sklep/:splat  301`,
             ];

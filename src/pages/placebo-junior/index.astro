@@ -4,12 +4,13 @@ import Separator from '../../components/Separator.astro';
 import PanelPublikacji from '../../components/PanelPublikacji.astro';
 import FormularzNewsletter from '../../components/FormularzNewsletter.astro';
 import { najnowszaDarmowaKarta, najnowszyGadzet, gadzetWkrotce } from '../../data/produkty';
+import { SKLEP_OTWARTY } from '../../data/sklep-config';
 const karta = najnowszaDarmowaKarta();
 const gadzet = najnowszyGadzet();
 const gadzetNext = gadzetWkrotce();
 const gadzetPokaz = gadzet ?? gadzetNext;
 ---
-<Base tytul="Placebo Junior" opis="Placebo Junior: publikacje dla dzieci i rodziców, karty pracy i gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
+<Base sekcja="junior" tytul="Placebo Junior" opis="Placebo Junior: publikacje dla dzieci i rodziców, karty pracy i gadżety z Placebo. Dla dzieci w wieku 6–10 lat i ich dorosłych.">
   <section class="hero">
     <div class="wrap pl-hero junior-hero">
       <div class="pl-hero-text">
@@ -20,7 +21,9 @@ const gadzetPokaz = gadzet ?? gadzetNext;
           <a class="btn" href="#jak-pracowac">Jak pracować z dzieckiem</a>
           <a class="btn" href="#karty-pracy">Karty pracy</a>
           <a class="btn" href="#gadzety">Gadżety</a>
-          <a class="btn primary" href="/sklep/placebo-junior/">Sklep Placebo Junior</a>
+          {SKLEP_OTWARTY
+            ? <a class="btn primary" href="/placebo-junior/sklep/">Sklep Placebo Junior</a>
+            : <a class="btn primary" href="#newsletter">Zapisz się na newsletter</a>}
         </div>
       </div>
       <img class="pl-hero-img junior" src="/placebo/h3-usmiech.webp" width="303" height="228" alt="Placebo w czapce EEG, szeroko się uśmiecha z zamkniętymi oczami" fetchpriority="high">
@@ -29,7 +32,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
 
   <section id="jak-pracowac">
     <div class="wrap">
-      <PanelPublikacji odbiorca="dzieci" twarz="h3-usmiech" eyebrow="Publikacje dla dzieci i rodziców" tytul="Jak pracować z dzieckiem" opis="Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty. To osobna część od publikacji dla dorosłych, z własną listą artykułów." />
+      <PanelPublikacji odbiorca="dzieci" twarz="h3-usmiech" eyebrow="Publikacje dla dzieci i rodziców" tytul="Jak pracować z dzieckiem" opis="Krótko i prosto: jak rozmawiać z dzieckiem o emocjach, jak używać kart pracy i kiedy poszukać pomocy specjalisty." />
     </div>
   </section>
 
@@ -51,7 +54,9 @@ const gadzetPokaz = gadzet ?? gadzetNext;
             </ul>
             <div class="btns">
               <a class="btn primary" href={karta.href} download>Pobierz za darmo</a>
-              <a class="btn" href="/sklep/placebo-junior/">Więcej kart pracy znajdziesz w sklepie</a>
+              {SKLEP_OTWARTY
+                ? <a class="btn" href="/placebo-junior/sklep/">Więcej kart pracy znajdziesz w sklepie</a>
+                : <a class="btn" href="#newsletter">Daj znać, gdy będą nowe karty</a>}
             </div>
           </div>
         </article>
@@ -73,10 +78,10 @@ const gadzetPokaz = gadzet ?? gadzetNext;
             {!gadzet && <p><span class="lvl">W przygotowaniu</span></p>}
             {!gadzet && <p class="muted"><strong style="color:var(--ink)">Chcesz ją mieć?</strong> Zapisz się poniżej. Liczba zapisów pokaże mi, czy warto zamówić pierwszą partię.</p>}
             <div class="btns">
-              {gadzet
-                ? <a class="btn primary" href={`/sklep/placebo-junior/#${gadzet.id}`}>Zobacz w sklepie</a>
-                : <a class="btn primary" href="#newsletter">Chcę maskotkę</a>}
-              <a class="btn" href="/sklep/placebo-junior/">Więcej z Linii Placebo Junior</a>
+              {gadzet && SKLEP_OTWARTY
+                ? <a class="btn primary" href={`/placebo-junior/sklep/#${gadzet.id}`}>Zobacz w sklepie</a>
+                : <a class="btn primary" href="#newsletter">{gadzet ? 'Daj znać, gdy ruszy sprzedaż' : 'Chcę maskotkę'}</a>}
+              {SKLEP_OTWARTY && <a class="btn" href="/placebo-junior/sklep/">Więcej z Linii Placebo Junior</a>}
             </div>
           </div>
         </article>
@@ -92,7 +97,7 @@ const gadzetPokaz = gadzet ?? gadzetNext;
           <h2 class="h-sec">Placebo Junior w Twojej skrzynce</h2>
           <p class="muted" style="margin-top:10px">Nowe karty pracy, publikacje dla rodziców i wiadomość o premierze maskotki. Rzadko i bez spamu. Adres wykorzystam wyłącznie do tego i usunę go na Twoją prośbę.</p>
         </div>
-        <FormularzNewsletter nazwa="newsletter-junior" id="nj" maskotka />
+        <FormularzNewsletter nazwa="newsletter-junior" id="nj" maskotka po="/placebo-junior/dziekuje/" marka="Placebo Junior" />
       </div>
     </div>
   </section>

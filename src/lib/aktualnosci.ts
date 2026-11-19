@@ -21,13 +21,15 @@ export async function aktualnosci(limit = 3): Promise<Aktualnosc[]> {
   const lista: Aktualnosc[] = [];
 
   for (const p of produkty) {
+    // Produkty Placebo Junior mają własną wyspę (/placebo-junior/) i nie pojawiają się w aktualnościach dla dorosłych.
+    if (p.grupa === 'junior') continue;
     if (p.status !== 'dostepne' || !p.dodano) continue;
     const gadzet = p.rodzaj === 'gadzet';
     lista.push({
       rodzaj: 'produkt',
       etykieta: p.darmowy ? 'Nowa darmowa karta pracy' : gadzet ? 'Nowy gadżet w sklepie' : 'Nowość w sklepie',
       tytul: p.nazwa, opis: p.opis, data: new Date(p.dodano), obraz: p.obraz,
-      href: p.grupa === 'junior' ? (gadzet ? '/placebo-junior/#gadzety' : '/placebo-junior/#karty-pracy') : '/sklep/materialy/',
+      href: '/sklep/materialy/',
     });
   }
 

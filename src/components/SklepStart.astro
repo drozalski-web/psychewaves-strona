@@ -6,20 +6,20 @@ import WzorKarta from './WzorKarta.astro';
 import FormularzNewsletter from './FormularzNewsletter.astro';
 import { wzory, wyrozniane } from '../data/sklep';
 import { MARKA_SKLEPU, SKLEP_PRZENIESIONY } from '../lib/witryna';
-// Jeden sklep, dwie marki: odzież to #stopsprawdzam, materiały edukacyjne i Placebo Junior to Psyche Waves.
+// Dwie marki w jednym sklepie: odzież to #stopsprawdzam, materiały edukacyjne to Psyche Waves.
+// Placebo Junior ma własny sklep w swojej wyspie (/placebo-junior/sklep/), więc nie występuje tutaj.
 // Podpis marki na kafelku pokazujemy, gdy sklep działa na stopsprawdzam.pl.
 const kafelki = [
   ['/sklep/odziez/', `Odzież i torby`, `${wzory.length} wzorów: koszulki, bluzy i torby z hasłami ${MARKA_SKLEPU} i z Placebo. Na razie możesz je obejrzeć i wybrać te, które chcesz mieć.`, ['skad-przod', 'bateria-przod', 'nie-wszystko'], 'Zobacz wzory', '#stopsprawdzam'],
   ['/sklep/materialy/', 'Materiały do wydruku', 'Checklisty, plansze i karty do krytycznego czytania psychologii. Z poziomami pewności i źródłami.', null, 'Zobacz materiały', 'Psyche Waves'],
-  ['/sklep/placebo-junior/', 'Linia Placebo Junior', 'Karty pracy dla dzieci, gadżety i maskotka Placebo. Pierwsza karta pracy jest darmowa.', null, 'Zobacz Placebo Junior', 'Psyche Waves'],
 ];
 ---
-<Base tytul="Sklep" opis={`Sklep ${MARKA_SKLEPU}: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu, materiały do wydruku i Linia Placebo Junior. Wzory w przygotowaniu.`}>
+<Base tytul="Sklep" opis={`Sklep ${MARKA_SKLEPU}: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu oraz materiały do wydruku. Wzory w przygotowaniu.`}>
   <section class="article-head">
     <div class="wrap">
       <p class="eyebrow">Sklep {MARKA_SKLEPU}</p>
       <h1>Rzeczy z hasłami, które mówią to, co psychoedukacja bez wstydu.</h1>
-      <p class="standfirst">Koszulki, bluzy i torby, materiały do wydruku i Linia Placebo Junior. Sklep jest w przygotowaniu: możesz już obejrzeć wzory i wybrać te, które chcesz mieć. Dzięki temu będę wiedzieć, od czego zacząć produkcję.</p>
+      <p class="standfirst">Koszulki, bluzy i torby oraz materiały do wydruku. Sklep jest w przygotowaniu: możesz już obejrzeć wzory i wybrać te, które chcesz mieć. Dzięki temu będę wiedzieć, od czego zacząć produkcję.</p>
       <div class="btns" style="margin-top:20px">
         <a class="btn primary" href="/sklep/odziez/">Zobacz wzory</a>
         <a class="btn" href="#lista">Zapisz się na listę</a>
