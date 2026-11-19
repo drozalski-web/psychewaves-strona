@@ -17,6 +17,7 @@ import '@fontsource/inter/latin-700-italic.css';
 import '@fontsource/inter/latin-ext-700-italic.css';
 import '../styles/global.css';
 import { NA_STOPSPRAWDZAM, ADRES_PW, ADRES_SS } from '../lib/witryna';
+import { SKLEP_OTWARTY } from '../data/sklep-config';
 
 interface Props {
   tytul?: string;
@@ -30,13 +31,20 @@ interface Props {
   noindex?: boolean;
   /** Dodatkowe dane strukturalne schema.org (np. Article). */
   jsonLd?: Record<string, unknown>;
+  /** 'junior': wyspa Placebo Junior ma własny nagłówek, menu i stopkę, bez odnośników do części dla dorosłych. */
+  sekcja?: 'junior';
 }
-const marka = NA_STOPSPRAWDZAM ? '#stopsprawdzam' : 'Psyche Waves';
+const { sekcja } = Astro.props;
+// Placebo Junior istnieje tylko na psychewaves.pl (nie na stopsprawdzam.pl).
+const junior = sekcja === 'junior' && !NA_STOPSPRAWDZAM;
+const marka = NA_STOPSPRAWDZAM ? '#stopsprawdzam' : junior ? 'Placebo Junior' : 'Psyche Waves';
 const {
   tytul,
   opis = NA_STOPSPRAWDZAM
     ? '#stopsprawdzam: zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, sprawdź. Akcja i odzież z Placebo.'
-    : 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
+    : junior
+      ? 'Placebo Junior: karty pracy, publikacje i gadżety z Placebo dla dzieci 6–10 lat i dorosłych, którzy z nimi pracują.'
+      : 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
   obraz = NA_STOPSPRAWDZAM ? '/og/stopsprawdzam.png' : '/og/psyche-waves.png',
   obrazAlt = NA_STOPSPRAWDZAM
     ? '#stopsprawdzam: zanim uwierzysz, sprawdź. Placebo w czapce EEG.'
@@ -45,7 +53,9 @@ const {
   noindex = false,
   jsonLd,
 } = Astro.props;
-const domyslnyTytul = NA_STOPSPRAWDZAM ? '#stopsprawdzam · zanim uwierzysz, sprawdź' : 'Psyche Waves · psychoedukacja bez wstydu';
+const domyslnyTytul = NA_STOPSPRAWDZAM
+  ? '#stopsprawdzam · zanim uwierzysz, sprawdź'
+  : junior ? 'Placebo Junior · karty pracy i publikacje dla dzieci i dorosłych' : 'Psyche Waves · psychoedukacja bez wstydu';
 const pelnyTytul = tytul && tytul !== marka ? `${tytul} · ${marka}` : domyslnyTytul;
 const sciezka = Astro.url.pathname;
 // Na stopsprawdzam.pl strona akcji jest stroną główną.
@@ -92,19 +102,29 @@ const menu = NA_STOPSPRAWDZAM
       { href: '/placebo/', nazwa: 'Placebo' },
       { href: '/publikacje/', nazwa: 'Publikacje' },
     ]
-  : [
-      { href: '/', nazwa: 'Start' },
-      { href: '/publikacje/', nazwa: 'Publikacje' },
-      { href: '/placebo/', nazwa: 'Placebo' },
-      { href: '/placebo-junior/', nazwa: 'Placebo Junior' },
-      { href: '/sklep/', nazwa: 'Sklep' },
-      { href: '/o-mnie/', nazwa: 'O mnie' },
-      { href: '/kontakt/', nazwa: 'Kontakt' },
-    ];
+  : junior
+    ? [
+        { href: '/placebo-junior/', nazwa: 'Start' },
+        { href: '/placebo-junior/#jak-pracowac', nazwa: 'Artykuły' },
+        { href: '/placebo-junior/#karty-pracy', nazwa: 'Karty pracy' },
+        { href: '/placebo-junior/#gadzety', nazwa: 'Gadżety' },
+        ...(SKLEP_OTWARTY ? [{ href: '/placebo-junior/sklep/', nazwa: 'Sklep' }] : []),
+      ]
+    : [
+        { href: '/', nazwa: 'Start' },
+        { href: '/publikacje/', nazwa: 'Publikacje' },
+        { href: '/placebo/', nazwa: 'Placebo' },
+        { href: '/sklep/', nazwa: 'Sklep' },
+        { href: '/o-mnie/', nazwa: 'O mnie' },
+        { href: '/kontakt/', nazwa: 'Kontakt' },
+      ];
 // Aktywna jest najdłuższa pasująca pozycja (np. „Odzież i torby”, a nie jednocześnie „Sklep”).
-const aktywnyHref = menu
-  .filter((m) => (m.href === '/' ? sciezka === '/' : sciezka.startsWith(m.href)))
-  .sort((a, b) => b.href.length - a.href.length)[0]?.href;
+// W menu Junior część pozycji to kotwice na stronie głównej, więc podświetlamy tylko Start i Sklep.
+const aktywnyHref = junior
+  ? (sciezka === '/placebo-junior/' ? '/placebo-junior/' : sciezka.startsWith('/placebo-junior/sklep/') ? '/placebo-junior/sklep/' : undefined)
+  : menu
+      .filter((m) => (m.href === '/' ? sciezka === '/' : sciezka.startsWith(m.href)))
+      .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 const aktywny = (href: string) => href === aktywnyHref;
 ---
 <!doctype html>
@@ -151,6 +171,14 @@ const aktywny = (href: string) => href === aktywnyHref;
             <span class="brand-sub">SKĄD TO WIEMY?</span>
           </span>
         </a>
+      ) : junior ? (
+        <a class="brand brand-jr" href="/placebo-junior/" aria-label="Placebo Junior, strona główna">
+          <img src="/placebo/h3-usmiech.webp" width="48" height="48" alt="">
+          <span>
+            <span class="brand-name">Placebo <em>Junior</em></span>
+            <span class="brand-sub">6–10 LAT</span>
+          </span>
+        </a>
       ) : (
         <a class="brand" href="/" aria-label="Psyche Waves, strona główna">
           <svg viewBox="0 0 1080 1080" aria-hidden="true">
@@ -193,6 +221,8 @@ const aktywny = (href: string) => href === aktywnyHref;
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && naglowek.classList.contains('otwarte')) { ustaw(false); przycisk.focus(); } });
       document.addEventListener('click', (e) => { if (naglowek.classList.contains('otwarte') && !naglowek.contains(e.target as Node)) ustaw(false); });
       window.matchMedia('(min-width: 701px)').addEventListener('change', (m) => { if (m.matches) ustaw(false); });
+      // Odnośniki do kotwic na tej samej stronie nie przeładowują jej, więc menu zamykamy po kliknięciu.
+      naglowek.querySelector('nav.main')?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) ustaw(false); });
     }
   </script>
 
@@ -217,12 +247,14 @@ const aktywny = (href: string) => href === aktywnyHref;
       <div class="row">
         {NA_STOPSPRAWDZAM ? (
           <span>© {new Date().getFullYear()} #stopsprawdzam · projekt <a href={`${ADRES_PW}/`}>Psyche Waves</a> · <a href="https://www.instagram.com/stopsprawdzam/" rel="noopener">@stopsprawdzam</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
+        ) : junior ? (
+          <span>© {new Date().getFullYear()} Placebo Junior · autor: <a href="/">Psyche Waves</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
         ) : (
-          <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/stopsprawdzam/">#stopsprawdzam</a> · <a href="/wspolpraca/">Współpraca</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
+          <span>© {new Date().getFullYear()} Psyche Waves · psychewaves.pl · <a href="/stopsprawdzam/">#stopsprawdzam</a> · <a href="/wspolpraca/">Współpraca</a> · Dla rodziców: <a href="/placebo-junior/">Placebo Junior</a> · <a href="/polityka-prywatnosci/">Polityka prywatności</a></span>
         )}
-        <span class="hash">{NA_STOPSPRAWDZAM ? '#STOPSPRAWDZAM' : '#PSYCHEWAVES'}</span>
+        <span class="hash">{NA_STOPSPRAWDZAM ? '#STOPSPRAWDZAM' : junior ? '#PLACEBOJUNIOR' : '#PSYCHEWAVES'}</span>
       </div>
-      <p>Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+      <p>{junior ? 'Materiały dla dorosłych pracujących z dziećmi. Treści edukacyjne; nie zastępują konsultacji ze specjalistą.' : 'Treści edukacyjne; nie zastępują konsultacji ze specjalistą.'}</p>
     </div>
   </footer>
 </body>

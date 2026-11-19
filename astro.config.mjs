@@ -25,8 +25,8 @@ function rehypePoziomPewnosci() {
 // Mapa strony dla wyszukiwarek: bez stron technicznych i bez podstron sklepu, dopóki sklep jest w budowie
 // (pokazują wtedy tę samą treść co /sklep/). Szkiców nie ma w buildzie produkcyjnym, więc nie trafią do mapy.
 const sklepOtwarty = process.env.PUBLIC_SKLEP_OTWARTY === 'true';
-const POMIN = ['/sklep/dziekuje/', '/404'];
-const PODSTRONY_SKLEPU = ['/sklep/odziez/', '/sklep/materialy/', '/sklep/placebo-junior/'];
+const POMIN = ['/sklep/dziekuje/', '/placebo-junior/dziekuje/', '/404'];
+const PODSTRONY_SKLEPU = ['/sklep/odziez/', '/sklep/materialy/', '/placebo-junior/sklep/'];
 
 export default defineConfig({
   site: ust.naStopsprawdzam ? ADRES_SS : ADRES_PW,

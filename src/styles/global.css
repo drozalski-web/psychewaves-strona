@@ -56,6 +56,8 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .brand svg{width:44px;height:44px;flex:none}
 .brand-name{font-family:var(--logo);font-weight:500;font-size:1.3rem;line-height:1;display:block}
 .brand-name em{color:var(--logo-accent);font-style:italic}
+/* Nagłówek wyspy Placebo Junior: głowa Placebo w kółku zamiast znaku Psyche Waves */
+.brand-jr img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:50% 30%;background:var(--mist);flex:none}
 /* Znak #stopsprawdzam w nagłówku stopsprawdzam.pl: Inter Bold, „sprawdzam” kursywą w turkusie */
 .brand-ss-name{display:block;font-family:var(--body);font-weight:700;font-size:1.45rem;letter-spacing:-.02em;line-height:1;color:var(--ink)}
 .brand-ss-name em{color:var(--accent);font-style:italic;padding-right:.06em}

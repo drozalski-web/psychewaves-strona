@@ -1,16 +1,18 @@
 ---
 // Formularz zapisu (Netlify Forms). Każdy formularz ma własną nazwę, żeby zapisy były rozróżnialne w panelu Netlify.
-interface Props { nazwa: string; id: string; maskotka?: boolean }
-const { nazwa, id, maskotka = false } = Astro.props;
+interface Props { nazwa: string; id: string; maskotka?: boolean; po?: string; marka?: string }
+// po: strona z podziękowaniem po zapisie (Junior ma własną, żeby rodzic nie wychodził z wyspy).
+// marka: nazwa w treści zgody; domyślnie zależy od budowanej strony.
 import { NA_STOPSPRAWDZAM } from '../lib/witryna';
+const { nazwa, id, maskotka = false, po = '/sklep/dziekuje/', marka = NA_STOPSPRAWDZAM ? '#stopsprawdzam' : 'Psyche Waves' } = Astro.props;
 ---
-<form class="waitlist" name={nazwa} method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/sklep/dziekuje/">
+<form class="waitlist" name={nazwa} method="POST" data-netlify="true" netlify-honeypot="bot-field" action={po}>
   <input type="hidden" name="form-name" value={nazwa}>
   <p hidden><label>Nie wypełniaj: <input name="bot-field"></label></p>
   <label for={`${id}-email`}>Adres e-mail</label>
   <input id={`${id}-email`} type="email" name="email" required autocomplete="email" inputmode="email">
   {maskotka && <label class="check"><input type="checkbox" name="chce_maskotke"> Chcę maskotkę Placebo: daj mi znać, gdy będzie dostępna.</label>}
-  <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach {NA_STOPSPRAWDZAM ? '#stopsprawdzam' : 'Psyche Waves'}.</label>
+  <label class="check"><input type="checkbox" name="zgoda" required> Zgadzam się na wysłanie wiadomości o nowych materiałach {marka}.</label>
   <p class="rodo">Administratorem adresu jest Psyche Waves (Daniel Różalski). Zgodę możesz wycofać w każdej chwili, pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
   <button class="btn primary" type="submit">Zapisz mnie</button>
 </form>

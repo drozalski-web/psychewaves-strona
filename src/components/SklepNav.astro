@@ -1,11 +1,11 @@
 ---
-interface Props { aktywny: 'start' | 'odziez' | 'materialy' | 'junior' }
+interface Props { aktywny: 'start' | 'odziez' | 'materialy' }
 const { aktywny } = Astro.props;
+// Placebo Junior ma własny sklep w obrębie swojej wyspy (/placebo-junior/sklep/), więc nie ma go na tej liście.
 const zakladki = [
   ['start', '/sklep/', 'Sklep'],
   ['odziez', '/sklep/odziez/', 'Odzież i torby'],
   ['materialy', '/sklep/materialy/', 'Materiały'],
-  ['junior', '/sklep/placebo-junior/', 'Placebo Junior'],
 ];
 ---
 <nav class="sklep-nav" aria-label="Sekcje sklepu">

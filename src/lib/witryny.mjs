@@ -1,7 +1,7 @@
 // Jeden kod, dwie strony:
-//   psychewaves.pl    – edukacja (domyślna budowa),
-//   stopsprawdzam.pl  – akcja #stopsprawdzam i sklep z odzieżą (budowa z PUBLIC_WITRYNA=stopsprawdzam).
-// Dopóki sklep nie jest przeniesiony, psychewaves.pl buduje się dokładnie tak jak wcześniej.
+//   psychewaves.pl    – edukacja dla dorosłych oraz wyspa Placebo Junior (/placebo-junior/*, z własnym sklepem i podziękowaniem),
+//   stopsprawdzam.pl  – akcja #stopsprawdzam i sklep dla dorosłych: odzież i materiały (budowa z PUBLIC_WITRYNA=stopsprawdzam).
+// Dopóki sklep nie jest przeniesiony, psychewaves.pl buduje się z całym sklepem pod /sklep/.
 // Plik w czystym JS, bo korzystają z niego i komponenty, i astro.config.mjs.
 
 export const ADRES_PW = 'https://psychewaves.pl';
@@ -20,8 +20,8 @@ export function ustawienia(env) {
 /** Strony, które po przeniesieniu mieszkają na stopsprawdzam.pl (ścieżki tak, jak buduje je Astro). */
 export const czescStopsprawdzam = (p) => p === '/stopsprawdzam/' || p.startsWith('/sklep/');
 
-/** Strony obecne na obu domenach. /sklep/dziekuje/ zostaje też na psychewaves.pl, bo kończy zapis z /placebo-junior/. */
-export const wspolne = (p) => p === '/polityka-prywatnosci/' || p === '/404' || p === '/sklep/dziekuje/';
+/** Strony obecne na obu domenach. Placebo Junior ma własne podziękowanie (/placebo-junior/dziekuje/), więc /sklep/dziekuje/ jest tylko na stopsprawdzam.pl. */
+export const wspolne = (p) => p === '/polityka-prywatnosci/' || p === '/404';
 
 /** Zamienia odnośnik wewnętrzny na właściwy dla budowanej strony (ścieżkę albo pełny adres drugiej domeny). */
 export function przepiszAdres(href, { naStopsprawdzam, sklepPrzeniesiony }) {
@@ -34,7 +34,6 @@ export function przepiszAdres(href, { naStopsprawdzam, sklepPrzeniesiony }) {
     if (p === '/' || czescStopsprawdzam(p) || wspolne(p)) return href;
     return ADRES_PW + sciezka + reszta;
   }
-  if (p === '/sklep/dziekuje/') return href;
   if (p === '/stopsprawdzam/') return `${ADRES_SS}/${reszta}`;
   if (czescStopsprawdzam(p)) return ADRES_SS + sciezka + reszta;
   return href;
