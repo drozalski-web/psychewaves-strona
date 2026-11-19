@@ -45,10 +45,12 @@ const {
     : junior
       ? 'Placebo Junior: karty pracy, publikacje i gadżety z Placebo dla dzieci 6–10 lat i dorosłych, którzy z nimi pracują.'
       : 'Psyche Waves: psychoedukacja bez wstydu. Uzależnienia, ADHD, zaburzenia psychiczne, relacje, EEG.',
-  obraz = NA_STOPSPRAWDZAM ? '/og/stopsprawdzam.png' : '/og/psyche-waves.png',
+  obraz = NA_STOPSPRAWDZAM ? '/og/stopsprawdzam.png' : junior ? '/og/placebo-junior.png' : '/og/psyche-waves.png',
   obrazAlt = NA_STOPSPRAWDZAM
     ? '#stopsprawdzam: zanim uwierzysz, sprawdź. Placebo w czapce EEG.'
-    : 'Psyche Waves: psychoedukacja bez wstydu. Logo z falą EEG, która się uspokaja i kończy kroplą.',
+    : junior
+      ? 'Placebo Junior: dla dzieci 6–10 lat i dorosłych. Emocje są jak fale: raz małe, raz duże, a potem się uspokajają. Uśmiechnięte Placebo w czapce EEG.'
+      : 'Psyche Waves: psychoedukacja bez wstydu. Logo z falą EEG, która się uspokaja i kończy kroplą.',
   typ = 'website',
   noindex = false,
   jsonLd,
