@@ -1,12 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import FormularzNewsletter from './FormularzNewsletter.astro';
-import { MARKA_SKLEPU } from '../lib/witryna';
-const powstaje = [
-  'Koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu',
-  'Materiały do wydruku do krytycznego czytania psychologii',
-  'Linia Placebo Junior: karty pracy i maskotka Placebo',
-];
+import { MARKA_SKLEPU, SKLEP_PRZENIESIONY } from '../lib/witryna';
+// Na stopsprawdzam.pl podpisujemy, która linia jest której marki (odzież: #stopsprawdzam, edukacja: Psyche Waves).
+const powstaje = SKLEP_PRZENIESIONY
+  ? [
+      'Odzież #stopsprawdzam: koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu',
+      'Materiały do wydruku Psyche Waves do krytycznego czytania psychologii',
+      'Linia Placebo Junior od Psyche Waves: karty pracy i maskotka Placebo',
+    ]
+  : [
+      'Koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu',
+      'Materiały do wydruku do krytycznego czytania psychologii',
+      'Linia Placebo Junior: karty pracy i maskotka Placebo',
+    ];
 ---
 <Base tytul="Sklep w budowie" opis={`Sklep ${MARKA_SKLEPU} jest w budowie. Zostaw e-mail, a dam Ci znać, gdy ruszy.`}>
   <div class="tasma" role="presentation" aria-hidden="true"></div>

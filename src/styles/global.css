@@ -360,6 +360,7 @@ section[id]{scroll-margin-top:90px}
 .kafelek a{display:grid;gap:10px;align-content:start;height:100%;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--bg);text-decoration:none;color:var(--ink)}
 .kafelek a:hover{border-color:var(--accent);box-shadow:0 4px 18px rgba(22,48,79,.08)}
 .kafelek h2{font-size:1.5rem}
+.kafelek-marka{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:-6px}
 .kafelek-obrazy{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--mist);border-radius:12px;padding:8px}
 .kafelek-obrazy img{width:100%;height:auto;border-radius:8px}
 .kafelek-cta{font-weight:700;color:var(--accent);margin-top:4px}
