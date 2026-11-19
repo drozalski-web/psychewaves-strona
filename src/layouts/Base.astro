@@ -149,8 +149,18 @@ const aktywny = (href: string) => href === aktywnyHref;
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={obrazAlt}>
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  {junior ? (
+    <>
+      <link rel="icon" href="/favicon-junior-32.png" type="image/png" sizes="32x32">
+      <link rel="icon" href="/favicon-junior-48.png" type="image/png" sizes="48x48">
+      <link rel="apple-touch-icon" href="/apple-touch-icon-junior.png">
+    </>
+  ) : (
+    <>
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    </>
+  )}
   <link rel="sitemap" href="/sitemap-index.xml">
   <script type="application/ld+json" set:html={JSON.stringify(witryna)} />
   {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
