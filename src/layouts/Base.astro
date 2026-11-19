@@ -124,13 +124,35 @@ const aktywny = (href: string) => (href === '/' ? sciezka === '/' : sciezka.star
           <span class="brand-sub">PSYCHOEDUKACJA</span>
         </span>
       </a>
-      <nav class="main" aria-label="Menu główne">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-glowne" hidden>
+        <span class="burger" aria-hidden="true"><span></span></span><span class="nav-toggle-txt">Menu</span>
+      </button>
+      <nav class="main" id="menu-glowne" aria-label="Menu główne">
         <ul>
           {menu.map((m) => <li><a href={m.href} aria-current={aktywny(m.href) ? 'page' : undefined}>{m.nazwa}</a></li>)}
         </ul>
       </nav>
     </div>
   </header>
+  <script>
+    // Menu na telefonie: przycisk „Menu” rozwija pełną listę. Bez JS menu jest widoczne w dwóch kolumnach.
+    const naglowek = document.querySelector('header.site');
+    const przycisk = naglowek?.querySelector<HTMLButtonElement>('.nav-toggle');
+    if (naglowek && przycisk) {
+      const napis = przycisk.querySelector('.nav-toggle-txt')!;
+      const ustaw = (otwarte: boolean) => {
+        naglowek.classList.toggle('otwarte', otwarte);
+        przycisk.setAttribute('aria-expanded', String(otwarte));
+        napis.textContent = otwarte ? 'Zamknij' : 'Menu';
+      };
+      naglowek.classList.add('js');
+      przycisk.hidden = false;
+      przycisk.addEventListener('click', () => ustaw(!naglowek.classList.contains('otwarte')));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && naglowek.classList.contains('otwarte')) { ustaw(false); przycisk.focus(); } });
+      document.addEventListener('click', (e) => { if (naglowek.classList.contains('otwarte') && !naglowek.contains(e.target as Node)) ustaw(false); });
+      window.matchMedia('(min-width: 701px)').addEventListener('change', (m) => { if (m.matches) ustaw(false); });
+    }
+  </script>
 
   <main><slot /></main>
 
