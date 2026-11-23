@@ -4,6 +4,19 @@
 import Base from '../layouts/Base.astro';
 import Separator from '../components/Separator.astro';
 import { NA_STOPSPRAWDZAM } from '../lib/witryna';
+import { ZAPISY_AKTYWNE } from '../lib/zapisy';
+import ZapisBrevo from '../components/ZapisBrevo.astro';
+
+// Plan kursu mailowego: zob. materialy/mini-kurs-stopsprawdzam/mini-kurs-stopsprawdzam.md
+const dniKursu = [
+  'Skąd to wiemy?',
+  'Kto to mówi?',
+  'Na kim to sprawdzono?',
+  'Z czym to porównano?',
+  '„Wiąże się z” to nie „powoduje”',
+  'Trzy słowa zamiast „udowodnione”',
+  'Twoja checklista',
+];
 
 const pytania = [
   ['Kto to mówi?', 'Badacz, lekarz, influencer czy firma, która coś sprzedaje? To jeszcze nie przesądza o prawdzie, ale mówi, czego się spodziewać.'],
@@ -35,6 +48,7 @@ const gdzie = [
         <p class="lead">Zanim uwierzysz w nagłówek o psychologii albo podasz go dalej, zatrzymaj się na chwilę i sprawdź. Nie chodzi o to, żeby nie wierzyć w nic. Chodzi o to, żeby wiedzieć, <strong>jak bardzo</strong> można w coś wierzyć.</p>
         <div class="btns">
           <a class="btn primary" href="#pytania">Pięć pytań</a>
+          {ZAPISY_AKTYWNE && <a class="btn" href="#kurs">Kurs mailowy</a>}
           {NA_STOPSPRAWDZAM
             ? <a class="btn" href="/sklep/odziez/">Odzież i torby</a>
             : <a class="btn" href="/publikacje/">Czytaj publikacje</a>}
@@ -84,6 +98,24 @@ const gdzie = [
     </div>
   </section>
 
+  {ZAPISY_AKTYWNE && (
+    <section class="tight" id="kurs">
+      <div class="wrap">
+        <div class="newsletter">
+          <div>
+            <p class="eyebrow">Mini-kurs mailowy</p>
+            <h2 class="h-sec">7 dni z Placebo: jak czytać nagłówki o psychologii</h2>
+            <p class="muted" style="margin-top:10px">Jedna krótka wiadomość dziennie, do 3 minut czytania: jedno pytanie i jedno zadanie. Po siódmym dniu koniec, bez dalszych maili, chyba że zdecydujesz inaczej.</p>
+            <ol class="sp-dni">
+              {dniKursu.map((d) => <li>{d}</li>)}
+            </ol>
+          </div>
+          <ZapisBrevo lista="kurs" id="zk" />
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="tight">
     <div class="wrap">
       <p class="eyebrow">Gdzie spotkasz #stopsprawdzam</p>
@@ -111,6 +143,7 @@ const gdzie = [
 
 <style>
   .sp-znak{font-family:var(--body);font-weight:700;letter-spacing:-.02em;line-height:1.05;font-size:clamp(2.1rem,5vw,3.5rem);overflow-wrap:normal}
+  .sp-dni{margin:14px 0 0;padding-left:1.3em;color:var(--muted);font-size:.95rem;display:grid;gap:2px}
   .sp-hash,.sp-akcent{display:inline-block;white-space:nowrap}
   .sp-hash{color:var(--ink)}
   .sp-akcent{color:var(--accent);font-style:italic;padding-right:.08em}
