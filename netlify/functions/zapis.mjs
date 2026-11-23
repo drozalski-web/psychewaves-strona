@@ -1,24 +1,18 @@
-// Zapis na kurs mailowy / newsletter: formularz strony -> ta funkcja -> Brevo (zapis z potwierdzeniem adresu, „double opt-in”).
+// Zapis na newsletter Psyche Waves: formularz strony -> ta funkcja -> Brevo (zapis z potwierdzeniem adresu, „double opt-in”).
 // Dzięki temu na stronie nie ma żadnych skryptów ani plików cookie zewnętrznego narzędzia.
-// Wymagane zmienne środowiskowe (Netlify -> Project configuration -> Environment variables):
+// Działa tylko dla psychewaves.pl. Wymagane zmienne środowiskowe (Netlify, projekt psychewaves.pl -> Environment variables):
 //   BREVO_API_KEY            klucz API Brevo (sekretny)
 //   BREVO_DOI_TEMPLATE_ID    numer szablonu wiadomości z linkiem potwierdzającym (typ „double opt-in”)
-//   BREVO_LISTA_KURS         numer listy „Kurs #stopsprawdzam”
 //   BREVO_LISTA_NEWSLETTER   numer listy „Newsletter Psyche Waves”
-// Zob. CLAUDE.md, sekcja „Zapisy (Brevo)”.
+// Zob. CLAUDE.md, sekcja „Zapisy na newsletter (Brevo)”.
 
 export const config = { path: '/api/zapis' };
 
-const LISTY = {
-  kurs: { idEnv: 'BREVO_LISTA_KURS', po: 'https://stopsprawdzam.pl/zapis/potwierdzono-kurs/' },
-  newsletter: { idEnv: 'BREVO_LISTA_NEWSLETTER', po: 'https://psychewaves.pl/zapis/potwierdzono-newsletter/' },
-};
+const LISTA = { idEnv: 'BREVO_LISTA_NEWSLETTER', po: 'https://psychewaves.pl/zapis/potwierdzono-newsletter/' };
 
-// Formularz może wysłać tylko własna strona (obie domeny, podglądy tych dwóch projektów i lokalny podgląd).
+// Formularz może wysłać tylko własna strona (psychewaves.pl, podglądy jej projektu Netlify i lokalny podgląd).
 const DOZWOLONE_HOSTY = [
-  /^(www\.)?stopsprawdzam\.pl$/,
   /^(www\.)?psychewaves\.pl$/,
-  /^(.+--)?stopsprawdzam\.netlify\.app$/,
   /^(.+--)?adorable-haupia-18a01f\.netlify\.app$/,
   /^localhost$/,
 ];
@@ -49,13 +43,12 @@ export default async (req) => {
   if ((dane.get('bot-field') ?? '').toString().trim() !== '') return przekieruj(req, '/zapis/sprawdz-skrzynke/');
 
   const email = (dane.get('email') ?? '').toString().trim().toLowerCase();
-  const lista = LISTY[(dane.get('lista') ?? '').toString()];
   const zgoda = dane.get('zgoda');
-  if (!lista || !zgoda || email.length > 254 || !EMAIL.test(email)) return przekieruj(req, '/zapis/blad/');
+  if (!zgoda || email.length > 254 || !EMAIL.test(email)) return przekieruj(req, '/zapis/blad/');
 
   const klucz = process.env.BREVO_API_KEY;
   const szablon = Number(process.env.BREVO_DOI_TEMPLATE_ID);
-  const idListy = Number(process.env[lista.idEnv]);
+  const idListy = Number(process.env[LISTA.idEnv]);
   if (!klucz || !Number.isInteger(szablon) || szablon <= 0 || !Number.isInteger(idListy) || idListy <= 0) {
     console.error('Zapis: brak konfiguracji Brevo (klucz, szablon lub numer listy)');
     return przekieruj(req, '/zapis/blad/');
@@ -66,7 +59,7 @@ export default async (req) => {
     odpowiedz = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
       method: 'POST',
       headers: { 'api-key': klucz, 'content-type': 'application/json', accept: 'application/json' },
-      body: JSON.stringify({ email, includeListIds: [idListy], templateId: szablon, redirectionUrl: lista.po }),
+      body: JSON.stringify({ email, includeListIds: [idListy], templateId: szablon, redirectionUrl: LISTA.po }),
       signal: AbortSignal.timeout(8000),
     });
   } catch (blad) {

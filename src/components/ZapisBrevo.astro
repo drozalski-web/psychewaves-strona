@@ -1,26 +1,15 @@
 ---
-// Formularz zapisu na kurs mailowy albo newsletter. Wysyła dane do funkcji /api/zapis (netlify/functions/zapis.mjs),
+// Formularz zapisu na newsletter Psyche Waves. Wysyła dane do funkcji /api/zapis (netlify/functions/zapis.mjs),
 // która dodaje adres do Brevo z potwierdzeniem mailowym. Bez JavaScriptu, bez zewnętrznych skryptów.
-// Używaj tylko wtedy, gdy ZAPISY_AKTYWNE (zob. src/lib/zapisy.ts).
-interface Props { lista: 'kurs' | 'newsletter'; id: string }
-const { lista, id } = Astro.props;
-const tresc = {
-  kurs: {
-    zgoda: 'Chcę dostać 7 wiadomości mailowych z kursu #stopsprawdzam (jedna dziennie, potem koniec).',
-    przycisk: 'Zapisz mnie na kurs',
-  },
-  newsletter: {
-    zgoda: 'Chcę dostawać wiadomość e-mail, gdy pojawi się nowa publikacja Psyche Waves (rzadko, bez spamu).',
-    przycisk: 'Zapisz mnie na newsletter',
-  },
-}[lista];
+// Używaj tylko wtedy, gdy ZAPISY_AKTYWNE (zob. src/lib/zapisy.ts), najlepiej przez NewsletterBlok.
+interface Props { id: string }
+const { id } = Astro.props;
 ---
 <form class="waitlist" method="POST" action="/api/zapis">
-  <input type="hidden" name="lista" value={lista}>
   <p hidden><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <label for={`${id}-email`}>Adres e-mail</label>
   <input id={`${id}-email`} type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email">
-  <label class="check"><input type="checkbox" name="zgoda" required> {tresc.zgoda}</label>
+  <label class="check"><input type="checkbox" name="zgoda" required> Chcę dostawać wiadomość e-mail, gdy pojawi się nowa publikacja Psyche Waves (rzadko, bez spamu).</label>
   <p class="rodo">Po zapisie dostaniesz wiadomość z linkiem, którym potwierdzisz adres. Administratorem adresu jest Daniel Różalski. Wiadomości wysyła Brevo (UE). Zgodę możesz wycofać w każdej chwili, klikając link w wiadomości albo pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
-  <button class="btn primary" type="submit">{tresc.przycisk}</button>
+  <button class="btn primary" type="submit">Zapisz mnie na newsletter</button>
 </form>
