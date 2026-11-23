@@ -61,10 +61,10 @@ Placebo, mój szczur w czapce EEG, zadaje przy każdej tezie jedno pytanie: „S
 
 Co potem? Gdy pojawi się nowa publikacja, dostaniesz o niej wiadomość: z krótkim opisem, pełną listą źródeł i poziomem pewności przy każdej tezie, żeby od razu było widać, na ile można w coś wierzyć. Rzadko i bez spamu.
 
-Przy okazji: sklep #stopsprawdzam (koszulki, bluzy i torby z hasłami psychoedukacji bez wstydu i z Placebo) jest w budowie. Jeśli chcesz wiedzieć, kiedy ruszy, zajrzyj na stopsprawdzam.pl/sklep i zostaw tam adres.
+Zachęcam do odwiedzenia naszego sklepu: stopsprawdzam.pl/sklep
 ```
 
-- Słowa „stopsprawdzam.pl/sklep” w ostatnim akapicie zrób **linkiem** do `https://stopsprawdzam.pl/sklep/`.
+- Adres „stopsprawdzam.pl/sklep” w ostatnim zdaniu zrób **linkiem** do `https://stopsprawdzam.pl/sklep/`.
 - „[Potwierdzam zapis]” to **przycisk lub link** z adresem dokładnie: `{{ params.DOIurl }}` (specjalny znacznik Brevo, zamieniany na indywidualny link potwierdzający). Bez przycisku i tego adresu szablon nie zadziała. Jeśli edytor dopisuje `https://` przed znacznikiem, użyj przycisku **{ }** (wstaw zmienną).
 - **Stopka:** zamiast własnego podpisu wklej plik [`stopka-newslettera.html`](stopka-newslettera.html) w bloku **Custom HTML** (albo w edytorze HTML szablonu). To zatwierdzony podpis marki (Pozdrawiam, Daniel Różalski, Psyche Waves, strona, adres sklepu i Instagram, bez numeru telefonu) plus zastrzeżenie edukacyjne, linijka pomocowa i informacja o administratorze adresu. Logo ładuje się z `https://psychewaves.pl/mail/logo-stopka.png`, więc wkleić można dopiero po wdrożeniu tego pliku na stronę.
 - Brevo może samo dopisać pod stopką adres organizacji. Sprawdź to w podglądzie.
