@@ -9,7 +9,7 @@ const { id } = Astro.props;
   <p hidden><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <label for={`${id}-email`}>Adres e-mail</label>
   <input id={`${id}-email`} type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email">
-  <label class="check"><input type="checkbox" name="zgoda" required> Chcę dostawać wiadomość e-mail, gdy pojawi się nowa publikacja Psyche Waves (rzadko, bez spamu).</label>
+  <label class="check"><input type="checkbox" name="zgoda" required> Chcę dostawać wiadomości e-mail z newslettera Psyche Waves: o nowych publikacjach i o sklepie #stopsprawdzam (rzadko, bez spamu).</label>
   <p class="rodo">Po zapisie dostaniesz wiadomość z linkiem, którym potwierdzisz adres. Administratorem adresu jest Daniel Różalski. Wiadomości wysyła Brevo (UE). Zgodę możesz wycofać w każdej chwili, klikając link w wiadomości albo pisząc na kontakt@psychewaves.pl. Szczegóły: <a href="/polityka-prywatnosci/">Polityka prywatności</a>.</p>
   <button class="btn primary" type="submit">Zapisz mnie na newsletter</button>
 </form>
