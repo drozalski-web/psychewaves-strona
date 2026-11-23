@@ -29,6 +29,14 @@ Marka: skill `psycho-waves-brand` (paleta, czcionki, logo, głos, bezpieczeństw
 - **Wyspa Placebo Junior** (`/placebo-junior/*`, tylko psychewaves.pl): ma własny nagłówek, menu i stopkę (`<Base sekcja="junior">`), własny sklep `/placebo-junior/sklep/` (zamknięty razem ze sklepem; wtedy przekierowuje na stronę Junior) i własne podziękowanie `/placebo-junior/dziekuje/`. Strony Junior nie linkują do części dla dorosłych poza „autor: Psyche Waves” w stopce, a część dla dorosłych linkuje do Junior tylko w stopce („Dla rodziców”) i jednym blokiem na /placebo/. Produkty Junior nie trafiają do „Aktualności” na stronie głównej. Nowe strony Junior zawsze z `sekcja="junior"`, a nowe linki do Junior nie trafiają do menu dla dorosłych.
 - Podgląd lokalny stopsprawdzam.pl: `$env:PUBLIC_WITRYNA='stopsprawdzam'; npm run build; npx astro preview`.
 
+## Zapisy na newsletter (Brevo)
+
+- Tylko **psychewaves.pl**. Formularz (`src/components/ZapisBrevo.astro` w `NewsletterBlok.astro`, bez JS i bez zewnętrznych skryptów) wysyła dane do funkcji Netlify `netlify/functions/zapis.mjs` (adres `/api/zapis`), a ta dodaje adres do Brevo z potwierdzeniem mailowym (zapis z „double opt-in”). Po zapisie: `/zapis/sprawdz-skrzynke/`, po kliknięciu linku w mailu: `/zapis/potwierdzono-newsletter/`, przy błędzie `/zapis/blad/`. Formularze są na stronie głównej i w Publikacjach.
+- Zmienne środowiskowe w Netlify (tylko projekt psychewaves.pl, `adorable-haupia-18a01f`): `BREVO_API_KEY` (sekretna, wkleja ją Daniel, Claude jej nie dotyka), `BREVO_DOI_TEMPLATE_ID`, `BREVO_LISTA_NEWSLETTER`. Przełącznik `PUBLIC_ZAPISY_AKTYWNE=true` pokazuje formularze (bez niego są ukryte) i wymaga nowego wdrożenia.
+- Brevo nie może śledzić otwarć ani kliknięć w tych wiadomościach: polityka prywatności to obiecuje.
+- Funkcja akceptuje tylko żądania z psychewaves.pl (i podglądów jego projektu), ma pułapkę na boty (ukryte pole) i nie ujawnia, kto już jest zapisany.
+- Mini-kurs mailowy #stopsprawdzam jest **wstrzymany** do decyzji Daniela, czy go w ogóle robić. Szkic jest w `materialy/mini-kurs-stopsprawdzam/` (roboczy PR), a na stronie nie ma po nim śladu. Gdyby wrócił, trzeba dodać drugą listę, formularz na stopsprawdzam.pl i wiersz w polityce prywatności.
+
 ## Struktura
 
 - `src/content/artykuly/*.md`: artykuły (frontmatter: tytul, zajawka, kategoria, data, czasCzytania, temat, szkic, zrodlaDoWeryfikacji, zrodla)

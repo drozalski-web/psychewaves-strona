@@ -20,7 +20,8 @@ export function ustawienia(env) {
 /** Strony, które po przeniesieniu mieszkają na stopsprawdzam.pl (ścieżki tak, jak buduje je Astro). */
 export const czescStopsprawdzam = (p) => p === '/stopsprawdzam/' || p.startsWith('/sklep/');
 
-/** Strony obecne na obu domenach. Placebo Junior ma własne podziękowanie (/placebo-junior/dziekuje/), więc /sklep/dziekuje/ jest tylko na stopsprawdzam.pl. */
+/** Strony obecne na obu domenach. Placebo Junior ma własne podziękowanie (/placebo-junior/dziekuje/), więc /sklep/dziekuje/ jest tylko na stopsprawdzam.pl.
+ *  Strony /zapis/* (potwierdzenia zapisu na newsletter) są tylko na psychewaves.pl: na stopsprawdzam.pl nie ma zapisów. */
 export const wspolne = (p) => p === '/polityka-prywatnosci/' || p === '/404';
 
 /** Zamienia odnośnik wewnętrzny na właściwy dla budowanej strony (ścieżkę albo pełny adres drugiej domeny). */

@@ -1,0 +1,21 @@
+---
+// Blok „Newsletter” z formularzem zapisu (Brevo). Nie wyświetla się, dopóki zapisy są wyłączone (src/lib/zapisy.ts).
+import { ZAPISY_AKTYWNE } from '../lib/zapisy';
+import ZapisBrevo from './ZapisBrevo.astro';
+interface Props { id: string }
+const { id } = Astro.props;
+---
+{ZAPISY_AKTYWNE && (
+  <section class="tight" id="newsletter">
+    <div class="wrap">
+      <div class="newsletter">
+        <div>
+          <p class="eyebrow">Newsletter</p>
+          <h2 class="h-sec">Nowa publikacja w skrzynce</h2>
+          <p class="muted" style="margin-top:10px">Napiszę, gdy pojawi się nowy tekst ze źródłami i poziomem pewności. Rzadko i bez spamu. Wypisać się możesz jednym kliknięciem.</p>
+        </div>
+        <ZapisBrevo id={id} />
+      </div>
+    </div>
+  </section>
+)}
