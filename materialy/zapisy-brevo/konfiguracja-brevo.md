@@ -61,7 +61,7 @@ Placebo, mój szczur w czapce EEG, zadaje przy każdej tezie jedno pytanie: „S
 
 Co potem? Gdy pojawi się nowa publikacja, dostaniesz o niej wiadomość: z krótkim opisem, pełną listą źródeł i poziomem pewności przy każdej tezie, żeby od razu było widać, na ile można w coś wierzyć. Rzadko i bez spamu.
 
-Zachęcam do odwiedzenia naszego sklepu: stopsprawdzam.pl/sklep
+Zachęcam do odwiedzenia mojego sklepu: stopsprawdzam.pl/sklep
 ```
 
 - Adres „stopsprawdzam.pl/sklep” w ostatnim zdaniu zrób **linkiem** do `https://stopsprawdzam.pl/sklep/`.
