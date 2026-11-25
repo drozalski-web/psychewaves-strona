@@ -141,11 +141,13 @@ const dalej = warstwy ? (await artykuly('dorosli')).filter((x) => x.id !== a.id)
             </div>
             <div class="dalej-news">
               <p class="dalej-news-h">Chcesz wiedzieć, kiedy pojawi się kolejny tekst z serii o uzależnieniach?</p>
-              {ZAPISY_AKTYWNE ? (
-                <ZapisBrevo id="zapis-artykul" />
-              ) : (
-                <p>Na razie najszybciej dowiesz się na Instagramie: <a href="https://www.instagram.com/psychewaves.pl/" target="_blank" rel="noopener">@psychewaves.pl</a>. <span class="proto">Prototyp: po włączeniu zapisów tu pojawi się formularz newslettera.</span></p>
+              {ZAPISY_AKTYWNE && (
+                <>
+                  <p>Zapisz się na newsletter: napiszę, gdy pojawi się nowa publikacja. Rzadko i bez spamu.</p>
+                  <ZapisBrevo id="zapis-artykul" />
+                </>
               )}
+              <p class="dalej-ig">Na co dzień piszę krócej na Instagramie: rolki i karuzele ze źródłami. <a href="https://www.instagram.com/psychewaves.pl/" target="_blank" rel="noopener">Zajrzyj na @psychewaves.pl</a></p>
             </div>
           </section>
         )}
