@@ -47,6 +47,7 @@ W Brevo: **Marketing** → **Templates** → **Create a template** → **Email t
 - **Sender email:** `kontakt@psychewaves.pl`
 - **Temat:** `Placebo prosi o potwierdzenie`
 - **Podgląd (Preview text):** `„Skąd to wiemy?” Najpierw sprawdźmy, czy ten adres jest Twój.`
+- **Tag (obowiązkowy):** w ustawieniach szablonu kliknij **Show advanced settings** i w polu **Tag** wpisz `optin`. Bez tego tagu Brevo nie uzna szablonu za szablon potwierdzenia zapisu i API odpowiada błędem „An active DOI template does not exist”. Szablon musi być też **aktywny**.
 
 **Treść** (część nad stopką):
 
@@ -60,11 +61,9 @@ Placebo, mój szczur w czapce EEG, zadaje przy każdej tezie jedno pytanie: „S
 [Potwierdzam zapis]
 
 Co potem? Gdy pojawi się nowa publikacja, dostaniesz o niej wiadomość: z krótkim opisem, pełną listą źródeł i poziomem pewności przy każdej tezie, żeby od razu było widać, na ile można w coś wierzyć. Rzadko i bez spamu.
-
-Zachęcam do odwiedzenia mojego sklepu: stopsprawdzam.pl/sklep
 ```
 
-- Adres „stopsprawdzam.pl/sklep” w ostatnim zdaniu zrób **linkiem** do `https://stopsprawdzam.pl/sklep/`.
+- W tej wiadomości **nie ma zaproszenia do sklepu**: mail wychodzi, zanim ktoś potwierdzi zgodę, a Brevo zaleca, żeby wiadomość potwierdzająca nie zawierała treści reklamowych. Sklep jest tylko w stopce (adres) i na stronie „Zapis potwierdzony”, która pokazuje się po potwierdzeniu.
 - „[Potwierdzam zapis]” to **przycisk lub link** z adresem dokładnie: `{{ params.DOIurl }}` (specjalny znacznik Brevo, zamieniany na indywidualny link potwierdzający). Bez przycisku i tego adresu szablon nie zadziała. Jeśli edytor dopisuje `https://` przed znacznikiem, użyj przycisku **{ }** (wstaw zmienną).
 - **Stopka:** zamiast własnego podpisu wklej plik [`stopka-newslettera.html`](stopka-newslettera.html) w bloku **Custom HTML** (albo w edytorze HTML szablonu). To zatwierdzony podpis marki (Pozdrawiam, Daniel Różalski, Psyche Waves, strona, adres sklepu i Instagram, bez numeru telefonu) plus zastrzeżenie edukacyjne, linijka pomocowa i informacja o administratorze adresu. Logo ładuje się z `https://psychewaves.pl/mail/logo-stopka.png`, więc wkleić można dopiero po wdrożeniu tego pliku na stronę.
 - Brevo może samo dopisać pod stopką adres organizacji. Sprawdź to w podglądzie.
