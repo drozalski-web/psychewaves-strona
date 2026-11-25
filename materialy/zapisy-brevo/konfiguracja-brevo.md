@@ -49,7 +49,13 @@ W Brevo: **Marketing** → **Templates** → **Create a template** → **Email t
 - **Podgląd (Preview text):** `„Skąd to wiemy?” Najpierw sprawdźmy, czy ten adres jest Twój.`
 - **Tag (obowiązkowy):** w ustawieniach szablonu kliknij **Show advanced settings** i w polu **Tag** wpisz `optin`. Bez tego tagu Brevo nie uzna szablonu za szablon potwierdzenia zapisu i API odpowiada błędem „An active DOI template does not exist”. Szablon musi być też **aktywny**.
 
-**Gotowy szablon:** [`potwierdzenie-zapisu.html`](potwierdzenie-zapisu.html). W Brevo wybierz edytor **Paste your code** (kod HTML) i wklej cały plik: jest w nim treść, karta z Placebo (`https://psychewaves.pl/mail/placebo-pytanie.png`), przycisk z `{{ params.DOIurl }}`, zapasowy link, podpis i stopka. Obrazek działa dopiero po wdrożeniu pliku na stronę. Poniżej ta sama treść jako tekst, gdybyś wolał edytor przeciągnij i upuść.
+**Gotowy szablon:** [`potwierdzenie-zapisu.html`](potwierdzenie-zapisu.html): treść, karta z Placebo (`https://psychewaves.pl/mail/placebo-pytanie.png?v=2`), przycisk, zapasowy link „Kliknij tutaj”, podpis i stopka. Obrazek działa dopiero po wdrożeniu pliku na stronę.
+
+> **Uwaga: po każdym wklejeniu kodu popraw dwa linki.** Nasz szablon jest w edytorze tekstu sformatowanego Brevo (adres `app.brevo.com/editor/classic/rich-text/…`, kod wkleja się przyciskiem `<>`). Ten edytor zamienia linki ze zmienną na `#`, więc przycisk i „Kliknij tutaj” przestają działać. Po wklejeniu zaznacz napis **Potwierdzam zapis**, kliknij łańcuch 🔗 i w **Link target** wpisz `{{ params.DOIurl }}`, potem **Update**. To samo zrób z „Kliknij tutaj, żeby potwierdzić zapis” na dole. Edytor zmienia też część stylów (np. podkreśla napis na przycisku).
+>
+> Jak sprawdzić: podgląd i „Send a test” **zawsze** mają pusty link potwierdzający, bo Brevo tworzy go dopiero przy prawdziwym zapisie, a podgląd w edytorze może nie pokazywać obrazków. Test robi się zapisem przez formularz na psychewaves.pl (adresem, którego jeszcze nie ma na liście). W Outlooku mail od nowego nadawcy może trafić do śmieci, a tam Outlook wyłącza linki potwierdzające.
+
+Poniżej ta sama treść jako tekst, gdybyś wolał edytor przeciągnij i upuść.
 
 **Treść** (część nad stopką, wersja tekstowa):
 
