@@ -47,6 +47,7 @@ W Brevo: **Marketing** → **Templates** → **Create a template** → **Email t
 - **Sender email:** `kontakt@psychewaves.pl`
 - **Temat:** `Placebo prosi o potwierdzenie`
 - **Podgląd (Preview text):** `„Skąd to wiemy?” Najpierw sprawdźmy, czy ten adres jest Twój.`
+- **Tag (obowiązkowy):** w ustawieniach szablonu kliknij **Show advanced settings** i w polu **Tag** wpisz `optin`. Bez tego tagu Brevo nie uzna szablonu za szablon potwierdzenia zapisu i API odpowiada błędem „An active DOI template does not exist”. Szablon musi być też **aktywny**.
 
 **Treść** (część nad stopką):
 
