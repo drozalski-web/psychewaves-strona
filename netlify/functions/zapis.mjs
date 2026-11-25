@@ -67,11 +67,18 @@ export default async (req) => {
     return przekieruj(req, '/zapis/blad/');
   }
 
-  if (odpowiedz.ok) return przekieruj(req, '/zapis/sprawdz-skrzynke/');
+  if (odpowiedz.ok) {
+    console.info('Zapis: Brevo przyjęło zapis, status', odpowiedz.status);
+    return przekieruj(req, '/zapis/sprawdz-skrzynke/');
+  }
 
   // Adres, który już jest w Brevo, traktujemy jak sukces: nie ujawniamy, kto jest zapisany.
+  // Wzorzec celowo wąski: „template does not exist” itp. to błąd konfiguracji, a nie powtórny zapis.
   const tresc = await odpowiedz.text().catch(() => '');
-  if (odpowiedz.status === 400 && /exist|already|duplicate/i.test(tresc)) return przekieruj(req, '/zapis/sprawdz-skrzynke/');
+  if (odpowiedz.status === 400 && /already|duplicate/i.test(tresc)) {
+    console.info('Zapis: adres już jest w Brevo (brak nowego maila z potwierdzeniem), status', odpowiedz.status);
+    return przekieruj(req, '/zapis/sprawdz-skrzynke/');
+  }
 
   console.error('Zapis: Brevo odpowiedziało błędem', odpowiedz.status, tresc.slice(0, 200).replace(email, '[adres]'));
   return przekieruj(req, '/zapis/blad/');
