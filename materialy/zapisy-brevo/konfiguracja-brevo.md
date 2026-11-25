@@ -49,23 +49,32 @@ W Brevo: **Marketing** → **Templates** → **Create a template** → **Email t
 - **Podgląd (Preview text):** `„Skąd to wiemy?” Najpierw sprawdźmy, czy ten adres jest Twój.`
 - **Tag (obowiązkowy):** w ustawieniach szablonu kliknij **Show advanced settings** i w polu **Tag** wpisz `optin`. Bez tego tagu Brevo nie uzna szablonu za szablon potwierdzenia zapisu i API odpowiada błędem „An active DOI template does not exist”. Szablon musi być też **aktywny**.
 
-**Treść** (część nad stopką):
+**Gotowy szablon:** [`potwierdzenie-zapisu.html`](potwierdzenie-zapisu.html). W Brevo wybierz edytor **Paste your code** (kod HTML) i wklej cały plik: jest w nim treść, karta z Placebo (`https://psychewaves.pl/mail/placebo-pytanie.png`), przycisk z `{{ params.DOIurl }}`, zapasowy link, podpis i stopka. Obrazek działa dopiero po wdrożeniu pliku na stronę. Poniżej ta sama treść jako tekst, gdybyś wolał edytor przeciągnij i upuść.
+
+**Treść** (część nad stopką, wersja tekstowa):
 
 ```text
 Cześć,
 
-cieszę się, że mogę powitać Cię w przestrzeni Psyche Waves.
+cieszę się, że chcesz dołączyć do Psyche Waves. Został jeden krok.
 
-Placebo, mój szczur w czapce EEG, zadaje przy każdej tezie jedno pytanie: „Skąd to wiemy?” Zadaje je też teraz: skąd wiemy, że ten adres należy do Ciebie? Potwierdź go jednym kliknięciem:
-
+[Placebo, front]
+Skąd to wiemy?
+Placebo pyta o to przy każdej tezie. Teraz pyta, czy ten adres należy do Ciebie.
 [Potwierdzam zapis]
+To nie Ty? Zignoruj tę wiadomość: bez kliknięcia nic się nie stanie.
 
-Co potem? Gdy pojawi się nowa publikacja, dostaniesz o niej wiadomość: z krótkim opisem, pełną listą źródeł i poziomem pewności przy każdej tezie, żeby od razu było widać, na ile można w coś wierzyć. Rzadko i bez spamu.
+Co potem?
+Gdy pojawi się nowa publikacja, dostaniesz wiadomość, a w niej:
+- krótki opis,
+- pełną listę źródeł,
+- poziom pewności przy każdej tezie, żeby od razu było widać, na ile można w coś wierzyć.
+Rzadko, bez spamu.
 ```
 
 - W tej wiadomości **nie ma zaproszenia do sklepu**: mail wychodzi, zanim ktoś potwierdzi zgodę, a Brevo zaleca, żeby wiadomość potwierdzająca nie zawierała treści reklamowych. Sklep jest tylko w stopce (adres) i na stronie „Zapis potwierdzony”, która pokazuje się po potwierdzeniu.
 - „[Potwierdzam zapis]” to **przycisk lub link** z adresem dokładnie: `{{ params.DOIurl }}` (specjalny znacznik Brevo, zamieniany na indywidualny link potwierdzający). Bez przycisku i tego adresu szablon nie zadziała. Jeśli edytor dopisuje `https://` przed znacznikiem, użyj przycisku **{ }** (wstaw zmienną).
-- **Stopka:** zamiast własnego podpisu wklej plik [`stopka-newslettera.html`](stopka-newslettera.html) w bloku **Custom HTML** (albo w edytorze HTML szablonu). To zatwierdzony podpis marki (Pozdrawiam, Daniel Różalski, Psyche Waves, strona, adres sklepu i Instagram, bez numeru telefonu) plus zastrzeżenie edukacyjne, linijka pomocowa i informacja o administratorze adresu. Logo ładuje się z `https://psychewaves.pl/mail/logo-stopka.png`, więc wkleić można dopiero po wdrożeniu tego pliku na stronę.
+- **Stopka** (tylko przy edytorze przeciągnij i upuść; `potwierdzenie-zapisu.html` ma ją w sobie, z adresem sklepu w podpisie i bez linijki pomocowej): zamiast własnego podpisu wklej plik [`stopka-newslettera.html`](stopka-newslettera.html) w bloku **Custom HTML** (albo w edytorze HTML szablonu). To zatwierdzony podpis marki (Pozdrawiam, Daniel Różalski, Psyche Waves, strona, adres sklepu i Instagram, bez numeru telefonu) plus zastrzeżenie edukacyjne, linijka pomocowa i informacja o administratorze adresu. Logo ładuje się z `https://psychewaves.pl/mail/logo-stopka.png`, więc wkleić można dopiero po wdrożeniu tego pliku na stronę.
 - Brevo może samo dopisać pod stopką adres organizacji. Sprawdź to w podglądzie.
 - Wiadomość z potwierdzeniem nie ma linku do wypisania (odbiorca nie jest jeszcze na liście). Linki do wypisania dodaje Brevo automatycznie w kampaniach.
 
