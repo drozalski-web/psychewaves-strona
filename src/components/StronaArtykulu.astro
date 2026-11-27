@@ -140,7 +140,7 @@ const dalej = warstwy ? (await artykuly('dorosli')).filter((x) => x.id !== a.id)
               </a>
             </div>
             <div class="dalej-news">
-              <p class="dalej-news-h">Chcesz wiedzieć, kiedy pojawi się kolejny tekst z serii o uzależnieniach?</p>
+              <p class="dalej-news-h">{String(d.kategoria).startsWith('Uzależnienia') ? 'Chcesz wiedzieć, kiedy pojawi się kolejny tekst z serii o uzależnieniach?' : 'Chcesz wiedzieć, kiedy pojawi się kolejny tekst ze źródłami?'}</p>
               {ZAPISY_AKTYWNE && (
                 <>
                   <p>Zapisz się na newsletter: napiszę, gdy pojawi się nowa publikacja. Rzadko i bez spamu.</p>
