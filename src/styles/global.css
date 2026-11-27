@@ -208,6 +208,10 @@ section.tight{padding-top:8px}
 .prose th{text-align:left;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--wave);padding:8px 10px}
 .prose td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top}
 .prose tr:last-child td{border-bottom:0}
+.prose table.waska{min-width:0}
+.prose table.waska .kwota{white-space:nowrap}
+.prose table.waska th:first-child,.prose table.waska td:first-child{width:1%;white-space:nowrap}
+@media (max-width:480px){.prose table.waska th,.prose table.waska td{padding:9px 6px}}
 .prose ol{padding-left:1.3em;display:grid;gap:.6em}
 .prose blockquote.cytat{font-family:var(--body);font-size:1rem;line-height:1.6;font-style:italic}
 .prose .tldr{background:var(--mist);border:1px solid var(--line);border-top:4px solid var(--wave);border-radius:12px;padding:20px 22px}
