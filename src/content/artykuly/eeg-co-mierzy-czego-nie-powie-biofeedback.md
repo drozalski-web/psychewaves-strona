@@ -5,7 +5,7 @@ kategoria: "EEG i biofeedback"
 data: 2026-11-27
 czasCzytania: 18
 temat: eeg-biofeedback
-szkic: true
+szkic: false
 zrodlaDoWeryfikacji: true
 warstwy: true
 zrodla:
