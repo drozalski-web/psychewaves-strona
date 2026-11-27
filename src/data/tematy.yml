@@ -36,6 +36,22 @@
   tytul: "Granice w relacji bez poczucia winy"
   kategoria: "Relacje"
 
+- id: neurofeedback-depresja-lek-autyzm
+  tytul: "Neurofeedback przy depresji, PTSD, lęku i autyzmie: co mówią badania"
+  kategoria: "EEG i biofeedback"
+
+- id: neurofeedback-bezpieczenstwo
+  tytul: "Czy neurofeedback jest bezpieczny? Skutki uboczne i przeciwwskazania"
+  kategoria: "EEG i biofeedback"
+
+- id: neurofeedback-fmri-fnirs
+  tytul: "Neurofeedback z rezonansu i światła (fMRI, fNIRS): nowa generacja treningu mózgu"
+  kategoria: "EEG i biofeedback"
+
+- id: trening-mozgu-dla-zdrowych
+  tytul: "Trening mózgu dla zdrowych: opaski EEG, medytacja i sport"
+  kategoria: "EEG i biofeedback"
+
 # Placebo Junior: kolejka tematów dla dzieci i rodziców (osobna od publikacji dla dorosłych).
 # Propozycje do akceptacji Daniela; treści dla dzieci przed publikacją powinien przejrzeć psycholog dziecięcy lub pedagog.
 - id: junior-fale
