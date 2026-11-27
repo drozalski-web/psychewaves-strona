@@ -37,9 +37,32 @@ Marka: skill `psycho-waves-brand` (paleta, czcionki, logo, głos, bezpieczeństw
 - Funkcja akceptuje tylko żądania z psychewaves.pl (i podglądów jego projektu), ma pułapkę na boty (ukryte pole) i nie ujawnia, kto już jest zapisany.
 - Mini-kurs mailowy #stopsprawdzam jest **wstrzymany** do decyzji Daniela, czy go w ogóle robić. Szkic jest w `materialy/mini-kurs-stopsprawdzam/` (roboczy PR), a na stronie nie ma po nim śladu. Gdyby wrócił, trzeba dodać drugą listę, formularz na stopsprawdzam.pl i wiersz w polityce prywatności.
 
+## Styl długich artykułów (wzór: `chemseks-rozmowa-bez-oceniania.md`)
+
+Każdy nowy dłuższy tekst piszemy w „warstwach”: na wierzchu są wnioski, a szczegóły rozwija się w każdej sekcji. Wzór zaakceptował Daniel (PR #37 i #38).
+
+- **Frontmatter:** `warstwy: true` włącza spis treści z czasem czytania, pasek postępu, tryb „Skrót / Całość”, słowniczek w dymkach, udostępnianie sekcji, ramkę „Jak powstał ten tekst”, „Czytaj dalej” i newsletter z zachętą do IG. Przy tematach wrażliwych dodaj `szybkieWyjscie: true` (przycisk „Wyjdź szybko”). Opcjonalnie `aktualizacja` i `recenzja`.
+- **Góra tekstu:**
+  - `<aside class="tldr">` „Najważniejsze w 30 sekund”, w nim ważna rozwijana informacja (`<details class="note">`, w nagłówku „… Dowiedz się więcej”) i na końcu odnośnik do @psychewaves.pl (`p.tldr-ig`);
+  - potem `nav.router` „Od czego chcesz zacząć?” z 4 ścieżkami (zrozumieć, chronić się, szukam pomocy, pracuję z ludźmi);
+  - potem `aside.legenda` z legendą plakietek i Placebo. Przy poważnych tematach tylko mina `h6-powaga`.
+  - Bez przycisku „Potrzebujesz pomocy teraz?” i bez „Wersji w 60 sekund”.
+- **Części:** Impuls → Nauka (na wejściu `section.quiz` „Mit czy fakt?” z faktami z tekstu) → Wodnik → Wniosek → Źródła. W każdej sekcji wniosek z plakietką pewności i jeden element na wierzchu (cytat, liczba, wykres, piktogram). Reszta trafia do `<details class="rozwin">` z `span.rz-tytul` (co jest w środku) i `span.rz-meta` (ile i czego).
+- **Cytaty:** najwyżej 3 na wierzchu (`blockquote.cytat.pull` + `cite`), w spokojnym stylu. Pozostałe idą pod „Rozwiń”.
+- **Wodnik:**
+  - lista praktyczna oparta na źródle z bazy wiedzy, z numerami stron i przyciskiem „Zapisz listę (PDF)” (`div.lista-krokow#lista-krokow`, etapy `div.lk-etap`);
+  - 3 gotowe zdania (`div.say` z `p.say-kontekst` i `p.say-tekst`). **Gotowe zdania poprawia Daniel przed wdrożeniem.**
+  - Zalecenia medyczne z innych źródeł (np. DoxyPEP) dajemy w osobnej ramce z własnymi źródłami, nie w liście z podręcznika.
+- **Bez instrukcji:** bez dawek, techniki iniekcji i suplementów.
+- **Prawo:** twierdzenia prawne tylko ze sprawdzonych stron (tekst ustawy, prawo.pl itp.). Punktów bez źródła nie wstawiamy.
+- **Telefony pomocowe:** bez linijki z numerami w treści, bo pasek pomocy jest w stopce. Karty pomocy (`div.hcard`) mają klikalne `tel:`/`mailto:` i `data-godziny="1-5 8:00-14:00"` dla „Teraz otwarte”.
+- **Słowniczek:** tabela w `<details class="rozwin" id="slowniczek">`. Z niej powstają dymki, więc nie trzeba niczego oznaczać w tekście.
+- **Technicznie:** treść HTML w pliku `.md` ma jeden blok na linię i **żadnej pustej linii** (inaczej Markdown rozbije HTML). Twarde spacje (po „i”, „w”, „z”, w „s. 51”, liczbach) wstawia sama budowa (`scripts/twarde-spacje.mjs`), więc w tekście piszemy zwykłe spacje.
+- **Źródła z bazy wiedzy:** lokalny folder `Desktop/Psycho.waves/baza-wiedzy` (PDF + .txt, poza repozytorium). Na stronie linkujemy do oficjalnego PDF.
+
 ## Struktura
 
-- `src/content/artykuly/*.md`: artykuły (frontmatter: tytul, zajawka, kategoria, data, czasCzytania, temat, szkic, zrodlaDoWeryfikacji, zrodla)
+- `src/content/artykuly/*.md`: artykuły (frontmatter: tytul, zajawka, kategoria, data, czasCzytania, temat, szkic, zrodlaDoWeryfikacji, zrodla, warstwy, szybkieWyjscie, aktualizacja, recenzja)
 - `src/data/tematy.yml`: kolejka tematów „W przygotowaniu”; widać 3 pierwsze bez opublikowanego artykułu
 - W treści: `### Impuls|Nauka|Wodnik|Wniosek` = etykieta części, `## …` = nagłówek, `` `Wiemy` `` / `` `Badania sugerują` `` / `` `Hipoteza` `` = plakietki pewności, `> …` = gotowe zdanie
 - `npm run dev` lokalnie, `npm run build` buduje do `dist/`
