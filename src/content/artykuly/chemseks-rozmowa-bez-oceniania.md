@@ -227,7 +227,7 @@ zrodla:
 <p><span class="claim">Badania sugerują</span> Doksycyklina przyjęta po seksie zmniejsza u części osób ryzyko kiły i chlamydiozy. CDC zaleca ją mężczyznom mającym seks z mężczyznami i kobietom transpłciowym, którzy w ostatnim roku mieli bakteryjną infekcję przenoszoną drogą płciową (Bachmann i in., 2024). ECDC jest ostrożniejsze: decyzja ma zapadać indywidualnie, głównie z myślą o kile, bo przy rzeżączce wiele szczepów jest odpornych na tetracykliny (ECDC). Podręcznik Pouliosa też podkreśla, że dowody są wstępne, i zwraca uwagę na ryzyko antybiotykooporności (s. 41, 49).</p>
 <p>DoxyPEP nie chroni przed HIV. O tym, czy jest dla Ciebie i w jakim schemacie, decyduje lekarz.</p></aside>
 <div class="gotowe"><p class="gotowe-h">Gotowe zdania do użycia</p>
-<div class="say"><p class="say-kontekst">Przed spotkaniem, do osób, z którymi się umawiasz</p><p class="say-tekst">„Zanim zaczniemy: ustalmy przerwy i to, że przy utracie przytomności ktoś od razu dzwoni pod 112.”</p></div>
+<div class="say"><p class="say-kontekst">Przed spotkaniem, do osób, z którymi się umawiasz</p><p class="say-tekst">„Zanim zaczniemy: ustalmy przerwy i ustawmy na nie alarm w telefonie. Każdy używa własnej słomki i przyborów. Jeśli ktoś straci przytomność albo przestanie oddychać, od razu dzwonimy pod 112.”</p></div>
 <div class="say"><p class="say-kontekst">U lekarza, gdy masz objawy zakażenia</p><p class="say-tekst">„Mam objawy zakażenia. Czy możemy zacząć leczenie dziś, jeszcze przed wynikami badań?”</p></div>
 <div class="say"><p class="say-kontekst">U lekarza, gdy myślisz o profilaktyce</p><p class="say-tekst">„Używam substancji podczas seksu. Czy w mojej sytuacji warto rozważyć PrEP albo DoxyPEP?”</p></div>
 </div>
