@@ -6,7 +6,7 @@ data: 2026-11-27
 czasCzytania: 18
 temat: eeg-biofeedback
 szkic: false
-zrodlaDoWeryfikacji: true
+zrodlaDoWeryfikacji: false
 warstwy: true
 zrodla:
   - "Buzsáki, G., Anastassiou, C. A., Koch, C. (2012). The origin of extracellular fields and currents – EEG, ECoG, LFP and spikes. <em>Nature Reviews Neuroscience</em>, 13(6), 407–420. doi:10.1038/nrn3241. <a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC4907333/\" target=\"_blank\" rel=\"noopener\">PMC</a>"
