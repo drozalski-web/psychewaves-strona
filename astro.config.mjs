@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import witryny from './scripts/witryny-integracja.mjs';
+import twardeSpacje from './scripts/twarde-spacje.mjs';
 import { ustawienia, ADRES_PW, ADRES_SS, czescStopsprawdzam } from './src/lib/witryny.mjs';
 
 // Ten sam kod buduje psychewaves.pl (domyślnie) albo stopsprawdzam.pl (PUBLIC_WITRYNA=stopsprawdzam). Zob. src/lib/witryny.mjs.
@@ -48,6 +49,8 @@ export default defineConfig({
       },
     }),
     witryny(ust),
+    // Twarde spacje po jednoliterowych wyrazach, w „s. 51”, „art. 14”, liczbach z jednostką (zob. scripts/twarde-spacje.mjs).
+    twardeSpacje(),
   ],
   markdown: { rehypePlugins: [rehypePoziomPewnosci] },
 });
