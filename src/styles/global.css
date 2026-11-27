@@ -693,3 +693,17 @@ h2:hover .udostepnij,.udostepnij:focus-visible{opacity:1}
 
 .dalej-news .waitlist{margin-top:12px}
 .dalej-news .dalej-ig{margin-top:14px!important;padding-top:12px;border-top:1px solid var(--line);font-size:.92rem}
+
+/* Lista kroków: etapy, alarm, ramka DoxyPEP */
+.lk-zrodlo{font-size:.9rem;color:var(--muted)}
+.lk-etap{border-top:1px solid var(--line);padding-top:12px}
+.lk-etap-h{margin:0 0 6px;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.prose .lk-etap ul{gap:.5em}
+.lk-alarm{background:var(--deep);color:var(--band-fg);border-radius:10px;padding:12px 16px;font-size:.95rem}
+.lk-alarm strong{color:#fff}
+.lista-krokow details.rozwin h4{margin-top:1em}
+.lk-pominiete{font-size:.85rem;color:var(--muted)}
+.doxy{background:var(--mist);border-radius:12px;padding:16px 18px;border-left:4px solid var(--wave)}
+.doxy > * + *{margin-top:.8em}
+.doxy-h{font-family:var(--display);font-size:1.25rem;line-height:1.2;margin:0;color:var(--ink)}
+@media print{.lk-alarm{background:none;color:inherit;border:1px solid #999}.lk-alarm strong{color:inherit}}
