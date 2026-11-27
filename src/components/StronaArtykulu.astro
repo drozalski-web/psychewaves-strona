@@ -1,11 +1,17 @@
 ---
 import { render } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import ZapisBrevo from './ZapisBrevo.astro';
+import { artykuly } from '../lib/tresci';
+import { ZAPISY_AKTYWNE } from '../lib/zapisy';
+import { spisTresci } from '../lib/spis-tresci';
 interface Props { a: any; dzieci?: boolean }
 const { a, dzieci = false } = Astro.props;
 const { Content } = await render(a);
 const d = a.data;
-const dataPl = d.data.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+const fmt = (x: Date) => x.toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' });
+const dataPl = fmt(d.data);
+const aktualizacjaPl = d.aktualizacja ? fmt(d.aktualizacja) : null;
 const wroc = dzieci ? ['/placebo-junior/', '← Placebo Junior'] : ['/publikacje/', '← Wszystkie publikacje'];
 const adres = new URL(Astro.url.pathname, Astro.site).href;
 const artykulLd = {
@@ -14,6 +20,7 @@ const artykulLd = {
   headline: d.tytul,
   description: d.zajawka,
   datePublished: d.data.toISOString().slice(0, 10),
+  ...(d.aktualizacja ? { dateModified: d.aktualizacja.toISOString().slice(0, 10) } : {}),
   inLanguage: 'pl-PL',
   mainEntityOfPage: adres,
   image: dzieci ? 'https://psychewaves.pl/og/placebo-junior.png' : 'https://psychewaves.pl/og/psyche-waves.png',
@@ -22,12 +29,19 @@ const artykulLd = {
   publisher: { '@id': 'https://psychewaves.pl/#marka' },
   isAccessibleForFree: true,
 };
+
+// Długie artykuły z warstwami: spis treści i czasy czytania liczone z treści przy budowie.
+const warstwy = d.warstwy && !dzieci;
+const spis = warstwy ? spisTresci(a.body ?? '') : null;
+// „Czytaj dalej”: inne publikacje dla dorosłych (bez Placebo Junior).
+const dalej = warstwy ? (await artykuly('dorosli')).filter((x) => x.id !== a.id).slice(0, 2) : [];
 ---
 <Base tytul={d.tytul} opis={d.zajawka} typ="article" jsonLd={artykulLd} noindex={d.szkic} sekcja={dzieci ? 'junior' : undefined}>
   {d.szkic && (
     <div class="draft" role="note"><div class="wrap"><strong>Szkic.</strong> Ta publikacja nie jest widoczna na żywej stronie, dopóki go nie zaakceptujesz.</div></div>
   )}
-  <article>
+  {warstwy && <div class="art-progress" aria-hidden="true"><span></span></div>}
+  <article class:list={[{ 'art-warstwy': warstwy }]}>
     <header class={`article-head${dzieci ? " junior-head" : ""}`}>
       <div class="wrap narrow">
         <a href={wroc[0]} class="back">{wroc[1]}</a>
@@ -38,19 +52,120 @@ const artykulLd = {
         <div class="byline">
           <span>Daniel · Psyche Waves</span>
           <span>{dataPl}</span>
-          <span>{d.czasCzytania} min czytania</span>
+          {aktualizacjaPl && <span>zaktualizowano {aktualizacjaPl}</span>}
+          {spis ? <span>{spis.minSkrot} min w skrócie · {spis.minCalosc} min całość</span> : <span>{d.czasCzytania} min czytania</span>}
           {d.szkic && <span class="chip">Szkic · czeka na akceptację</span>}
         </div>
       </div>
     </header>
-    <div class="prose wrap narrow">
-      <Content />
-      <div class="refs">
-        <strong style="color:var(--ink)">Źródła</strong>
-        {d.zrodlaDoWeryfikacji && <span class="todo">DO WERYFIKACJI</span>}
-        {d.zrodla.length > 0 && <ol>{d.zrodla.map((z) => <li set:html={z} />)}</ol>}
-        <p style="margin-top:14px">Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+
+    <div class:list={[{ 'art-layout': warstwy }]}>
+      {spis && (
+        <details class="art-toc" id="spis">
+          <summary><span class="toc-label">Spis treści</span><span class="toc-now" aria-live="polite"></span></summary>
+          <nav aria-label="Spis treści">
+            <ol class="toc-parts">
+              {spis.czesci.map((c) => (
+                <li>
+                  <a class="toc-part" href={`#${c.id}`}><span class="toc-etykieta">{c.etykieta}</span> {c.tytul}</a>
+                  {c.sekcje.length > 0 && (
+                    <ol>
+                      {c.sekcje.map((s) => (
+                        <li><a href={`#${s.id}`}>{s.tytul} <span class="toc-min">{s.min} min</span></a></li>
+                      ))}
+                    </ol>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </details>
+      )}
+
+      <div class="prose wrap narrow">
+        {spis && (
+          <div class="art-tools" hidden>
+            <div class="tryb" role="group" aria-label="Jak chcesz czytać?">
+              <button type="button" data-tryb="skrot" aria-pressed="true">Skrót · {spis.minSkrot} min</button>
+              <button type="button" data-tryb="calosc" aria-pressed="false">Całość · {spis.minCalosc} min</button>
+            </div>
+            <p class="tryb-opis">W skrócie widzisz najważniejsze wnioski. Szczegóły rozwiniesz w każdej sekcji.</p>
+          </div>
+        )}
+
+        <Content />
+
+        {warstwy && (
+          <aside class="jak-powstal" aria-labelledby="jak-powstal-h">
+            <p class="jp-h" id="jak-powstal-h">Jak powstał ten tekst</p>
+            <ul>
+              <li><strong>Autor:</strong> Daniel, student psychologii (Kraków). To psychoedukacja, nie porada terapeutyczna ani diagnoza.</li>
+              <li><strong>Źródła:</strong> {d.zrodla.length} pozycji, głównie recenzowane badania i raporty instytucji zdrowia publicznego. Każde twierdzenie ma plakietkę pewności.</li>
+              <li><strong>Recenzja merytoryczna:</strong> {d.recenzja ?? 'jeszcze brak recenzji zewnętrznej.'}</li>
+              <li><strong>Opublikowano:</strong> {dataPl}{aktualizacjaPl && <>; <strong>ostatnia aktualizacja:</strong> {aktualizacjaPl}</>}.</li>
+              <li>Widzisz błąd albo nieaktualny adres? <a href="/kontakt/">Napisz do mnie</a>, poprawię i dopiszę datę zmiany.</li>
+            </ul>
+          </aside>
+        )}
+
+        {warstwy ? (
+          <details class="refs refs-zwin" id="zrodla-lista">
+            <summary><strong>Źródła ({d.zrodla.length})</strong>{d.zrodlaDoWeryfikacji && <span class="todo">DO WERYFIKACJI</span>}</summary>
+            {d.zrodla.length > 0 && <ol>{d.zrodla.map((z) => <li set:html={z} />)}</ol>}
+          </details>
+        ) : (
+          <div class="refs">
+            <strong style="color:var(--ink)">Źródła</strong>
+            {d.zrodlaDoWeryfikacji && <span class="todo">DO WERYFIKACJI</span>}
+            {d.zrodla.length > 0 && <ol>{d.zrodla.map((z) => <li set:html={z} />)}</ol>}
+            <p style="margin-top:14px">Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>
+          </div>
+        )}
+        {warstwy && <p class="refs-note">Treści edukacyjne; nie zastępują konsultacji ze specjalistą.</p>}
+
+        {warstwy && (
+          <section class="art-dalej" aria-labelledby="dalej-h">
+            <h2 id="dalej-h" class="dalej-h">Czytaj dalej</h2>
+            <div class="dalej-karty">
+              {dalej.map((x) => (
+                <a class="dalej-karta" href={`/publikacje/${x.id}/`}>
+                  <span class="eyebrow">{x.data.kategoria}</span>
+                  <span class="dalej-tytul">{x.data.tytul}</span>
+                  <span class="dalej-zajawka">{x.data.zajawka}</span>
+                </a>
+              ))}
+              <a class="dalej-karta dalej-wszystkie" href="/publikacje/">
+                <span class="dalej-tytul">Wszystkie publikacje →</span>
+                <span class="dalej-zajawka">Teksty ze źródłami i poziomem pewności.</span>
+              </a>
+            </div>
+            <div class="dalej-news">
+              <p class="dalej-news-h">Chcesz wiedzieć, kiedy pojawi się kolejny tekst z serii o uzależnieniach?</p>
+              {ZAPISY_AKTYWNE && (
+                <>
+                  <p>Zapisz się na newsletter: napiszę, gdy pojawi się nowa publikacja. Rzadko i bez spamu.</p>
+                  <ZapisBrevo id="zapis-artykul" />
+                </>
+              )}
+              <p class="dalej-ig">Na co dzień piszę krócej na Instagramie: rolki i karuzele ze źródłami. <a href="https://www.instagram.com/psychewaves.pl/" target="_blank" rel="noopener">Zajrzyj na @psychewaves.pl</a></p>
+            </div>
+          </section>
+        )}
       </div>
     </div>
   </article>
+
+  {d.szybkieWyjscie && (
+    <a class="wyjdz" href="https://www.google.pl/" rel="noreferrer" data-wyjdz>
+      <span aria-hidden="true">✕</span> Wyjdź szybko
+      <span class="wyjdz-hint">lub 2× Esc</span>
+    </a>
+  )}
+  <div class="term-pop" role="tooltip" id="term-pop" hidden></div>
 </Base>
+
+{/* Skrypt działa tylko na artykułach z warstwami (szuka .art-warstwy) i na przycisku szybkiego wyjścia. */}
+<script>
+  import { uruchomArtykul } from '../lib/artykul-klient';
+  uruchomArtykul();
+</script>

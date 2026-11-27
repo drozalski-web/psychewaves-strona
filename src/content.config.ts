@@ -17,6 +17,14 @@ const artykuly = defineCollection({
     szkic: z.boolean().default(true),
     zrodlaDoWeryfikacji: z.boolean().default(false),
     zrodla: z.array(z.string()).default([]),
+    // data ostatniej aktualizacji treści (pokazywana w nagłówku i w ramce „Jak powstał ten tekst”)
+    aktualizacja: z.coerce.date().optional(),
+    // warstwy: true = długi artykuł z rozwijanymi sekcjami, spisem treści, paskiem postępu i słowniczkiem w dymkach
+    warstwy: z.boolean().default(false),
+    // szybkieWyjscie: true = przycisk „Wyjdź szybko” (tematy wrażliwe, np. chemseks)
+    szybkieWyjscie: z.boolean().default(false),
+    // ramka „Jak powstał ten tekst”: kto recenzował (puste = brak recenzji zewnętrznej)
+    recenzja: z.string().optional(),
   }),
 });
 
