@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Fala from '../components/Fala.astro';
-// Zdjęcie: wrzuć plik do public/daniel.jpg i ustaw zdjecie = '/daniel.jpg'
-const zdjecie: string | null = null;
+// Zdjęcie: public/daniel.webp (600×750) i public/daniel-320.webp (320×400), kadr 4:5.
+// Ustaw null, żeby wrócić do znaku z falą.
+const zdjecie: string | null = '/daniel.webp';
 ---
 <Base tytul="O mnie" opis="Daniel, student psychologii z Krakowa. Psychoedukacja bez wstydu.">
   <section class="article-head">
@@ -14,7 +15,7 @@ const zdjecie: string | null = null;
   <section>
     <div class="wrap about">
       {zdjecie
-        ? <img class="portrait photo" src={zdjecie} alt="Daniel, autor Psyche Waves" width="260" height="260">
+        ? <img class="portrait photo" src={zdjecie} srcset="/daniel-320.webp 320w, /daniel.webp 600w" sizes="(min-width: 820px) 260px, min(100vw - 40px, 360px)" alt="Daniel, student psychologii, w bibliotece uczelni" width="600" height="750" fetchpriority="high">
         : <div class="portrait"><Fala grubosc={30} /></div>}
       <div class="about-text">
         <p class="big">Studiuję psychologię w Krakowie i piszę o psychice bez wstydu. Interesuje mnie, co dzieje się w głowie i w ciele, gdy pojawia się uzależnienie, ADHD albo kryzys psychiczny.</p>

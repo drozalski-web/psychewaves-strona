@@ -196,7 +196,8 @@ section.tight{padding-top:8px}
 .back{font-size:.9rem}
 .about-text{display:grid;gap:1.1em;min-width:0}
 .about-text .big{font-size:1.08rem}
-.portrait.photo{object-fit:cover;padding:0}
+.portrait.photo{object-fit:cover;padding:0;aspect-ratio:4/5;height:auto;border-radius:18px;max-width:360px;background:var(--line)}
+@media (min-width:820px){.portrait.photo{max-width:260px}}
 .ig{font-family:var(--display);font-size:1.5rem}
 .mail{color:var(--ink);text-decoration:none}
 
